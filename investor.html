@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RUNO Offsite — Investment Brief</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:   #FB4827;
+      --neon:     #CEFF58;
+      --black:    #000000;
+      --white:    #ffffff;
+      --offwhite: #F3F2EE;
+      --dark:     #0a0a0a;
+      --mid:      #141414;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── CONFIDENTIAL BADGE ─── */
+    .conf-bar {
+      background: var(--orange);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 8px;
+    }
+
+    /* ─── LOGO BAR ─── */
+    .logo-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 64px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .logo-bar img { height: 22px; display: block; }
+    .logo-bar-right {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.35);
+    }
+
+    /* ─── SECTION BASE ─── */
+    .section { padding: 96px 64px; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.35);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: clamp(36px, 4vw, 64px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: 0.93;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--dark);
+      color: var(--white);
+      padding: 96px 64px 80px;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .hero-headline {
+      font-size: clamp(40px, 5.5vw, 88px);
+      font-weight: 900;
+      line-height: 0.93;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      max-width: 1100px;
+      margin-bottom: 56px;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 1.2vw, 18px);
+      line-height: 1.65;
+      color: rgba(255,255,255,0.5);
+      max-width: 640px;
+      margin-bottom: 64px;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 48px;
+    }
+
+    .hero-metric {
+      padding: 0 32px 0 0;
+    }
+    .hero-metric-num {
+      font-size: clamp(32px, 3vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      color: var(--neon);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .hero-metric-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.4;
+    }
+
+    /* ─── MARKET ─── */
+    .market-section {
+      background: var(--offwhite);
+      padding: 96px 64px;
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .market-left .section-title { margin-bottom: 24px; }
+
+    .market-intro {
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.7);
+    }
+    .market-intro p + p { margin-top: 18px; }
+
+    .market-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .mstat {
+      background: var(--white);
+      padding: 32px 28px;
+    }
+
+    .mstat-num {
+      font-size: clamp(28px, 2.5vw, 44px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .mstat-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: rgba(0,0,0,0.4);
+      line-height: 1.5;
+    }
+
+    .mstat-sub {
+      font-size: 13px;
+      color: rgba(0,0,0,0.5);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    /* ─── OPPORTUNITY ─── */
+    .opportunity-section {
+      background: var(--dark);
+      color: var(--white);
+      padding: 96px 64px;
+    }
+
+    .opportunity-section .section-label { color: rgba(255,255,255,0.3); }
+    .opportunity-section .section-label::before { background: rgba(255,255,255,0.3); }
+    .opportunity-section .section-title { color: var(--white); }
+
+    .opp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 16px;
+    }
+
+    .opp-card {
+      background: #1a1a1a;
+      padding: 40px 36px;
+      border-top: 3px solid var(--orange);
+    }
+
+    .opp-num {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 20px;
+    }
+
+    .opp-title {
+      font-size: clamp(18px, 1.6vw, 26px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .opp-text {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ─── TRACTION ─── */
+    .traction-section {
+      background: var(--white);
+      padding: 96px 64px;
+    }
+
+    .traction-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .traction-intro {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.65);
+    }
+    .traction-intro p + p { margin-top: 16px; }
+
+    .cred-list {
+      list-style: none;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .cred-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .cred-name {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .cred-detail {
+      font-size: 12px;
+      color: rgba(0,0,0,0.4);
+      text-align: right;
+    }
+
+    /* ─── FORMAT ─── */
+    .format-section {
+      background: var(--orange);
+      color: var(--black);
+      padding: 96px 64px;
+    }
+
+    .format-section .section-label {
+      color: rgba(0,0,0,0.45);
+    }
+    .format-section .section-label::before {
+      background: rgba(0,0,0,0.45);
+    }
+    .format-section .section-title { margin-bottom: 56px; }
+
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .format-card {
+      background: rgba(0,0,0,0.08);
+      padding: 36px 28px;
+    }
+
+    .format-card-label {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+
+    .format-card-value {
+      font-size: clamp(20px, 1.8vw, 30px);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1.0;
+      margin-bottom: 12px;
+    }
+
+    .format-card-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      opacity: 0.65;
+    }
+
+    .format-differentiators {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 2px;
+    }
+
+    .diff-item {
+      background: rgba(0,0,0,0.06);
+      padding: 28px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .diff-num {
+      font-size: 11px;
+      font-weight: 700;
+      opacity: 0.4;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .diff-text {
+      font-size: 14px;
+      line-height: 1.65;
+      opacity: 0.8;
+    }
+
+    /* ─── DESTINATIONS ─── */
+    .destinations-section {
+      background: var(--mid);
+      color: var(--white);
+      padding: 96px 64px;
+    }
+
+    .destinations-section .section-label { color: rgba(255,255,255,0.3); }
+    .destinations-section .section-label::before { background: rgba(255,255,255,0.3); }
+    .destinations-section .section-title { color: var(--white); }
+
+    .dest-intro {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .dest-card {
+      background: #1c1c1c;
+      padding: 40px 36px;
+    }
+
+    .dest-status {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      margin-bottom: 24px;
+    }
+    .dest-status.ready { background: var(--neon); color: var(--black); }
+    .dest-status.dev   { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+
+    .dest-name {
+      font-size: clamp(28px, 2.8vw, 44px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      line-height: 0.93;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .dest-loc {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 24px;
+    }
+
+    .dest-text {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 28px;
+    }
+
+    .dest-specs {
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .dest-spec-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 11px;
+    }
+
+    .dest-spec-key {
+      font-weight: 700;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      flex-shrink: 0;
+    }
+
+    .dest-spec-val { color: rgba(255,255,255,0.6); text-align: right; }
+
+    /* ─── UNIT ECONOMICS ─── */
+    .economics-section {
+      background: var(--offwhite);
+      padding: 96px 64px;
+    }
+
+    .econ-intro {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.6);
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    .econ-model {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+
+    .econ-card {
+      background: var(--white);
+      padding: 40px 36px;
+    }
+
+    .econ-card.dark {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .econ-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: rgba(0,0,0,0.35);
+      margin-bottom: 24px;
+    }
+
+    .econ-card.dark .econ-card-label { color: rgba(255,255,255,0.3); }
+
+    .econ-num-big {
+      font-size: clamp(40px, 4vw, 68px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .econ-num-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(0,0,0,0.5);
+    }
+
+    .econ-card.dark .econ-num-desc { color: rgba(255,255,255,0.4); }
+
+    .econ-breakdown {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      margin-top: 24px;
+    }
+
+    .econ-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      font-size: 13px;
+    }
+
+    .econ-card.dark .econ-row { border-color: rgba(255,255,255,0.06); }
+
+    .econ-row-label { color: rgba(0,0,0,0.5); }
+    .econ-card.dark .econ-row-label { color: rgba(255,255,255,0.4); }
+    .econ-row-val { font-weight: 700; }
+
+    .econ-row.total .econ-row-label { color: var(--black); font-weight: 700; }
+    .econ-row.total .econ-row-val { color: var(--orange); font-size: 15px; }
+    .econ-card.dark .econ-row.total .econ-row-label { color: var(--neon); }
+    .econ-card.dark .econ-row.total .econ-row-val { color: var(--neon); }
+
+    .econ-note {
+      font-size: 11px;
+      color: rgba(0,0,0,0.35);
+      margin-top: 12px;
+    }
+
+    /* ─── PROJECTIONS ─── */
+    .projections-section {
+      background: var(--dark);
+      color: var(--white);
+      padding: 96px 64px;
+    }
+
+    .projections-section .section-label { color: rgba(255,255,255,0.3); }
+    .projections-section .section-label::before { background: rgba(255,255,255,0.3); }
+    .projections-section .section-title { color: var(--white); margin-bottom: 16px; }
+
+    .proj-caveat {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 56px;
+      font-style: italic;
+    }
+
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .proj-year {
+      background: #1a1a1a;
+      padding: 40px 36px;
+    }
+
+    .proj-year-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 8px;
+    }
+
+    .proj-year-title {
+      font-size: clamp(28px, 2.5vw, 40px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .proj-rows {
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .proj-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 13px;
+    }
+
+    .proj-row-label { color: rgba(255,255,255,0.4); }
+    .proj-row-val { font-weight: 700; color: rgba(255,255,255,0.85); }
+    .proj-row.highlight .proj-row-val { color: var(--neon); }
+
+    /* ─── USE OF FUNDS ─── */
+    .funds-section {
+      background: var(--white);
+      padding: 96px 64px;
+    }
+
+    .funds-intro {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.6);
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    .funds-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .fund-card {
+      padding: 40px 36px;
+      border-top: 4px solid transparent;
+    }
+
+    .fund-card:nth-child(1) { background: #f8f7f3; border-color: var(--orange); }
+    .fund-card:nth-child(2) { background: #f3f2ee; border-color: var(--black); }
+    .fund-card:nth-child(3) { background: #eeede9; border-color: rgba(0,0,0,0.25); }
+
+    .fund-pct {
+      font-size: clamp(44px, 4vw, 72px);
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      line-height: 1;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+
+    .fund-card:nth-child(2) .fund-pct { color: var(--black); }
+    .fund-card:nth-child(3) .fund-pct { color: rgba(0,0,0,0.4); }
+
+    .fund-title {
+      font-size: clamp(16px, 1.4vw, 22px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .fund-list {
+      list-style: none;
+    }
+
+    .fund-list li {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(0,0,0,0.6);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .fund-list li::before {
+      content: '→';
+      opacity: 0.3;
+      flex-shrink: 0;
+      font-size: 11px;
+    }
+
+    /* ─── TIMELINE ─── */
+    .timeline-section {
+      background: var(--offwhite);
+      padding: 96px 64px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 16px;
+    }
+
+    .tl-item {
+      background: var(--white);
+      padding: 36px 28px;
+    }
+
+    .tl-period {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.3);
+      margin-bottom: 16px;
+    }
+
+    .tl-title {
+      font-size: clamp(16px, 1.3vw, 20px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .tl-list {
+      list-style: none;
+    }
+
+    .tl-list li {
+      font-size: 13px;
+      color: rgba(0,0,0,0.55);
+      line-height: 1.6;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      gap: 8px;
+    }
+
+    .tl-list li::before {
+      content: '·';
+      flex-shrink: 0;
+      opacity: 0.3;
+    }
+
+    /* ─── TEAM ─── */
+    .team-section {
+      background: var(--dark);
+      color: var(--white);
+      padding: 96px 64px;
+    }
+
+    .team-section .section-label { color: rgba(255,255,255,0.3); }
+    .team-section .section-label::before { background: rgba(255,255,255,0.3); }
+    .team-section .section-title { color: var(--white); }
+
+    .team-intro {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .team-card {
+      background: #1a1a1a;
+      padding: 36px 32px;
+    }
+
+    .team-role {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 10px;
+    }
+
+    .team-name {
+      font-size: clamp(18px, 1.6vw, 26px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .team-bio {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .team-card.hiring {
+      background: #111;
+      border: 1px dashed rgba(255,255,255,0.12);
+    }
+
+    .team-card.hiring .team-name { color: rgba(255,255,255,0.35); }
+
+    /* ─── FUND AMOUNT ─── */
+    .fund-amount {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    /* ─── QUARTERLY ─── */
+    .quarterly-section {
+      background: var(--dark);
+      color: var(--white);
+      padding: 96px 64px;
+    }
+
+    .quarterly-section .section-label { color: rgba(255,255,255,0.3); }
+    .quarterly-section .section-label::before { background: rgba(255,255,255,0.3); }
+    .quarterly-section .section-title { color: var(--white); margin-bottom: 16px; }
+
+    .quarterly-intro {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 56px;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    .quarterly-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .quarter-block {
+      background: #141414;
+      padding: 36px 28px;
+    }
+
+    .quarter-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 8px;
+    }
+
+    .quarter-title {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .quarter-total {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--neon);
+      margin-bottom: 28px;
+    }
+
+    .quarter-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .q-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      font-size: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.7);
+      gap: 8px;
+    }
+
+    .q-row span:last-child {
+      font-weight: 700;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .q-row.q-row-dim { color: rgba(255,255,255,0.25); }
+    .q-row.q-row-dim span:last-child { color: rgba(255,255,255,0.25); }
+
+    /* ─── ASK ─── */
+    .ask-section {
+      background: var(--orange);
+      color: var(--black);
+      padding: 96px 64px;
+    }
+
+    .ask-section .section-label { color: rgba(0,0,0,0.4); }
+    .ask-section .section-label::before { background: rgba(0,0,0,0.4); }
+
+    .ask-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .ask-amount {
+      font-size: clamp(56px, 6vw, 100px);
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      line-height: 0.9;
+      margin-bottom: 16px;
+    }
+
+    .ask-type {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 36px;
+    }
+
+    .ask-terms {
+      border-top: 2px solid rgba(0,0,0,0.15);
+    }
+
+    .ask-term-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      font-size: 14px;
+    }
+
+    .ask-term-key { font-weight: 700; }
+    .ask-term-val { opacity: 0.65; text-align: right; }
+
+    .ask-right {
+      padding-top: 8px;
+    }
+
+    .ask-text {
+      font-size: 16px;
+      line-height: 1.75;
+      opacity: 0.75;
+      margin-bottom: 32px;
+    }
+    .ask-text p + p { margin-top: 16px; }
+
+    .ask-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--black);
+      color: var(--white);
+      padding: 18px 36px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 150ms;
+    }
+    .ask-cta:hover { opacity: 0.8; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.25);
+      padding: 32px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    /* ─── DETAILED MODEL TABLE ─── */
+    .model-section {
+      background: var(--white);
+      padding: 96px 64px;
+    }
+
+    .model-caveat {
+      font-size: 13px;
+      color: rgba(0,0,0,0.4);
+      margin-bottom: 48px;
+      max-width: 640px;
+      line-height: 1.6;
+    }
+
+    .model-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .model-table th {
+      text-align: right;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+      padding: 0 16px 20px 16px;
+      border-bottom: 2px solid var(--black);
+    }
+
+    .model-table th:first-child {
+      text-align: left;
+    }
+
+    .model-table th.y1 { color: rgba(0,0,0,0.5); }
+    .model-table th.y2 { color: rgba(0,0,0,0.5); }
+    .model-table th.y3 { color: var(--black); }
+
+    .model-table td {
+      padding: 9px 16px;
+      text-align: right;
+      font-size: 13px;
+      color: rgba(0,0,0,0.6);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .model-table td:first-child {
+      text-align: left;
+      color: rgba(0,0,0,0.5);
+      font-weight: 400;
+    }
+
+    /* Group label rows */
+    .model-table tr.group-header td {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-bottom: none;
+    }
+
+    /* Subtotal rows */
+    .model-table tr.subtotal td {
+      font-weight: 700;
+      color: var(--black);
+      border-top: 1px solid rgba(0,0,0,0.15);
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+      background: rgba(0,0,0,0.03);
+    }
+
+    .model-table tr.subtotal td:first-child {
+      color: var(--black);
+    }
+
+    /* EBITDA row */
+    .model-table tr.ebitda-row td {
+      font-size: 15px;
+      font-weight: 900;
+      padding: 14px 16px;
+      border-top: 2px solid var(--black);
+      border-bottom: 2px solid var(--black);
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .model-table tr.ebitda-row td:first-child {
+      color: var(--white);
+    }
+
+    .model-table tr.ebitda-row td.loss { color: var(--orange); }
+    .model-table tr.ebitda-row td.profit { color: var(--neon); }
+
+    /* Cumulative row */
+    .model-table tr.cumulative-row td {
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--dark);
+      color: rgba(255,255,255,0.4);
+      padding: 10px 16px;
+      border-bottom: none;
+    }
+
+    .model-table tr.cumulative-row td.positive { color: var(--neon); }
+    .model-table tr.cumulative-row td.negative { color: var(--orange); }
+    .model-table tr.cumulative-row td:first-child { color: rgba(255,255,255,0.4); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      .section, .market-section, .opportunity-section, .traction-section,
+      .format-section, .destinations-section, .economics-section,
+      .projections-section, .model-section, .funds-section, .timeline-section,
+      .team-section, .ask-section { padding: 64px 24px; }
+      .logo-bar { padding: 20px 24px; }
+      .hero { padding: 64px 24px 56px; }
+      .hero-metrics { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .market-grid, .traction-grid, .ask-grid { grid-template-columns: 1fr; gap: 40px; }
+      .opp-grid, .dest-grid, .proj-grid, .funds-grid, .team-grid, .quarterly-grid { grid-template-columns: 1fr; }
+      .format-grid { grid-template-columns: 1fr 1fr; }
+      .econ-model { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr 1fr; }
+      .format-differentiators { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CONFIDENTIAL -->
+  <div class="conf-bar">Confidential &nbsp;·&nbsp; For Discussion Only &nbsp;·&nbsp; Not for Distribution</div>
+
+  <!-- LOGO BAR -->
+  <div class="logo-bar">
+    <img src="./logo.svg" alt="RUNO">
+    <span class="logo-bar-right">RUNO Offsite — Investment Brief &nbsp;·&nbsp; 2025</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Investment Opportunity</p>
+    <h1 class="hero-headline">The offsite market is large.<br><em>The gap between what's offered</em><br>and what works is larger.</h1>
+    <p class="hero-sub">RUNO has built a format that solves this gap — a full-service corporate offsite programme with cultural programming logic, proven production capability, and three destination markets. We are raising to make it operational at scale.</p>
+    <div class="hero-metrics">
+      <div class="hero-metric">
+        <div class="hero-metric-num">$900+</div>
+        <div class="hero-metric-label">All-inclusive<br>per person</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hero-metric-num">30–600</div>
+        <div class="hero-metric-label">People per<br>offsite</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hero-metric-num">3</div>
+        <div class="hero-metric-label">Destination<br>markets</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hero-metric-num">35%</div>
+        <div class="hero-metric-label">Gross margin<br>per event</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET -->
+  <section class="market-section">
+    <div class="market-grid">
+      <div class="market-left">
+        <p class="section-label">The Opportunity</p>
+        <h2 class="section-title">The Market<br>Is Moving<br>Toward Us</h2>
+        <p class="market-intro">
+          <p>The corporate offsite market is large and growing. The specific segment RUNO addresses — premium offsites for distributed technology and product companies — is the fastest-growing part of it.</p>
+          <p>Since 2022, the concentration of distributed teams has accelerated sharply. The companies most likely to need a RUNO offsite are those whose HR directors are already spending significant budget on inferior alternatives.</p>
+          <p>The gap is not in demand. The gap is in supply of a product that actually delivers what it promises: measurable change in team cohesion, built into the programme design.</p>
+        </p>
+      </div>
+      <div class="market-stats">
+        <div class="mstat">
+          <div class="mstat-num">$50B+</div>
+          <div class="mstat-label">Corporate team events market</div>
+          <div class="mstat-sub">Premium segment ($800+/person) growing at 12% YoY</div>
+        </div>
+        <div class="mstat">
+          <div class="mstat-num">40%</div>
+          <div class="mstat-label">of tech companies are now fully or partially distributed</div>
+          <div class="mstat-sub">Up from 22% in 2020 — primary RUNO client profile</div>
+        </div>
+        <div class="mstat">
+          <div class="mstat-num">€2,200</div>
+          <div class="mstat-label">Average per-person spend on European executive retreats</div>
+          <div class="mstat-sub">RUNO at $900–$1,200 is 40–55% below comparable quality</div>
+        </div>
+        <div class="mstat">
+          <div class="mstat-num">0</div>
+          <div class="mstat-label">Full-service competitors with cultural programming logic across 3+ destinations</div>
+          <div class="mstat-sub">The product RUNO is building does not exist in the market</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPPORTUNITY PILLARS -->
+  <section class="opportunity-section">
+    <p class="section-label">Why Now</p>
+    <h2 class="section-title">Three Structural<br>Advantages</h2>
+    <div class="opp-grid">
+      <div class="opp-card">
+        <p class="opp-num">01</p>
+        <h3 class="opp-title">The Format Is Proven</h3>
+        <p class="opp-text">The Georgia programme has been designed, tested, and refined. The ART + SPORT track structure, the practitioner network, the production methodology — all operational. We are not raising to build a concept. We are raising to deploy one that works into two additional markets and scale revenue.</p>
+      </div>
+      <div class="opp-card">
+        <p class="opp-num">02</p>
+        <h3 class="opp-title">The Production Infrastructure Exists</h3>
+        <p class="opp-text">RUNO Agency has 20+ years of combined event production experience and a portfolio that includes UN-protocol diplomatic receptions, city-scale festivals with 1M+ visitors, and luxury brand activations. This is not a startup production capability — it is a production house adding a product line.</p>
+      </div>
+      <div class="opp-card">
+        <p class="opp-num">03</p>
+        <h3 class="opp-title">The Client Profile Is Specific and Reachable</h3>
+        <p class="opp-text">The buyer is an HR or Operations Director at a distributed tech or professional services company with 50–500 employees and an offsite budget of $40K–$300K. This is a narrow, identifiable audience. A focused B2B sales function and one or two anchor clients creates a reference network that compounds.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE FORMAT -->
+  <section class="format-section">
+    <p class="section-label">The Product</p>
+    <h2 class="section-title">What RUNO<br>Produces</h2>
+    <div class="format-grid">
+      <div class="format-card">
+        <div class="format-card-label">Duration</div>
+        <div class="format-card-value">4 Days / 3 Nights</div>
+        <div class="format-card-desc">All-inclusive from arrival to departure. Client manages flights.</div>
+      </div>
+      <div class="format-card">
+        <div class="format-card-label">Scale</div>
+        <div class="format-card-value">30 – 600 People</div>
+        <div class="format-card-desc">Single cohort or parallel tracks. One production team.</div>
+      </div>
+      <div class="format-card">
+        <div class="format-card-label">Price</div>
+        <div class="format-card-value">From $900 / Person</div>
+        <div class="format-card-desc">Venue, accommodation, meals, transport, practitioners included.</div>
+      </div>
+      <div class="format-card">
+        <div class="format-card-label">Tracks</div>
+        <div class="format-card-value">ART · SPORT · Mixed</div>
+        <div class="format-card-desc">6 practice sessions per track with local practitioners.</div>
+      </div>
+    </div>
+    <div class="format-differentiators">
+      <div class="diff-item">
+        <span class="diff-num">01</span>
+        <span class="diff-text"><strong>Mornings belong to the client</strong> — working sessions, their agenda, their facilitator. RUNO sets up the room and stays out of it.</span>
+      </div>
+      <div class="diff-item">
+        <span class="diff-num">02</span>
+        <span class="diff-text"><strong>Afternoons belong to the programme</strong> — 3–4 hours of shared creation (ART) or shared challenge (SPORT) with a local practitioner.</span>
+      </div>
+      <div class="diff-item">
+        <span class="diff-num">03</span>
+        <span class="diff-text"><strong>No logistics fall on the client</strong> — venue, accommodation, meals, transfers, practitioners, dietary requirements, invoicing: all RUNO.</span>
+      </div>
+      <div class="diff-item">
+        <span class="diff-num">04</span>
+        <span class="diff-text"><strong>Closing dinner follows destination ritual</strong> — Georgian supra, Nuanu outdoor feast, or Limassol seafront. Not a theme night. A cultural anchor.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACTION -->
+  <section class="traction-section">
+    <p class="section-label">Why RUNO</p>
+    <div class="traction-grid">
+      <div>
+        <h2 class="section-title">Production Credibility<br>That Takes<br>Decades To Build</h2>
+        <div class="traction-intro">
+          <p>The RUNO offsite programme is a product line of an agency with 20+ years of combined production experience across diplomatic events, city-scale festivals, and luxury brand activations.</p>
+          <p>The capabilities required to produce a corporate offsite — venue production, logistics, F&amp;B coordination, technical management, on-site choreography — are a subset of what RUNO already does at considerably higher complexity.</p>
+          <p>This is not a startup. The production infrastructure, supplier network, and operational methodology exist. The investment creates the commercial layer: sales, marketing, and financial structure to sell and scale it.</p>
+        </div>
+      </div>
+      <div>
+        <ul class="cred-list">
+          <li class="cred-item">
+            <span class="cred-name">State of Qatar Diplomatic Reception</span>
+            <span class="cred-detail">500 guests · UN-level protocol · St. Petersburg</span>
+          </li>
+          <li class="cred-item">
+            <span class="cred-name">Gorky Park 90th Anniversary Festival</span>
+            <span class="cred-detail">1M+ visitors · 9 days · Full production</span>
+          </li>
+          <li class="cred-item">
+            <span class="cred-name">Chanel Tbilisi Campaign Launch</span>
+            <span class="cred-detail">Brand activation · Georgia · 2025</span>
+          </li>
+          <li class="cred-item">
+            <span class="cred-name">Bentley Museum Experience</span>
+            <span class="cred-detail">Luxury brand · Moscow · 2021</span>
+          </li>
+          <li class="cred-item">
+            <span class="cred-name">Armani Perfumes × La Scala Soloists</span>
+            <span class="cred-detail">Brand event · Tbilisi · 2024</span>
+          </li>
+          <li class="cred-item">
+            <span class="cred-name">Toyota WRC Arctic Experience</span>
+            <span class="cred-detail">Motorsport · Corsica &amp; Teriberka · 2019</span>
+          </li>
+          <li class="cred-item">
+            <span class="cred-name">Ford Arctic Expedition</span>
+            <span class="cred-detail">Brand expedition · Teriberka · 2018</span>
+          </li>
+          <li class="cred-item">
+            <span class="cred-name">FORGE — In-house fabrication workshop</span>
+            <span class="cred-detail">Tbilisi · Custom set and installation production</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTINATIONS -->
+  <section class="destinations-section">
+    <p class="section-label">The Three Markets</p>
+    <h2 class="section-title">Georgia · Bali · Cyprus</h2>
+    <p class="dest-intro">Each destination has a distinct client profile and a distinct cultural character. The investment funds the operational setup of Cyprus and Bali alongside the already-active Georgia programme.</p>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <span class="dest-status ready">Operational</span>
+        <h3 class="dest-name">Georgia</h3>
+        <p class="dest-loc">Kakheti · Black Sea Coast</p>
+        <p class="dest-text">The original destination. Practitioner network built, venue partnerships established, production methodology validated. Primary market: European companies and Middle Eastern offices.</p>
+        <div class="dest-specs">
+          <div class="dest-spec-row"><span class="dest-spec-key">Status</span><span class="dest-spec-val">Active — available now</span></div>
+          <div class="dest-spec-row"><span class="dest-spec-key">Closing dinner</span><span class="dest-spec-val">Georgian supra</span></div>
+          <div class="dest-spec-row"><span class="dest-spec-key">Flights</span><span class="dest-spec-val">3–4h from Europe</span></div>
+          <div class="dest-spec-row"><span class="dest-spec-key">Investment needed</span><span class="dest-spec-val">Sales & marketing only</span></div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <span class="dest-status dev">In Development</span>
+        <h3 class="dest-name">Bali</h3>
+        <p class="dest-loc">Nuanu, Tabanan</p>
+        <p class="dest-text">Nuanu Creative City — 44 hectares of studios, jungle, and collaborative infrastructure on Bali's western coast. Primary market: tech companies with Asia-Pacific teams and creative industry clients.</p>
+        <div class="dest-specs">
+          <div class="dest-spec-row"><span class="dest-spec-key">Status</span><span class="dest-spec-val">Location scouting Q2–Q3 2025</span></div>
+          <div class="dest-spec-row"><span class="dest-spec-key">Closing dinner</span><span class="dest-spec-val">Outdoor feast at Nuanu</span></div>
+          <div class="dest-spec-row"><span class="dest-spec-key">Flights</span><span class="dest-spec-val">Direct from major Asian hubs</span></div>
+          <div class="dest-spec-row"><span class="dest-spec-key">Investment needed</span><span class="dest-spec-val">Location ops + practitioners</span></div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <span class="dest-status dev">In Development</span>
+        <h3 class="dest-name">Cyprus</h3>
+        <p class="dest-loc">Limassol</p>
+        <p class="dest-text">Limassol is the most concentrated hub of relocated tech companies in Europe. Primary market: teams from companies that relocated post-2022, with HR directors already in the city and active offsite budgets.</p>
+        <div class="dest-specs">
+          <div class="dest-spec-row"><span class="dest-spec-key">Status</span><span class="dest-spec-val">Location scouting Q2 2025</span></div>
+          <div class="dest-spec-row"><span class="dest-spec-key">Closing dinner</span><span class="dest-spec-val">Seafront dinner, old port</span></div>
+          <div class="dest-spec-row"><span class="dest-spec-key">Flights</span><span class="dest-spec-val">3–4h from Europe</span></div>
+          <div class="dest-spec-row"><span class="dest-spec-key">Investment needed</span><span class="dest-spec-val">Location ops + sales presence</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIT ECONOMICS -->
+  <section class="economics-section">
+    <p class="section-label">The Numbers</p>
+    <h2 class="section-title">Unit<br>Economics</h2>
+    <p class="econ-intro">The model is simple: full-service production for a fixed per-person fee with high visibility into costs and a predictable gross margin. At scale, fixed-cost leverage improves margins materially.</p>
+    <div class="econ-model">
+      <div class="econ-card">
+        <div class="econ-card-label">Revenue — Conservative Base (150 people)</div>
+        <div class="econ-num-big">$142,500</div>
+        <div class="econ-num-desc">At $950/person. Conservative base 150 pax; realistic average 200 pax. Range: $28,500 (30 pax) — $570,000 (600 pax).</div>
+        <div class="econ-breakdown">
+          <div class="econ-row"><span class="econ-row-label">Revenue per person</span><span class="econ-row-val">$950</span></div>
+          <div class="econ-row"><span class="econ-row-label">Conservative base size</span><span class="econ-row-val">150 people</span></div>
+          <div class="econ-row"><span class="econ-row-label">Realistic average</span><span class="econ-row-val">200 people</span></div>
+          <div class="econ-row"><span class="econ-row-label">Maximum capacity</span><span class="econ-row-val">600 people</span></div>
+          <div class="econ-row"><span class="econ-row-label">Gross revenue per event</span><span class="econ-row-val">$142,500–$190,000</span></div>
+        </div>
+      </div>
+      <div class="econ-card dark">
+        <div class="econ-card-label">Cost Structure — Per Event (150 pax)</div>
+        <div class="econ-num-big">53%</div>
+        <div class="econ-num-desc">Gross margin at 150 people. Scale advantage: practitioners and venue don't grow linearly with group size.</div>
+        <div class="econ-breakdown">
+          <div class="econ-row"><span class="econ-row-label">Venue, 4 days</span><span class="econ-row-val">$12,000</span></div>
+          <div class="econ-row"><span class="econ-row-label">F&B — 150 pax × 4 days</span><span class="econ-row-val">$33,000</span></div>
+          <div class="econ-row"><span class="econ-row-label">Practitioners & production</span><span class="econ-row-val">$16,300</span></div>
+          <div class="econ-row"><span class="econ-row-label">Transport & logistics</span><span class="econ-row-val">$6,500</span></div>
+          <div class="econ-row total"><span class="econ-row-label">Gross profit per event</span><span class="econ-row-val">~$74,700</span></div>
+        </div>
+        <p class="econ-note" style="color:rgba(255,255,255,0.25);">* Estimates based on Georgia programme actuals. Bali and Cyprus may vary ±10%.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTIONS -->
+  <section class="projections-section">
+    <p class="section-label">Financial Model</p>
+    <h2 class="section-title">Three-Year<br>Projection</h2>
+    <p class="proj-caveat">Conservative base: 150 people × $950/person = $142,500 per event. Gross margin 53%. Range 30–600 people. Subject to sales ramp and destination readiness.</p>
+    <div class="proj-grid">
+      <div class="proj-year">
+        <div class="proj-year-label">Year 1</div>
+        <div class="proj-year-title">Profitable Launch</div>
+        <div class="proj-rows">
+          <div class="proj-row"><span class="proj-row-label">Offsites delivered</span><span class="proj-row-val">8–12</span></div>
+          <div class="proj-row"><span class="proj-row-label">Destinations active</span><span class="proj-row-val">1–2</span></div>
+          <div class="proj-row"><span class="proj-row-label">Gross revenue</span><span class="proj-row-val">$1.14M–$1.71M</span></div>
+          <div class="proj-row"><span class="proj-row-label">Gross profit (53%)</span><span class="proj-row-val">$604K–$906K</span></div>
+          <div class="proj-row"><span class="proj-row-label">Fixed costs</span><span class="proj-row-val">~$280K</span></div>
+          <div class="proj-row highlight"><span class="proj-row-label">EBITDA</span><span class="proj-row-val">+$324K to +$626K</span></div>
+        </div>
+      </div>
+      <div class="proj-year">
+        <div class="proj-year-label">Year 2</div>
+        <div class="proj-year-title">Scaling</div>
+        <div class="proj-rows">
+          <div class="proj-row"><span class="proj-row-label">Offsites delivered</span><span class="proj-row-val">15–22</span></div>
+          <div class="proj-row"><span class="proj-row-label">Destinations active</span><span class="proj-row-val">3</span></div>
+          <div class="proj-row"><span class="proj-row-label">Gross revenue</span><span class="proj-row-val">$2.14M–$3.14M</span></div>
+          <div class="proj-row"><span class="proj-row-label">Gross profit (53%)</span><span class="proj-row-val">$1.13M–$1.66M</span></div>
+          <div class="proj-row"><span class="proj-row-label">Fixed costs</span><span class="proj-row-val">~$310K</span></div>
+          <div class="proj-row highlight"><span class="proj-row-label">EBITDA</span><span class="proj-row-val">+$823K to +$1.35M</span></div>
+        </div>
+      </div>
+      <div class="proj-year">
+        <div class="proj-year-label">Year 3</div>
+        <div class="proj-year-title">Full Profitability</div>
+        <div class="proj-rows">
+          <div class="proj-row"><span class="proj-row-label">Offsites delivered</span><span class="proj-row-val">28–38</span></div>
+          <div class="proj-row"><span class="proj-row-label">Destinations active</span><span class="proj-row-val">3 + repeat</span></div>
+          <div class="proj-row"><span class="proj-row-label">Gross revenue</span><span class="proj-row-val">$3.99M–$5.42M</span></div>
+          <div class="proj-row"><span class="proj-row-label">Gross profit (53%)</span><span class="proj-row-val">$2.11M–$2.87M</span></div>
+          <div class="proj-row"><span class="proj-row-label">Fixed costs</span><span class="proj-row-val">~$350K</span></div>
+          <div class="proj-row highlight"><span class="proj-row-label">EBITDA</span><span class="proj-row-val">+$1.76M to +$2.52M</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE OF FUNDS -->
+  <section class="funds-section">
+    <p class="section-label">Investment Allocation</p>
+    <h2 class="section-title">Where the<br>Money Goes</h2>
+    <p class="funds-intro">The investment is not going into physical infrastructure — the product exists and the locations are asset-light by design. It is going into the people, commercial capability, and financial structure required to operate and scale across three destination markets.</p>
+    <div class="funds-grid">
+      <div class="fund-card">
+        <div class="fund-pct">5%</div>
+        <div class="fund-title">Location<br>Operations</div>
+        <div class="fund-amount">$9,000</div>
+        <ul class="fund-list">
+          <li>Bali/Nuanu — team flights and accommodation for location scouting</li>
+          <li>Cyprus — venue and practitioner network setup ($5,000)</li>
+          <li>Georgia — already operational, zero additional capital required</li>
+        </ul>
+      </div>
+      <div class="fund-card">
+        <div class="fund-pct">44%</div>
+        <div class="fund-title">People &<br>Growth</div>
+        <div class="fund-amount">$84,000</div>
+        <ul class="fund-list">
+          <li>Head of B2B Sales — 12 months ($36,000)</li>
+          <li>Marketing Director — 12 months ($12,000)</li>
+          <li>Content production: case studies, video, photography ($24,000)</li>
+          <li>Digital promotion and paid outreach ($12,000)</li>
+        </ul>
+      </div>
+      <div class="fund-card">
+        <div class="fund-pct">51%</div>
+        <div class="fund-title">Operations &<br>Management</div>
+        <div class="fund-amount">$100,000</div>
+        <ul class="fund-list">
+          <li>Management and Creative Direction — 12 months ($72,000)</li>
+          <li>Financial Director / CFO — fractional, 12 months ($18,000)</li>
+          <li>Legal structure for multi-jurisdiction operations ($6,500)</li>
+          <li>Accounting and financial controls ($3,500)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUARTERLY BREAKDOWN -->
+  <section class="quarterly-section">
+    <p class="section-label">Investment Deployment</p>
+    <h2 class="section-title">Quarterly<br>Breakdown</h2>
+    <p class="quarterly-intro">Total investment: $193,000 deployed across 12 months. Front-loaded in Q1 for structure and location setup; the majority funds ongoing operations through the year.</p>
+    <div class="quarterly-grid">
+
+      <div class="quarter-block">
+        <div class="quarter-label">Q1 · Months 1–3</div>
+        <div class="quarter-title">Setup</div>
+        <div class="quarter-total">$57,500</div>
+        <div class="quarter-rows">
+          <div class="q-row"><span>Management & Creative</span><span>$18,000</span></div>
+          <div class="q-row"><span>CFO / Financial Director</span><span>$4,500</span></div>
+          <div class="q-row"><span>Legal setup</span><span>$6,500</span></div>
+          <div class="q-row"><span>Accounting setup</span><span>$1,500</span></div>
+          <div class="q-row"><span>Cyprus — venue & practitioners</span><span>$5,000</span></div>
+          <div class="q-row"><span>Bali — scouting, flights & housing</span><span>$4,000</span></div>
+          <div class="q-row"><span>Sales Director (hire Q1)</span><span>$9,000</span></div>
+          <div class="q-row"><span>Marketing Director (hire Q1)</span><span>$3,000</span></div>
+          <div class="q-row"><span>Content production</span><span>$6,000</span></div>
+          <div class="q-row q-row-dim"><span>Digital ads (Q1 light)</span><span>$0</span></div>
+        </div>
+      </div>
+
+      <div class="quarter-block">
+        <div class="quarter-label">Q2 · Months 4–6</div>
+        <div class="quarter-title">First Sales</div>
+        <div class="quarter-total">$46,500</div>
+        <div class="quarter-rows">
+          <div class="q-row"><span>Management & Creative</span><span>$18,000</span></div>
+          <div class="q-row"><span>CFO / Financial Director</span><span>$4,500</span></div>
+          <div class="q-row"><span>Accounting</span><span>$1,000</span></div>
+          <div class="q-row"><span>Sales Director</span><span>$9,000</span></div>
+          <div class="q-row"><span>Marketing Director</span><span>$3,000</span></div>
+          <div class="q-row"><span>Content production</span><span>$7,000</span></div>
+          <div class="q-row"><span>Digital ads — launch</span><span>$4,000</span></div>
+        </div>
+      </div>
+
+      <div class="quarter-block">
+        <div class="quarter-label">Q3 · Months 7–9</div>
+        <div class="quarter-title">Scale</div>
+        <div class="quarter-total">$46,500</div>
+        <div class="quarter-rows">
+          <div class="q-row"><span>Management & Creative</span><span>$18,000</span></div>
+          <div class="q-row"><span>CFO / Financial Director</span><span>$4,500</span></div>
+          <div class="q-row"><span>Accounting</span><span>$1,000</span></div>
+          <div class="q-row"><span>Sales Director</span><span>$9,000</span></div>
+          <div class="q-row"><span>Marketing Director</span><span>$3,000</span></div>
+          <div class="q-row"><span>Content production</span><span>$7,000</span></div>
+          <div class="q-row"><span>Digital ads</span><span>$4,000</span></div>
+        </div>
+      </div>
+
+      <div class="quarter-block">
+        <div class="quarter-label">Q4 · Months 10–12</div>
+        <div class="quarter-title">Run Rate</div>
+        <div class="quarter-total">$42,500</div>
+        <div class="quarter-rows">
+          <div class="q-row"><span>Management & Creative</span><span>$18,000</span></div>
+          <div class="q-row"><span>CFO / Financial Director</span><span>$4,500</span></div>
+          <div class="q-row"><span>Accounting</span><span>$1,000</span></div>
+          <div class="q-row"><span>Sales Director</span><span>$9,000</span></div>
+          <div class="q-row"><span>Marketing Director</span><span>$3,000</span></div>
+          <div class="q-row"><span>Content production</span><span>$4,000</span></div>
+          <div class="q-row"><span>Digital ads</span><span>$3,000</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section">
+    <p class="section-label">Execution Plan</p>
+    <h2 class="section-title">12-Month<br>Roadmap</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-period">Months 1–3</div>
+        <div class="tl-title">Foundation</div>
+        <ul class="tl-list">
+          <li>CFO/Finance Director onboarded</li>
+          <li>Sales hire made</li>
+          <li>Cyprus location scouting complete</li>
+          <li>Bali/Nuanu partnership initiated</li>
+          <li>Legal structure finalized</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">Months 4–6</div>
+        <div class="tl-title">First Sales</div>
+        <ul class="tl-list">
+          <li>First 2–3 offsites delivered</li>
+          <li>Cyprus venue partnerships confirmed</li>
+          <li>Marketing content live</li>
+          <li>Anchor client pipeline built</li>
+          <li>Case study from first deliveries</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">Months 7–9</div>
+        <div class="tl-title">Second Destination</div>
+        <ul class="tl-list">
+          <li>Cyprus fully operational</li>
+          <li>Bali first offsite delivered</li>
+          <li>Referral pipeline from first clients</li>
+          <li>6–8 offsites total delivered</li>
+          <li>Financial model validated vs. projections</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">Months 10–12</div>
+        <div class="tl-title">Run Rate</div>
+        <ul class="tl-list">
+          <li>All three destinations active</li>
+          <li>10–12 offsites delivered year total</li>
+          <li>Year 2 pipeline in place</li>
+          <li>Investor report: actuals vs. plan</li>
+          <li>Break-even roadmap confirmed</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team-section">
+    <p class="section-label">Who Executes This</p>
+    <h2 class="section-title">The Team</h2>
+    <p class="team-intro">The production team is already in place. The investment funds the commercial and financial roles that the current structure lacks — and that are the actual constraint on growth.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-role">Founder & Creative Director</div>
+        <div class="team-name">Anna<br>Okropiridze</div>
+        <div class="team-bio">Cultural production and brand strategy. Architect of the RUNO offsite format and the agency's aesthetic logic. 15+ years across luxury, diplomatic, and cultural events. Based in Tbilisi.</div>
+      </div>
+      <div class="team-card hiring">
+        <div class="team-role">To Be Hired — Sales Function</div>
+        <div class="team-name">Head of<br>Offsite Sales</div>
+        <div class="team-bio">B2B sales, direct outreach to HR and People directors. Focused on Limassol, Berlin, Amsterdam, Dubai. Primary deliverable: 2–3 anchor clients in the first 6 months. Fully funded by the investment raise.</div>
+      </div>
+      <div class="team-card hiring">
+        <div class="team-role">To Be Hired — Marketing</div>
+        <div class="team-name">Marketing<br>Director</div>
+        <div class="team-bio">Brand presence, content strategy, case study production, digital distribution. Builds the category narrative and sustains the pipeline that sales converts. Fully funded by the investment raise.</div>
+      </div>
+      <div class="team-card hiring">
+        <div class="team-role">To Be Hired — Finance</div>
+        <div class="team-name">Financial<br>Director / CFO</div>
+        <div class="team-bio">Financial controls, investor reporting, multi-jurisdiction accounting, cash flow management. The structural role the business requires to operate at the scale projected. Fully funded by the investment raise.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE ASK -->
+  <section class="ask-section" id="contact">
+    <p class="section-label">The Ask</p>
+    <div class="ask-grid">
+      <div>
+        <div class="ask-amount">$193,000</div>
+        <div class="ask-type">Seed / Strategic Investment</div>
+        <div class="ask-terms">
+          <div class="ask-term-row">
+            <span class="ask-term-key">Use of funds</span>
+            <span class="ask-term-val">Location ops · Sales · CFO</span>
+          </div>
+          <div class="ask-term-row">
+            <span class="ask-term-key">Timeline to break-even</span>
+            <span class="ask-term-val">18–24 months</span>
+          </div>
+          <div class="ask-term-row">
+            <span class="ask-term-key">Structure</span>
+            <span class="ask-term-val">To be discussed</span>
+          </div>
+          <div class="ask-term-row">
+            <span class="ask-term-key">First investor meeting</span>
+            <span class="ask-term-val">Available immediately</span>
+          </div>
+        </div>
+      </div>
+      <div class="ask-right">
+        <p class="ask-text">
+          <p>We are not raising to validate an idea. We are raising to make operational a format that works, in three markets that are moving toward exactly what we produce.</p>
+          <p>The investment funds the specific gap between what RUNO can produce and what RUNO can currently sell and scale. That gap is commercial and financial — not creative or operational.</p>
+          <p>We are looking for a strategic partner who understands the market, moves quickly, and wants a first-mover position in a segment that does not yet have a category leader.</p>
+        </p>
+        <a href="mailto:anna@weareruno.com" class="ask-cta">Request Full Deck →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 Okros Runo LLC · Tbilisi</span>
+    <span>Confidential — Not for Distribution</span>
+    <span>weareruno.com</span>
+  </footer>
+
+</body>
+</html>

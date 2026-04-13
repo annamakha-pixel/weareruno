@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FORGE by RUNO — Fabrication & Set Design, Tbilisi</title>
+  <meta name="description" content="FORGE is RUNO's in-house fabrication workshop in Tbilisi. Set design, lighting, creative engineering, and full-cycle production — custom built, not subcontracted." />
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:   #FB4827;
+      --darkred:  #9D1813;
+      --neon:     #CEFF58;
+      --stone:    #BFBDA8;
+      --black:    #000000;
+      --white:    #ffffff;
+      --offwhite: #F3F2EE;
+      --nav-h:    72px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 48px;
+      height: var(--nav-h);
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav-logo { text-decoration: none; display: block; }
+    .nav-logo img { display: block; filter: invert(1); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.45);
+      transition: color 150ms ease;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-back {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.35);
+      transition: color 150ms ease;
+    }
+    .nav-back:hover { color: var(--white); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - var(--nav-h));
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 64px 48px 64px;
+      color: var(--white);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      flex: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .hero-headline {
+      font-size: clamp(72px, 9vw, 148px);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      margin-top: 40px;
+      color: #7E1D16;
+    }
+
+    .hero-headline .forge-label {
+      display: block;
+      font-size: 0.35em;
+      letter-spacing: -0.04em;
+      color: #7E1D16;
+      opacity: 0.7;
+      margin-bottom: 0.15em;
+    }
+
+    .hero-bottom {
+      margin-top: 64px;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.7);
+      max-width: 460px;
+      margin-bottom: 40px;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 5px 12px;
+    }
+
+    /* ─── SECTION HEADER ─── */
+    .section-head {
+      padding: 80px 48px 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.3);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .section-label.light { color: rgba(255,255,255,0.3); }
+    .section-label.light::before { background: rgba(255,255,255,0.2); }
+
+    .section-title {
+      font-size: clamp(38px, 4.5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      line-height: 0.92;
+    }
+
+    /* ─── ABOUT / MISSION ─── */
+    .about-section {
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .about-headline {
+      font-size: clamp(32px, 3.5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      line-height: 0.92;
+    }
+
+    .about-body {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.6);
+    }
+
+    .about-body p + p { margin-top: 20px; }
+
+    .about-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+
+    .about-stat {
+      background: var(--offwhite);
+      padding: 36px 32px;
+    }
+
+    .about-stat-num {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .about-stat-desc {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: rgba(0,0,0,0.45);
+      line-height: 1.5;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-section {
+      padding: 80px 48px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .service-card {
+      background: var(--offwhite);
+      padding: 40px 32px;
+    }
+
+    .service-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: rgba(0,0,0,0.25);
+      margin-bottom: 20px;
+    }
+
+    .service-name {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .service-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.5);
+    }
+
+    /* ─── PHOTO GRIDS ─── */
+    .gallery-section {
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .gallery-header {
+      padding: 72px 48px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: end;
+    }
+
+    .gallery-desc {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.5);
+      max-width: 480px;
+      align-self: end;
+    }
+
+    .photos-full {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+    .photos-full img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 500ms ease;
+    }
+    .photos-full:hover img { transform: scale(1.02); }
+
+    .photos-full.tall {
+      aspect-ratio: 3/2;
+    }
+
+    .photos-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .photos-grid-3 {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2px;
+    }
+
+    .photos-grid-3-eq {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+    }
+
+    .photos-grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 2px;
+    }
+
+    .photo-cell {
+      overflow: hidden;
+      background: #111;
+    }
+
+    .photo-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 4/3;
+      transition: transform 400ms ease;
+    }
+    .photo-cell:hover img { transform: scale(1.03); }
+    .photo-cell.tall img { aspect-ratio: 3/4; }
+    .photo-cell.square img { aspect-ratio: 1/1; }
+    .photo-cell.wide img { aspect-ratio: 16/9; }
+
+    .mt2 { margin-top: 2px; }
+
+    /* ─── WORKSHOP ─── */
+    .workshop-section {
+      background: var(--black);
+      color: var(--white);
+      padding: 80px 48px;
+    }
+
+    .workshop-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 64px;
+      align-items: start;
+    }
+
+    .workshop-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .workshop-photo {
+      overflow: hidden;
+    }
+    .workshop-photo img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 400ms ease;
+    }
+    .workshop-photo:hover img { transform: scale(1.03); }
+
+    .workshop-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .workshop-spec {
+      background: rgba(255,255,255,0.04);
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+      align-items: start;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .workshop-spec-key {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      padding-top: 2px;
+    }
+
+    .workshop-spec-val {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .workshop-headline {
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      line-height: 0.92;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .workshop-sub {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.4);
+      max-width: 520px;
+      margin-bottom: 48px;
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      background: var(--orange);
+      color: var(--black);
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .cta-headline {
+      font-size: clamp(36px, 4vw, 64px);
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      line-height: 0.92;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 20px 48px;
+      white-space: nowrap;
+      transition: background 150ms ease;
+    }
+    .cta-btn:hover { background: #222; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-logo { text-decoration: none; }
+    .footer-logo img { display: block; filter: invert(1); }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      color: rgba(255,255,255,0.3);
+      transition: color 150ms ease;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ─── REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 80ms; }
+    .reveal-d2 { transition-delay: 160ms; }
+    .reveal-d3 { transition-delay: 240ms; }
+    .reveal-d4 { transition-delay: 320ms; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .hero { padding: 48px 24px; min-height: 70vh; }
+      .hero-left { padding: 56px 24px; }
+      .about-section { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px; }
+      .about-stat-row { grid-template-columns: 1fr 1fr; }
+      .services-section { padding: 56px 24px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-header { grid-template-columns: 1fr; gap: 24px; padding: 56px 24px 36px; }
+      .photos-grid-3 { grid-template-columns: 1fr 1fr; }
+      .photos-grid-4 { grid-template-columns: 1fr 1fr; }
+      .photos-grid-3-eq { grid-template-columns: 1fr 1fr; }
+      .workshop-section { padding: 56px 24px; }
+      .workshop-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cta-section { grid-template-columns: 1fr; gap: 32px; padding: 56px 24px; }
+      footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 36px 20px 44px; min-height: 60vh; }
+      .hero-headline { font-size: clamp(52px, 13vw, 90px); margin-top: 28px; }
+      .hero-desc { font-size: 14px; margin-bottom: 28px; }
+      .about-section { padding: 48px 20px; }
+      .about-stat-row { grid-template-columns: 1fr; }
+      .services-section { padding: 48px 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-header { padding: 48px 20px 28px; }
+      .photos-grid-3, .photos-grid-4, .photos-grid-3-eq { grid-template-columns: 1fr; }
+      .workshop-section { padding: 48px 20px; }
+      .cta-section { padding: 48px 20px; }
+      footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .footer-links { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="./index.html" class="nav-logo"><img src="./logo.svg" alt="RUNO" height="22"></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#workshop">Workshop</a></li>
+    </ul>
+    <a href="./index.html" class="nav-back">← Agency</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <img src="./forge/p01_1.jpeg" alt="FORGE Workshop" class="hero-bg">
+    <div class="hero-left">
+      <p class="hero-eyebrow">by RUNO</p>
+      <div>
+        <h1 class="hero-headline">
+          <span class="forge-label">FORGE</span>
+          Build<br>Something<br>Real.
+        </h1>
+      </div>
+      <div class="hero-bottom">
+        <p class="hero-desc">Set design, lighting, creative engineering, and full-cycle fabrication — built in-house in Tbilisi. From concept to steel to installation, without subcontractors.</p>
+        <div class="hero-tags">
+          <span class="hero-tag">Set Design</span>
+          <span class="hero-tag">Lighting</span>
+          <span class="hero-tag">Fabrication</span>
+          <span class="hero-tag">300 m² Workshop</span>
+          <span class="hero-tag">Tbilisi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="reveal">
+      <p class="section-label">What FORGE Is</p>
+      <h2 class="about-headline">Premium<br>Production<br>Studio</h2>
+    </div>
+    <div class="reveal reveal-d1">
+      <div class="about-body">
+        <p>FORGE is RUNO's in-house fabrication and design studio in Tbilisi — a 300 m² facility where set design, structural engineering, lighting integration, and physical fabrication happen under one roof.</p>
+        <p>We unite scenographers, lighting designers, structural engineers, and fabricators who treat production as architecture, not decoration. Every line carries intent. Every material is chosen, not sourced. The result is environments that shape how people move and what they remember — not spaces that simply fill volume.</p>
+        <p>FORGE builds for events, cultural institutions, retail, theatre, urban installations, and corporate productions. The work does not get subcontracted. It gets built.</p>
+      </div>
+    </div>
+    <div class="about-stat-row">
+      <div class="about-stat reveal reveal-d1">
+        <div class="about-stat-num">300</div>
+        <div class="about-stat-desc">m² production facility — metalwork, CNC, painting shop, assembly</div>
+      </div>
+      <div class="about-stat reveal reveal-d2">
+        <div class="about-stat-num">100+</div>
+        <div class="about-stat-desc">commissions built — from private events to city-scale installations</div>
+      </div>
+      <div class="about-stat reveal reveal-d3">
+        <div class="about-stat-num">0</div>
+        <div class="about-stat-desc">subcontractors — fabrication is in-house from sketch to installation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <div class="section-head reveal" style="padding:0 0 0 0;">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Four Disciplines,<br>One Workshop</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-d1">
+        <p class="service-num">01</p>
+        <h3 class="service-name">Set Design &<br>Construction</h3>
+        <p class="service-desc">Stage environments, architectural installations, exhibition structures. Built to specification from technical drawings. The structure is part of the design — not a support for it.</p>
+      </div>
+      <div class="service-card reveal reveal-d2">
+        <p class="service-num">02</p>
+        <h3 class="service-name">Lighting Design &<br>Integration</h3>
+        <p class="service-desc">Technical lighting solutions that define space and atmosphere. Designed alongside the structure, not applied afterwards. From festival rigs to gallery installations to intimate event environments.</p>
+      </div>
+      <div class="service-card reveal reveal-d3">
+        <p class="service-num">03</p>
+        <h3 class="service-name">Creative<br>Engineering</h3>
+        <p class="service-desc">Custom fabrication, mechanical systems, and structural problem-solving for complex projects. When the brief requires something that does not yet exist, this is where it gets made.</p>
+      </div>
+      <div class="service-card reveal reveal-d4">
+        <p class="service-num">04</p>
+        <h3 class="service-name">Full-Cycle<br>Production</h3>
+        <p class="service-desc">From concept development through technical documentation, fabrication, logistics, on-site installation, and supervision. One team, one point of contact, from first sketch through final debrief.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK: EVENT DECORATIONS -->
+  <div class="gallery-section" id="work">
+    <div class="gallery-header">
+      <div class="reveal">
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title">Event<br>Installations</h2>
+      </div>
+      <p class="gallery-desc reveal reveal-d1">Custom environments for brand launches, private events, and cultural programmes. Designed and built in-house — from floral structures and architectural set pieces to large-scale immersive builds.</p>
+    </div>
+    <div class="photos-full tall">
+      <img src="./forge/p06_5.jpeg" alt="FORGE Event Installation" loading="lazy">
+    </div>
+    <div class="photos-grid-3 mt2">
+      <div class="photo-cell"><img src="./forge/p06_1.jpeg" alt="FORGE Event" loading="lazy"></div>
+      <div class="photo-cell"><img src="./forge/p06_2.jpeg" alt="FORGE Event" loading="lazy"></div>
+      <div class="photo-cell"><img src="./forge/p06_3.jpeg" alt="FORGE Event" loading="lazy"></div>
+    </div>
+    <div class="photos-grid-4 mt2">
+      <div class="photo-cell"><img src="./forge/p06_7.jpeg" alt="FORGE Event" loading="lazy"></div>
+      <div class="photo-cell"><img src="./forge/p06_8.jpeg" alt="FORGE Event" loading="lazy"></div>
+      <div class="photo-cell square"><img src="./forge/p06_9.jpeg" alt="FORGE Event" loading="lazy"></div>
+      <div class="photo-cell"><img src="./forge/p06_10.jpeg" alt="FORGE Event" loading="lazy"></div>
+    </div>
+  </div>
+
+  <!-- WORK: PUBLIC SPACES -->
+  <div class="gallery-section">
+    <div class="gallery-header">
+      <div class="reveal">
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title">Public Spaces &<br>Art Installations</h2>
+      </div>
+      <p class="gallery-desc reveal reveal-d1">Permanent and temporary installations for urban environments — sculptures, branded structures, park furniture, and large-format art objects. Designed for context, built for permanence.</p>
+    </div>
+    <div class="photos-grid-2">
+      <div class="photo-cell wide"><img src="./forge/p05_1.jpeg" alt="FORGE Public Art" loading="lazy"></div>
+      <div class="photo-cell wide"><img src="./forge/p05_2.jpeg" alt="FORGE Public Art" loading="lazy"></div>
+    </div>
+    <div class="photos-grid-2 mt2">
+      <div class="photo-cell wide"><img src="./forge/p05_3.jpeg" alt="FORGE Public Art" loading="lazy"></div>
+      <div class="photo-cell wide"><img src="./forge/p05_4.jpeg" alt="FORGE Public Art" loading="lazy"></div>
+    </div>
+  </div>
+
+  <!-- WORK: STAGE DESIGN -->
+  <div class="gallery-section">
+    <div class="gallery-header">
+      <div class="reveal">
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title">Stage Design</h2>
+      </div>
+      <p class="gallery-desc reveal reveal-d1">Scenic environments for festivals, theatre, concerts, and corporate productions. Modular or fixed, intimate or at scale — designed with the performance logic in mind from the first drawing.</p>
+    </div>
+    <div class="photos-full">
+      <img src="./forge/p07_1.jpeg" alt="FORGE Stage Design" loading="lazy">
+    </div>
+    <div class="photos-grid-3-eq mt2">
+      <div class="photo-cell wide"><img src="./forge/p07_2.jpeg" alt="FORGE Stage" loading="lazy"></div>
+      <div class="photo-cell wide"><img src="./forge/p07_3.jpeg" alt="FORGE Stage" loading="lazy"></div>
+      <div class="photo-cell wide"><img src="./forge/p07_4.jpeg" alt="FORGE Stage" loading="lazy"></div>
+    </div>
+  </div>
+
+  <!-- WORK: URBAN INSTALLATIONS -->
+  <div class="gallery-section">
+    <div class="gallery-header">
+      <div class="reveal">
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title">Urban<br>Installations</h2>
+      </div>
+      <p class="gallery-desc reveal reveal-d1">Custom-built structures for public space — lighting-integrated objects, architectural forms, branded pavilions, and street furniture. Fabricated for outdoor conditions and long-term presence.</p>
+    </div>
+    <div class="photos-grid-3">
+      <div class="photo-cell tall"><img src="./forge/p08_1.jpeg" alt="FORGE Urban" loading="lazy"></div>
+      <div class="photo-cell"><img src="./forge/p08_2.jpeg" alt="FORGE Urban" loading="lazy"></div>
+      <div class="photo-cell"><img src="./forge/p08_3.jpeg" alt="FORGE Urban" loading="lazy"></div>
+    </div>
+    <div class="photos-grid-4 mt2">
+      <div class="photo-cell tall"><img src="./forge/p08_4.jpeg" alt="FORGE Urban" loading="lazy"></div>
+      <div class="photo-cell"><img src="./forge/p08_5.jpeg" alt="FORGE Urban" loading="lazy"></div>
+      <div class="photo-cell"><img src="./forge/p08_6.jpeg" alt="FORGE Urban" loading="lazy"></div>
+      <div class="photo-cell tall"><img src="./forge/p08_7.jpeg" alt="FORGE Urban" loading="lazy"></div>
+    </div>
+  </div>
+
+  <!-- WORK: RETAIL & HORECA -->
+  <div class="gallery-section">
+    <div class="gallery-header">
+      <div class="reveal">
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title">Retail &<br>HoReCa</h2>
+      </div>
+      <p class="gallery-desc reveal reveal-d1">Exhibition stands, restaurant interiors, custom bar counters, branded display systems, and window scenography. Designed as architecture — from concept to installation, with full technical supervision.</p>
+    </div>
+    <div class="photos-full">
+      <img src="./forge/p09_2.jpeg" alt="FORGE Retail" loading="lazy">
+    </div>
+    <div class="photos-grid-3-eq mt2">
+      <div class="photo-cell"><img src="./forge/p09_1.jpeg" alt="FORGE Retail" loading="lazy"></div>
+      <div class="photo-cell"><img src="./forge/p09_3.jpeg" alt="FORGE Retail" loading="lazy"></div>
+      <div class="photo-cell"><img src="./forge/p09_4.jpeg" alt="FORGE Retail" loading="lazy"></div>
+    </div>
+    <div class="photos-grid-2 mt2">
+      <div class="photo-cell wide"><img src="./forge/p09_5.jpeg" alt="FORGE Retail" loading="lazy"></div>
+      <div class="photo-cell wide"><img src="./forge/p09_6.jpeg" alt="FORGE Retail" loading="lazy"></div>
+    </div>
+  </div>
+
+  <!-- WORKSHOP -->
+  <section class="workshop-section" id="workshop">
+    <p class="section-label light reveal">The Facility</p>
+    <h2 class="workshop-headline reveal reveal-d1">The Forge<br>Workshop</h2>
+    <p class="workshop-sub reveal reveal-d2">A 300 m² production facility in Tbilisi equipped for metalwork, CNC cutting, a dedicated painting shop, and full assembly. The design studio works alongside the fabrication floor — technical documentation, 3D modelling, and structural calculations done in-house.</p>
+
+    <div class="workshop-grid">
+      <div class="workshop-photos reveal reveal-d1">
+        <div class="workshop-photo"><img src="./forge/p10_1.jpeg" alt="FORGE Workshop" loading="lazy"></div>
+        <div class="workshop-photo"><img src="./forge/p10_2.jpeg" alt="FORGE Workshop" loading="lazy"></div>
+        <div class="workshop-photo"><img src="./forge/p10_3.jpeg" alt="FORGE Workshop" loading="lazy"></div>
+        <div class="workshop-photo"><img src="./forge/p10_4.jpeg" alt="FORGE Workshop" loading="lazy"></div>
+      </div>
+      <div class="workshop-specs reveal reveal-d2">
+        <div class="workshop-spec">
+          <span class="workshop-spec-key">Facility</span>
+          <span class="workshop-spec-val">300 m² — metalwork, CNC cutting, painting shop, final assembly</span>
+        </div>
+        <div class="workshop-spec">
+          <span class="workshop-spec-key">Design Studio</span>
+          <span class="workshop-spec-val">Set designers, lighting designers, structural engineers. 3D modelling, technical documentation, structural calculations.</span>
+        </div>
+        <div class="workshop-spec">
+          <span class="workshop-spec-key">Engineering</span>
+          <span class="workshop-spec-val">Custom fabrication, mechanical systems, structural problem-solving for non-standard briefs</span>
+        </div>
+        <div class="workshop-spec">
+          <span class="workshop-spec-key">Logistics</span>
+          <span class="workshop-spec-val">In-house transport and installation crew. From the workshop floor to the site, supervised throughout.</span>
+        </div>
+        <div class="workshop-spec">
+          <span class="workshop-spec-key">Location</span>
+          <span class="workshop-spec-val">Tbilisi, Georgia. Active production year-round.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="reveal">
+      <h2 class="cta-headline">Tell Us<br>What To Build.</h2>
+    </div>
+    <a href="mailto:hello@weareruno.com" class="cta-btn reveal reveal-d1">hello@weareruno.com</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="./index.html" class="footer-logo"><img src="./logo.svg" alt="RUNO" height="20"></a>
+    <ul class="footer-links">
+      <li><a href="./index.html">Agency</a></li>
+      <li><a href="./projects.html">Projects</a></li>
+      <li><a href="./offsite-page.html">Offsite</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Okros Runo LLC · Tbilisi · All rights reserved</span>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // Nav shadow on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.borderBottomColor = window.scrollY > 10 ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.07)';
+    }, { passive: true });
+  </script>
+</body>
+</html>

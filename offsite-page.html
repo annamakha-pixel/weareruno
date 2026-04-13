@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RUNO Offsite — Corporate Programme</title>
+  <meta name="description" content="A full-service 4-day corporate offsite programme. Georgia, Bali, or Cyprus. Venue, accommodation, meals, transport, working sessions, and six practice sessions with local practitioners. From $900 per person." />
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:   #FB4827;
+      --darkred:  #9D1813;
+      --neon:     #CEFF58;
+      --stone:    #BFBDA8;
+      --black:    #000000;
+      --white:    #ffffff;
+      --offwhite: #F3F2EE;
+      --nav-h:    72px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 48px;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      transition: box-shadow 200ms ease;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+
+    .nav-logo {
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+    }
+    .nav-logo span {
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: -0.01em;
+      color: rgba(0,0,0,0.35);
+      margin-left: 8px;
+      text-transform: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: rgba(0,0,0,0.55);
+      transition: color 150ms ease;
+    }
+    .nav-links a:hover { color: var(--black); }
+
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--white);
+      background: var(--orange);
+      padding: 10px 22px;
+      transition: background 150ms ease;
+    }
+    .nav-cta:hover { background: var(--darkred); }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 4px;
+    }
+    .nav-burger span { display: block; width: 24px; height: 2px; background: var(--black); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: var(--nav-h) 0 0 0;
+      background: var(--white);
+      z-index: 99;
+      padding: 40px 24px;
+      flex-direction: column;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .mobile-menu a.mob-cta {
+      margin-top: 32px;
+      background: var(--orange);
+      color: var(--white);
+      padding: 20px 24px;
+      border-bottom: none;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 96px 48px; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--stone);
+    }
+
+    .section-title {
+      font-size: clamp(36px, 4.5vw, 68px);
+      font-weight: 900;
+      line-height: 0.93;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+      color: var(--white);
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 64px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0 0 -12% 0;
+      background-image: url('./georgia-mountains.png');
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0.32;
+      z-index: 0;
+    }
+
+    .hero > *:not(.hero-bg) { position: relative; z-index: 1; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 28px;
+    }
+
+    .hero-headline {
+      font-size: clamp(44px, 6.5vw, 100px);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      max-width: 960px;
+      margin-bottom: 32px;
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 1.2vw, 19px);
+      line-height: 1.65;
+      color: rgba(255,255,255,0.55);
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: end;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-specs {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .hero-spec-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 5px;
+    }
+
+    .hero-spec-value {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--white);
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      white-space: nowrap;
+      transition: background 150ms ease;
+    }
+    .hero-cta:hover { background: var(--darkred); }
+
+    /* ─── MARQUEE ─── */
+    .marquee-bar {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      animation: marquee-scroll 28s linear infinite;
+      width: max-content;
+    }
+    .marquee-item {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── DESTINATIONS ─── */
+    .destinations-section {
+      background: #0f0f0f;
+      color: #fff;
+    }
+    .destinations-section .section-label { color: rgba(255,255,255,0.3); }
+    .destinations-section .section-label::before { background: rgba(255,255,255,0.3); }
+    .destinations-section .section-title { color: #fff; }
+
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    /* flip container */
+    .dest-flip {
+      perspective: 1200px;
+      height: 540px;
+    }
+
+    .dest-flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .dest-flip:hover .dest-flip-inner,
+    .dest-flip.flipped .dest-flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .dest-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      overflow: hidden;
+    }
+
+    /* FRONT */
+    .dest-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 600ms ease;
+    }
+    .dest-flip:hover .dest-front img { transform: scale(1.04); }
+
+    .dest-front-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+        rgba(0,0,0,0.88) 0%,
+        rgba(0,0,0,0.3) 45%,
+        rgba(0,0,0,0.05) 100%);
+    }
+
+    .dest-front-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px;
+    }
+
+    .dest-front-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 12px;
+    }
+
+    .dest-front-name {
+      font-size: clamp(38px, 3.8vw, 60px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 0.9;
+      margin-bottom: 8px;
+    }
+
+    .dest-front-location {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 18px;
+    }
+
+    .dest-front-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .dest-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 4px 10px;
+      backdrop-filter: blur(6px);
+    }
+
+    .dest-hint {
+      position: absolute;
+      top: 20px; right: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* BACK */
+    .dest-back {
+      background: #1c1c1c;
+      transform: rotateY(180deg);
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dest-back-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .dest-back-name {
+      font-size: clamp(28px, 2.8vw, 44px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 0.93;
+      margin-bottom: 5px;
+    }
+
+    .dest-back-location {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 22px;
+    }
+
+    .dest-back-text {
+      font-size: 13px;
+      line-height: 1.78;
+      color: rgba(255,255,255,0.55);
+      flex-grow: 1;
+      margin-bottom: 28px;
+    }
+
+    .dest-back-specs { border-top: 1px solid rgba(255,255,255,0.07); }
+
+    .dest-back-spec-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 11px;
+    }
+
+    .dest-back-spec-key {
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      flex-shrink: 0;
+    }
+
+    .dest-back-spec-val { color: rgba(255,255,255,0.6); text-align: right; }
+
+    /* ─── PROBLEM ─── */
+    .problem-section {
+      background: #f5f4f0;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-top: 56px;
+    }
+
+    .problem-item {
+      border-top: 2px solid rgba(0,0,0,0.12);
+      padding-top: 28px;
+    }
+
+    .problem-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.25);
+      margin-bottom: 20px;
+    }
+
+    .problem-title {
+      font-size: clamp(18px, 1.5vw, 24px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .problem-text {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.6);
+    }
+
+    /* ─── WHAT IT IS ─── */
+    .what-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .what-title {
+      font-size: clamp(36px, 4vw, 60px);
+      font-weight: 900;
+      line-height: 0.93;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      margin-top: 28px;
+    }
+
+    .what-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.65);
+    }
+    .what-text p + p { margin-top: 18px; }
+
+    .what-specs {
+      margin-top: 44px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      gap: 20px;
+    }
+
+    .spec-key {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.35);
+    }
+
+    .spec-val {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      text-align: right;
+    }
+
+    /* ─── OUTCOMES ─── */
+    .outcomes-section {
+      background: #0a0a0a;
+      position: relative;
+      overflow: hidden;
+    }
+    .outcomes-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('./offsite/michelangelo.jpeg') center/cover no-repeat;
+      opacity: 0.18;
+      z-index: 0;
+    }
+    .outcomes-section > * { position: relative; z-index: 1; }
+    .outcomes-section .section-label { color: rgba(255,255,255,0.4); }
+    .outcomes-section .section-title { color: var(--white); }
+
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .outcome-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 44px 36px;
+    }
+
+    .outcome-num {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.07em;
+      color: rgba(255,255,255,0.07);
+      margin-bottom: 20px;
+    }
+
+    .outcome-title {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 0.95;
+      color: var(--white);
+    }
+
+    .outcome-text {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ─── SCHEDULE ─── */
+    .schedule-section {}
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 56px;
+      align-items: start;
+    }
+
+    .schedule-col-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
+
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .schedule-row:first-of-type { border-top: 1px solid rgba(0,0,0,0.08); }
+
+    .schedule-time {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--stone);
+      padding-top: 2px;
+    }
+
+    .schedule-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .schedule-desc {
+      font-size: 12px;
+      line-height: 1.55;
+      color: rgba(0,0,0,0.45);
+    }
+
+    /* ─── DISCIPLINES ─── */
+    .tracks-section { background: var(--offwhite); }
+
+    .tracks-intro {
+      max-width: 640px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.6);
+      margin-top: 24px;
+      margin-bottom: 56px;
+    }
+
+    .track-block { margin-bottom: 48px; }
+    .track-block:last-child { margin-bottom: 0; }
+
+    .track-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .track-badge {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+    }
+    .track-badge.art { background: var(--black); color: var(--white); }
+    .track-badge.sport { background: var(--stone); color: var(--black); }
+
+    .track-note {
+      font-size: 11px;
+      color: rgba(0,0,0,0.35);
+      font-weight: 500;
+    }
+
+    .disciplines-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .discipline-card {
+      padding: 32px 28px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: filter 200ms ease;
+    }
+    .discipline-card:hover { filter: brightness(0.94); }
+
+    .practice-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 24px;
+      flex-shrink: 0;
+    }
+    .practice-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* card colors */
+    .discipline-card.c-neon      { background: #CEFF58; color: #000; }
+    .discipline-card.c-pink      { background: #F4B1FF; color: #000; }
+    .discipline-card.c-orange    { background: #FB4827; color: #000; }
+    .discipline-card.c-stone     { background: #BFBDA8; color: #000; }
+    .discipline-card.c-violet    { background: #4000C8; color: #fff; }
+    .discipline-card.c-powder    { background: #E9DED8; color: #000; }
+    .discipline-card.c-blue      { background: #2C52FF; color: #fff; }
+    .discipline-card.c-chocolate { background: #4B3027; color: #fff; }
+    .discipline-card.c-lightyellow { background: #EDFF52; color: #000; }
+    .discipline-card.c-skyblue   { background: #41ADF8; color: #000; }
+    .discipline-card.c-magenta   { background: #FF6CF1; color: #000; }
+
+    .discipline-name {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      line-height: 0.92;
+    }
+
+    .discipline-text {
+      font-size: 12px;
+      line-height: 1.65;
+      opacity: 0.65;
+    }
+
+    /* ─── PHOTO TRACK ─── */
+    .photo-track .disciplines-grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    .discipline-card.photo-card {
+      padding: 0;
+      overflow: hidden;
+      cursor: default;
+      background: #ABA5E1;
+      color: #000 !important;
+    }
+    .discipline-card.photo-card.sport-card {
+      background: #CEFF58;
+    }
+    .card-asterisk {
+      font-size: 0.6em;
+      vertical-align: super;
+      opacity: 0.5;
+      font-weight: 400;
+    }
+    .discipline-card.photo-card:hover { filter: none; }
+
+    .photo-card-info {
+      padding: 22px 20px 18px;
+      height: 160px;
+      flex-shrink: 0;
+      overflow: hidden;
+      color: #000;
+    }
+    .photo-card-info .discipline-name {
+      font-size: clamp(13px, 1.1vw, 18px);
+      margin-bottom: 8px;
+      color: #000;
+    }
+    .photo-card-info .discipline-text {
+      font-size: 11px;
+      line-height: 1.55;
+      color: #000;
+      opacity: 0.65;
+    }
+
+    .photo-card-wrap {
+      height: 260px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .photo-card-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 700ms ease;
+      filter: grayscale(15%);
+    }
+    .discipline-card.photo-card:hover .photo-card-wrap img {
+      transform: scale(1.05);
+      filter: grayscale(0%);
+    }
+
+    /* ─── CREDENTIALS ─── */
+    .credentials-section {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .credentials-section .section-label {
+      color: rgba(255,255,255,0.25);
+    }
+    .credentials-section .section-label::before {
+      background: rgba(255,255,255,0.25);
+    }
+    .credentials-section .section-title { color: var(--white); }
+
+    .cred-intro {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      max-width: 580px;
+      margin-top: 24px;
+      margin-bottom: 56px;
+    }
+
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .cred-card {
+      background: #111;
+      padding: 40px 36px;
+    }
+
+    .cred-stat {
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      line-height: 0.95;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .cred-detail {
+      font-size: 13px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.4);
+    }
+    .cred-detail strong {
+      color: rgba(255,255,255,0.75);
+      font-weight: 600;
+    }
+
+    /* ─── PRICING ─── */
+    .pricing-section {}
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    .price-display {
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 32px;
+    }
+
+    .price-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.3);
+      margin-bottom: 12px;
+    }
+
+    .price-number {
+      font-size: clamp(64px, 9vw, 120px);
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      line-height: 0.92;
+      color: var(--neon);
+      background: var(--black);
+      display: inline-block;
+      padding: 8px 24px 12px;
+    }
+
+    .price-per {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.35);
+      margin-top: 14px;
+    }
+
+    .price-note {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.5);
+      margin-top: 20px;
+      max-width: 360px;
+    }
+
+    .includes-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+      margin-bottom: 8px;
+    }
+
+    .includes-list {
+      list-style: none;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .includes-list li {
+      font-size: 14px;
+      line-height: 1.5;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      gap: 14px;
+      color: rgba(0,0,0,0.7);
+    }
+
+    .includes-list li::before {
+      content: '✓';
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: rgba(0,0,0,0.3);
+    }
+
+    .includes-list li.excluded {
+      color: rgba(0,0,0,0.3);
+    }
+    .includes-list li.excluded::before {
+      content: '—';
+      color: rgba(0,0,0,0.15);
+    }
+
+    /* ─── FAQ ─── */
+    .faq-section { background: var(--offwhite); }
+
+    .faq-intro {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.55);
+      max-width: 560px;
+      margin-top: 16px;
+      margin-bottom: 56px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .faq-item {
+      background: var(--white);
+      padding: 36px 32px;
+    }
+
+    .faq-q {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+
+    .faq-a {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.55);
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      background: var(--black);
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .cta-section .section-label {
+      color: rgba(255,255,255,0.25);
+    }
+    .cta-section .section-label::before { background: rgba(255,255,255,0.25); }
+
+    .cta-title {
+      font-size: clamp(32px, 4vw, 60px);
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      line-height: 0.93;
+      margin-top: 24px;
+      max-width: 680px;
+    }
+
+    .cta-sub {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.4);
+      margin-top: 20px;
+      max-width: 480px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 40px;
+      white-space: nowrap;
+      transition: background 150ms ease;
+    }
+    .btn-primary:hover { background: var(--darkred); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: -0.01em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.3);
+      transition: color 150ms ease;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ─── REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 400ms ease, transform 400ms ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 60ms; }
+    .reveal-d2 { transition-delay: 120ms; }
+    .reveal-d3 { transition-delay: 180ms; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .outcomes-grid { grid-template-columns: 1fr; }
+      .disciplines-grid { grid-template-columns: 1fr 1fr; }
+      .photo-track .disciplines-grid { grid-template-columns: repeat(3, 1fr); }
+      .faq-grid { grid-template-columns: 1fr; }
+      .cta-section { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+
+      section { padding: 64px 24px; }
+      .hero { padding: 0 24px 48px; min-height: 85vh; }
+      .hero-bottom { grid-template-columns: 1fr; }
+      .hero-specs { gap: 28px; }
+      .what-section { grid-template-columns: 1fr; gap: 40px; }
+      .schedule-grid { grid-template-columns: 1fr; gap: 40px; }
+      .pricing-grid { grid-template-columns: 1fr; gap: 40px; }
+      .credentials-grid { grid-template-columns: 1fr; }
+      .problem-grid { grid-template-columns: 1fr; gap: 32px; }
+      .destinations-grid { grid-template-columns: 1fr; gap: 12px; }
+      .dest-flip { height: 480px; }
+      .disciplines-grid { grid-template-columns: 1fr; }
+      .photo-track .disciplines-grid { grid-template-columns: 1fr 1fr; }
+      .discipline-card.photo-card { min-height: 360px; }
+      footer { padding: 28px 24px; }
+      .footer-links { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .marquee-track { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ─── CUSTOM CURSOR ─── */
+
+    /* ─── DECO ─── */
+    .deco { position: absolute; pointer-events: none; user-select: none; z-index: 0; }
+    .hero, .cta-section, .credentials-section { position: relative; overflow: hidden; }
+    .nav-logo img { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="./index.html" class="nav-logo"><img src="./logo.svg" alt="RUNO" height="22"> <span style="font-size:11px;letter-spacing:-0.01em;color:rgba(0,0,0,0.35);margin-left:8px;font-weight:400;">← Agency</span></a>
+    <ul class="nav-links">
+      <li><a href="#programme">Programme</a></li>
+      <li><a href="#disciplines">Practices</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact" class="nav-cta">Enquire →</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#programme" onclick="toggleMenu()">Programme</a>
+    <a href="#disciplines" onclick="toggleMenu()">Practices</a>
+    <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+    <a href="./index.html" onclick="toggleMenu()">← Back to Agency</a>
+    <a href="#contact" class="mob-cta" onclick="toggleMenu()">Enquire →</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="reveal">
+      <p class="hero-tag">RUNO Offsite &nbsp;·&nbsp; Corporate Programme &nbsp;·&nbsp; Georgia · Bali · Cyprus</p>
+      <h1 class="hero-headline">What did your last offsite actually change?</h1>
+      <p class="hero-sub">Four days in a place that isn't the office, doing something that isn't work. Shared creation in the ART track, shared challenge in the SPORT track — designed to build the kind of bonds a call never will.</p>
+    </div>
+    <div class="hero-bottom reveal reveal-d1">
+      <div class="hero-specs">
+        <div>
+          <p class="hero-spec-label">Duration</p>
+          <p class="hero-spec-value">4 days / 3 nights</p>
+        </div>
+        <div>
+          <p class="hero-spec-label">Group size</p>
+          <p class="hero-spec-value">30 – 600 people</p>
+        </div>
+        <div>
+          <p class="hero-spec-label">From</p>
+          <p class="hero-spec-value">$900 / person</p>
+        </div>
+        <div>
+          <p class="hero-spec-label">Destinations</p>
+          <p class="hero-spec-value">Georgia · Bali · Cyprus</p>
+        </div>
+      </div>
+      <a href="#contact" class="hero-cta">Enquire</a>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">Full-service production</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item">Venue & accommodation</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item">Six practice sessions</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item">Local practitioners, each destination</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item">Destination closing dinner</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item">All-inclusive from $900 / person</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item">Full-service production</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item">Venue & accommodation</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item">Six practice sessions</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item">Local practitioners, each destination</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item">Destination closing dinner</span>
+      <span class="marquee-item">·</span>
+      <span class="marquee-item">All-inclusive from $900 / person</span>
+      <span class="marquee-item">·</span>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="problem-section">
+    <div class="reveal">
+      <p class="section-label">Why most offsites don't work</p>
+      <h2 class="section-title">Three Problems<br>This Format Solves</h2>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-item reveal reveal-d1">
+        <p class="problem-num">01</p>
+        <h3 class="problem-title">Nothing actually changes</h3>
+        <p class="problem-text">People fly in, sit through sessions, have dinner, fly home. Two weeks later the team is working exactly as before. The friction that was there before is still there. The budget is spent and the dynamic is identical.</p>
+      </div>
+      <div class="problem-item reveal reveal-d2">
+        <p class="problem-num">02</p>
+        <h3 class="problem-title">Generic activities tell you nothing new</h3>
+        <p class="problem-text">Wine tastings and cooking classes are pleasant and immediately forgettable. They don't create the kind of shared reference a team draws on later. They don't tell you anything about the person across the table that you didn't already know.</p>
+      </div>
+      <div class="problem-item reveal reveal-d3">
+        <p class="problem-num">03</p>
+        <h3 class="problem-title">The logistics land on one person</h3>
+        <p class="problem-text">Venue search, accommodation, meals, transfers, dietary requirements, practitioner sourcing, invoicing — all of it falls on one person in HR or operations. They spend a month doing logistics before the programme has been defined, and arrive exhausted.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT IS -->
+  <section class="what-section" id="programme">
+    <div class="reveal">
+      <p class="section-label">What It Is</p>
+      <h2 class="what-title">A Programme,<br>Not a Trip</h2>
+    </div>
+    <div class="reveal reveal-d1">
+      <div class="what-text">
+        <p>RUNO produces corporate offsites from brief to debrief — venue, accommodation, meals, transport, working sessions, and six afternoon practice sessions with local practitioners. Three destinations: Georgia, Bali, Cyprus.</p>
+        <p>The team flies in. Everything else is in place. Mornings belong to you — your agenda, your facilitator, your room. Afternoons belong to the programme: three to four hours with a local practitioner in a discipline the team chose together. Focused work in the morning, shared creation or challenge in the afternoon — that combination is what changes the texture of a team.</p>
+      </div>
+      <div class="what-specs">
+        <div class="spec-row">
+          <span class="spec-key">Format</span>
+          <span class="spec-val">4 days / 3 nights, all-inclusive</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Mornings</span>
+          <span class="spec-val">Working sessions — RUNO stays out</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Afternoons</span>
+          <span class="spec-val">Six practice sessions with practitioners</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Evenings</span>
+          <span class="spec-val">Dinner; closing night: destination ritual</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Tracks</span>
+          <span class="spec-val">ART · SPORT · Mixed</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Flights</span>
+          <span class="spec-val">Not included — everything else is</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTINATIONS -->
+  <section class="destinations-section">
+    <div class="reveal">
+      <p class="section-label">Where we produce</p>
+      <h2 class="section-title">Three Destinations,<br>One Standard</h2>
+    </div>
+    <div class="destinations-grid">
+
+      <!-- GEORGIA -->
+      <div class="dest-flip reveal reveal-d1" onclick="this.classList.toggle('flipped')">
+        <div class="dest-flip-inner">
+          <div class="dest-face dest-front">
+            <img src="./offsite/georgia_dest.jpg" alt="Georgia — Kakheti">
+            <div class="dest-front-overlay"></div>
+            <span class="dest-hint">hover to explore →</span>
+            <div class="dest-front-content">
+              <p class="dest-front-num">01</p>
+              <h3 class="dest-front-name">Georgia</h3>
+              <p class="dest-front-location">Kakheti · Black Sea coast</p>
+              <div class="dest-front-tags">
+                <span class="dest-tag">Mountains</span>
+                <span class="dest-tag">Vineyards</span>
+                <span class="dest-tag">Polyphonic choir</span>
+                <span class="dest-tag">Supra</span>
+              </div>
+            </div>
+          </div>
+          <div class="dest-face dest-back">
+            <p class="dest-back-num">01</p>
+            <h3 class="dest-back-name">Georgia</h3>
+            <p class="dest-back-location">Kakheti · Black Sea coast</p>
+            <p class="dest-back-text">Ancient polyphonic singing tradition, eight-thousand-year winemaking history, terrain that runs from Kakhetian vineyards to alpine mountain and Black Sea coast. The ART track has deep material here. The SPORT track has the landscape. The closing evening follows a supra — a Georgian feast with a tamada who sets the arc of the night.</p>
+            <div class="dest-back-specs">
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Terrain</span><span class="dest-back-spec-val">Mountains, vineyards, Black Sea</span></div>
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Tradition</span><span class="dest-back-spec-val">Polyphonic choir, ceramics, wine</span></div>
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Closing night</span><span class="dest-back-spec-val">Georgian supra</span></div>
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Flights</span><span class="dest-back-spec-val">3–4h from most of Europe</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BALI -->
+      <div class="dest-flip reveal reveal-d2" onclick="this.classList.toggle('flipped')">
+        <div class="dest-flip-inner">
+          <div class="dest-face dest-front">
+            <img src="./offsite/bali_dest.jpg" alt="Bali — Nuanu">
+            <div class="dest-front-overlay"></div>
+            <span class="dest-hint">hover to explore →</span>
+            <div class="dest-front-content">
+              <p class="dest-front-num">02</p>
+              <h3 class="dest-front-name">Bali</h3>
+              <p class="dest-front-location">Nuanu, Tabanan</p>
+              <div class="dest-front-tags">
+                <span class="dest-tag">Jungle</span>
+                <span class="dest-tag">Rice fields</span>
+                <span class="dest-tag">Balinese craft</span>
+                <span class="dest-tag">Gamelan</span>
+              </div>
+            </div>
+          </div>
+          <div class="dest-face dest-back">
+            <p class="dest-back-num">02</p>
+            <h3 class="dest-back-name">Bali</h3>
+            <p class="dest-back-location">Nuanu, Tabanan</p>
+            <p class="dest-back-text">Nuanu is a new creative community on Bali's quieter western coast — 44 hectares of studios, jungle, and collaborative infrastructure built for exactly this kind of work. The Balinese craft tradition is unusually deep: carving, natural dyeing, gamelan, offering-making. The SPORT track uses the terrain and the ocean. The closing evening is outdoors, by the water.</p>
+            <div class="dest-back-specs">
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Terrain</span><span class="dest-back-spec-val">Jungle, coast, rice fields</span></div>
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Tradition</span><span class="dest-back-spec-val">Balinese craft, gamelan, natural dye</span></div>
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Closing night</span><span class="dest-back-spec-val">Outdoor feast at Nuanu</span></div>
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Flights</span><span class="dest-back-spec-val">Direct from major Asian hubs</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CYPRUS -->
+      <div class="dest-flip reveal reveal-d3" onclick="this.classList.toggle('flipped')">
+        <div class="dest-flip-inner">
+          <div class="dest-face dest-front">
+            <img src="./offsite/cyprus_dest.jpg" alt="Cyprus — Limassol">
+            <div class="dest-front-overlay"></div>
+            <span class="dest-hint">hover to explore →</span>
+            <div class="dest-front-content">
+              <p class="dest-front-num">03</p>
+              <h3 class="dest-front-name">Cyprus</h3>
+              <p class="dest-front-location">Limassol</p>
+              <div class="dest-front-tags">
+                <span class="dest-tag">Mediterranean</span>
+                <span class="dest-tag">Sailing</span>
+                <span class="dest-tag">Old port</span>
+                <span class="dest-tag">Tech hub</span>
+              </div>
+            </div>
+          </div>
+          <div class="dest-face dest-back">
+            <p class="dest-back-num">03</p>
+            <h3 class="dest-back-name">Cyprus</h3>
+            <p class="dest-back-location">Limassol</p>
+            <p class="dest-back-text">Limassol has become one of the most concentrated hubs of relocated tech and product teams in Europe. EU territory, easy connections, a Mediterranean coast, and an archaeological depth that gives the ART track real material. The SPORT track uses the sea: sailing, open-water, coastal trail. The closing dinner is in the old port.</p>
+            <div class="dest-back-specs">
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Terrain</span><span class="dest-back-spec-val">Mediterranean coast, archaeology</span></div>
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Tradition</span><span class="dest-back-spec-val">Cypriot ceramics, mosaic, wine</span></div>
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Closing night</span><span class="dest-back-spec-val">Seafront dinner, old port</span></div>
+              <div class="dest-back-spec-row"><span class="dest-back-spec-key">Flights</span><span class="dest-back-spec-val">3–4h from most of Europe</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section class="outcomes-section">
+    <div class="reveal">
+      <p class="section-label">What the Team Gets</p>
+      <h2 class="section-title">Three Outcomes,<br>Designed In</h2>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome-card reveal reveal-d1">
+        <p class="outcome-num">01</p>
+        <h3 class="outcome-title">People who were avatars become legible</h3>
+        <p class="outcome-text">Distributed teams work with versions of each other — a Slack handle, a camera-off call, a name on a doc. Four days in a different environment, doing things that have nothing to do with the job, changes that. The person who was unreadable over async becomes someone the team now knows how to work with. That legibility travels back into every future interaction.</p>
+      </div>
+      <div class="outcome-card reveal reveal-d2">
+        <p class="outcome-num">02</p>
+        <h3 class="outcome-title">A shared reference the team didn't have</h3>
+        <p class="outcome-text">Distributed teams run on shared context — and most of it is transactional. What they rarely have is a shared story. The product manager who held their part in a choir for the first time will be referenced in a retrospective six months later. These are the moments that make a team feel like one.</p>
+      </div>
+      <div class="outcome-card reveal reveal-d3">
+        <p class="outcome-num">03</p>
+        <h3 class="outcome-title">The conversation that couldn't happen on a call</h3>
+        <p class="outcome-text">Something unresolved surfaces in a completely different context and actually gets said. Not because there was a facilitated session about it — but because the setting lowered the cost of honesty. Teams that have been misaligned for months often find the four days do more than six months of retrospectives. The format doesn't force it. It makes it possible.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section class="schedule-section">
+    <div class="reveal">
+      <p class="section-label">Programme Structure</p>
+      <h2 class="section-title">A Typical Day</h2>
+    </div>
+    <div class="schedule-grid reveal reveal-d1">
+      <div>
+        <p class="schedule-col-label">Morning & Afternoon</p>
+        <div class="schedule-row">
+          <span class="schedule-time">08:30 – 09:30</span>
+          <div>
+            <p class="schedule-title">Breakfast at the venue</p>
+            <p class="schedule-desc">Provided at accommodation. No group agenda until the working session begins.</p>
+          </div>
+        </div>
+        <div class="schedule-row">
+          <span class="schedule-time">10:00 – 13:00</span>
+          <div>
+            <p class="schedule-title">Working session</p>
+            <p class="schedule-desc">Your agenda, your facilitator. RUNO handles the room setup, AV, and coffee. We are not in the room.</p>
+          </div>
+        </div>
+        <div class="schedule-row">
+          <span class="schedule-time">13:00 – 14:00</span>
+          <div>
+            <p class="schedule-title">Lunch</p>
+            <p class="schedule-desc">Prepared lunch at the venue or a short transfer to a nearby restaurant. Included.</p>
+          </div>
+        </div>
+        <div class="schedule-row">
+          <span class="schedule-time">14:30 – 18:30</span>
+          <div>
+            <p class="schedule-title">Practice session</p>
+            <p class="schedule-desc">3–4 hours with a local practitioner. ART or SPORT track, or mixed. No prior experience required.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="schedule-col-label">Evening</p>
+        <div class="schedule-row">
+          <span class="schedule-time">19:30 – 22:00</span>
+          <div>
+            <p class="schedule-title">Dinner</p>
+            <p class="schedule-desc">Evenings one through three: dinner at selected local restaurants. Included.</p>
+          </div>
+        </div>
+        <div class="schedule-row">
+          <span class="schedule-time">Last evening</span>
+          <div>
+            <p class="schedule-title">Closing dinner</p>
+            <p class="schedule-desc">The last evening follows a destination-specific format. In Georgia: a supra — a long table, traditional food, and toasts led by a tamada. In Bali: an outdoor feast at Nuanu. In Cyprus: a seafront dinner in Limassol's old port.</p>
+          </div>
+        </div>
+        <div class="schedule-row">
+          <span class="schedule-time">Throughout</span>
+          <div>
+            <p class="schedule-title">Transfers</p>
+            <p class="schedule-desc">All transport between accommodation, working sessions, discipline locations, and restaurants is coordinated and included. No logistics fall on the team.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCIPLINES -->
+  <section class="tracks-section" id="disciplines">
+    <div class="reveal">
+      <p class="section-label">Afternoon Sessions</p>
+      <h2 class="section-title">Six Practices<br>Per Track</h2>
+    </div>
+    <p class="tracks-intro reveal reveal-d1">Each session runs 3–4 hours and is led by a local practitioner. The group works toward a specific output — a recording, an object, a performance. No prior experience required. Groups can mix tracks across the four days.</p>
+
+    <div class="track-block reveal photo-track">
+      <div class="track-header">
+        <span class="track-badge art">ART Track</span>
+        <span class="track-note">Sound · Move · Sing · Build · See · Write</span>
+      </div>
+      <div class="disciplines-grid">
+        <div class="discipline-card photo-card c-neon">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">Sound</h3>
+            <p class="discipline-text">Modular synthesizers. The group experiments with electronic sound — loops, textures, a composition. Something is recorded by the end.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/sound.jpeg" alt="Sound"></div>
+        </div>
+        <div class="discipline-card photo-card c-pink">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">Move</h3>
+            <p class="discipline-text">Contemporary dance and performance with a choreographer. About how bodies communicate and what changes when people move together.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/move.jpeg" alt="Move"></div>
+        </div>
+        <div class="discipline-card photo-card c-orange">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">Sing</h3>
+            <p class="discipline-text">Choir and vocal improvisation. The task is ensemble — listening, holding your part while others hold theirs.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/sing.jpeg" alt="Sing"></div>
+        </div>
+        <div class="discipline-card photo-card c-stone">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">Build</h3>
+            <p class="discipline-text">Sculpture and costume lab. Clay, fabric, found materials. Something is made and kept. Physical, tactile, done together.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/build.jpeg" alt="Build"></div>
+        </div>
+        <div class="discipline-card photo-card c-violet">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">See</h3>
+            <p class="discipline-text">Photography and film. Assignment, shoot, edit. About looking at what is actually there rather than what is expected.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/see.jpeg" alt="See"></div>
+        </div>
+        <div class="discipline-card photo-card c-powder">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">Write</h3>
+            <p class="discipline-text">Poetry or free writing with a writer — specific task, constraint, time limit. The output is read aloud.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/write.jpeg" alt="Write"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="track-block reveal photo-track sport-track">
+      <div class="track-header">
+        <span class="track-badge sport">SPORT Track</span>
+        <span class="track-note">Yoga · Run · Climb · Horse · Bike · Row*</span>
+      </div>
+      <div class="disciplines-grid">
+        <div class="discipline-card photo-card sport-card">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">Yoga</h3>
+            <p class="discipline-text">A session on the hotel grounds, led by an experienced practitioner. Adapted for all levels. Outdoors where conditions allow.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/yoga.jpeg" alt="Yoga"></div>
+        </div>
+        <div class="discipline-card photo-card sport-card">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">Run</h3>
+            <p class="discipline-text">A guided run through the hotel grounds and surrounding countryside. The practitioner sets the pace and the stops.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/run.jpeg" alt="Run"></div>
+        </div>
+        <div class="discipline-card photo-card sport-card">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">Climb</h3>
+            <p class="discipline-text">A bouldering or rope session on a portable wall at the venue. Individual effort, collective witness.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/climb.jpeg" alt="Climb"></div>
+        </div>
+        <div class="discipline-card photo-card sport-card">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">Horse</h3>
+            <p class="discipline-text">An equestrian session on the hotel grounds. For most participants a first encounter — there are things you can only learn from an animal that doesn't respond to hierarchy.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/horse.jpeg" alt="Horse"></div>
+        </div>
+        <div class="discipline-card photo-card sport-card">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">Bike</h3>
+            <p class="discipline-text">A guided cycling route through the countryside. Bikes provided. The route is chosen for what it opens up — not for difficulty or speed.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/bike.jpeg" alt="Bike"></div>
+        </div>
+        <div class="discipline-card photo-card sport-card">
+          <div class="photo-card-info">
+            <h3 class="discipline-name">Row <span class="card-asterisk">*</span></h3>
+            <p class="discipline-text">A rowing session on the water — technique, rhythm, synchrony. Available at venues with a lake or river on site.</p>
+          </div>
+          <div class="photo-card-wrap"><img src="./offsite/row.jpeg" alt="Row"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section class="credentials-section">
+    <div class="reveal">
+      <p class="section-label">Why RUNO</p>
+      <h2 class="section-title">The Production<br>Behind the Programme</h2>
+    </div>
+    <p class="cred-intro reveal reveal-d1">RUNO is new as a standalone offsite product. The production experience behind it is not.</p>
+    <div class="credentials-grid">
+      <div class="cred-card reveal reveal-d1">
+        <p class="cred-stat">100+</p>
+        <p class="cred-detail">Commissions completed — from contemporary opera at the Bolshoi and city-scale festivals to diplomatic receptions, luxury brand launches, and international corporate productions.</p>
+      </div>
+      <div class="cred-card reveal reveal-d2">
+        <p class="cred-stat">1M+</p>
+        <p class="cred-detail">Peak attendance across a single commission — Gorky Park 90th Anniversary Festival, Moscow, 2018. Nine days. International headliners. Full festival production at city scale.</p>
+      </div>
+      <div class="cred-card reveal reveal-d3">
+        <p class="cred-stat">20+</p>
+        <p class="cred-detail">Years of combined production leadership behind each RUNO commission — spanning festival direction, spatial design, technical execution, and cultural programming across two countries.</p>
+      </div>
+      <div class="cred-card reveal">
+        <p class="cred-stat">FORGE</p>
+        <p class="cred-detail"><strong>In-house fabrication workshop, Tbilisi.</strong> Custom tables, installations, and set elements — built, not subcontracted. The BUILD discipline session is physically possible only because of FORGE. No other offsite provider can offer it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="reveal">
+      <p class="section-label">Pricing</p>
+      <h2 class="section-title">All-Inclusive,<br>One Number</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="reveal reveal-d1">
+        <div class="price-display">
+          <p class="price-label">From, per person</p>
+          <div class="price-number">$900+</div>
+          <p class="price-per">All-inclusive · Minimum 30 people</p>
+          <p class="price-note">Final price varies by group size, venue selection, accommodation standard, and track configuration. International flights are not included — everything else is.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-d2">
+        <p class="includes-title">What's included</p>
+        <ul class="includes-list">
+          <li>Venue for working sessions and practice sessions</li>
+          <li>Accommodation — 3 nights</li>
+          <li>All meals: breakfast, lunch, dinner, closing dinner</li>
+          <li>All transfers in-city and between locations</li>
+          <li>Six practice sessions with practitioners</li>
+          <li>Working session room setup (AV, coffee, materials)</li>
+          <li>Full production management by Julia Knos</li>
+          <li>On-site RUNO coordination throughout</li>
+          <li class="excluded">International flights</li>
+          <li class="excluded">Personal expenses and optional excursions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="reveal">
+      <p class="section-label">Common Questions</p>
+      <h2 class="section-title">Before You Ask</h2>
+    </div>
+    <p class="faq-intro reveal reveal-d1">The questions HR leaders and team leads ask before they bring this to a decision-maker.</p>
+    <div class="faq-grid">
+      <div class="faq-item reveal reveal-d1">
+        <p class="faq-q">Our engineers won't do a singing session.</p>
+        <p class="faq-a">The SPORT track exists for exactly this. And in both tracks — every session is designed for people with zero experience. The practitioners work with non-specialists regularly. Groups can also mix tracks across the four days, so no one is locked into one format for the whole programme.</p>
+      </div>
+      <div class="faq-item reveal reveal-d2">
+        <p class="faq-q">We've never heard of RUNO.</p>
+        <p class="faq-a">The portfolio: State of Qatar diplomatic reception in St. Petersburg — 500 guests, UN-level protocol. Gorky Park 90th anniversary festival — over one million visitors. Chanel Tbilisi campaign launch, Bentley Museum Experience, Armani Perfumes with La Scala soloists. The agency is new as a standalone brand; the production experience behind it is not.</p>
+      </div>
+      <div class="faq-item reveal reveal-d1">
+        <p class="faq-q">How complicated is the logistics for each destination?</p>
+        <p class="faq-a">Georgia: direct flights from most European hubs, Dubai, Istanbul, and Tel Aviv — visa-free for most nationalities, 3–4 hour flight from Europe. Bali: 12–16 hours from Europe, closer for teams in Asia. Cyprus–Limassol: EU territory, easy connections from anywhere in Europe, 3–4 hours. In all three cases, RUNO handles everything on the ground. The complicated is our job, not yours.</p>
+      </div>
+      <div class="faq-item reveal reveal-d2">
+        <p class="faq-q">How does $900/person compare?</p>
+        <p class="faq-a">It's all-inclusive: venue, accommodation for 3 nights, all meals, transfers, six discipline sessions with practitioners. A comparable European retreat — Barcelona, Lisbon, Amsterdam — typically runs $1,200–1,800 per person without programme design. The $900 includes what others charge extra for, or don't provide at all.</p>
+      </div>
+      <div class="faq-item reveal reveal-d1">
+        <p class="faq-q">How does this work for 100 or 200 people?</p>
+        <p class="faq-a">Parallel discipline sessions run simultaneously, with group rotations across the four days. The format is designed for scale — groups of 30 to 600 use the same structure, with the number of parallel tracks adjusted accordingly. One production team handles the whole thing.</p>
+      </div>
+      <div class="faq-item reveal reveal-d2">
+        <p class="faq-q">Who is the point of contact once we start?</p>
+        <p class="faq-a">Julia Knos handles all production logistics for every RUNO offsite. One call, one contact, one person accountable for the whole programme. The HR leader does not coordinate venues, transfers, or discipline practitioners — that's Julia's job from the first planning call through the final debrief.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="reveal">
+      <p class="section-label">Contact</p>
+      <h2 class="cta-title">Tell Us About Your Brief</h2>
+      <p class="cta-sub">One conversation is enough to understand whether this format is right for your team — and what a programme for your group size and timing would look like. No sales deck, no pitch. Just the questions that matter.</p>
+      <p style="margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.4);">anna@weareruno.com &nbsp;·&nbsp; julia@weareruno.com &nbsp;·&nbsp; +995 555 21 22 16</p>
+    </div>
+    <div class="reveal reveal-d1">
+      <a href="mailto:anna@weareruno.com" class="btn-primary">Write to Anna →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="./index.html" class="footer-logo">Runo</a>
+    <ul class="footer-links">
+      <li><a href="#programme">Programme</a></li>
+      <li><a href="#disciplines">Practices</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="./index.html">← Agency</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Okros Runo LLC · Tbilisi · All rights reserved</span>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    function toggleMenu() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '-40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RUNO — Selected Work</title>
+  <meta name="description" content="RUNO portfolio: 12 commissions across Tbilisi, St. Petersburg, Moscow, Corsica, and the Arctic. Chanel, Bentley, Qatar Embassy, Gorky Park, and more." />
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --burgundy: #7E1D16;
+      --darkred:  #9D1813;
+      --stone:    #BFBDA8;
+      --black:    #000000;
+      --white:    #ffffff;
+      --offwhite: #F3F2EE;
+      --nav-h:    72px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 48px;
+      height: var(--nav-h);
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-logo { text-decoration: none; display: block; }
+    .nav-logo img { display: block; filter: invert(1); }
+    .nav-back {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.4);
+      transition: color 150ms ease;
+    }
+    .nav-back:hover { color: var(--white); }
+    .nav-count {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      padding: 80px 48px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .page-hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .page-hero-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+    }
+    .page-hero-title {
+      font-size: clamp(52px, 7vw, 108px);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      text-transform: uppercase;
+    }
+    .page-hero-right { padding-bottom: 8px; }
+    .page-hero-desc {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.4);
+      max-width: 440px;
+    }
+    .page-hero-clients {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .client-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 5px 10px;
+    }
+
+    /* ─── PROJECT GRID ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      padding: 2px;
+    }
+
+    /* ─── PROJECT CARD ─── */
+    .project {
+      position: relative;
+      background: #0a0a0a;
+      cursor: pointer;
+    }
+
+    /* Cover photo */
+    .project-cover {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/2;
+    }
+    .project-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 500ms ease, filter 400ms ease;
+      filter: brightness(0.82);
+    }
+    .project:hover .project-cover img,
+    .project.open .project-cover img {
+      transform: scale(1.04);
+      filter: brightness(0.65);
+    }
+
+    .project-cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .project-cover-meta {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 32px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .project-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 8px;
+    }
+
+    .project-title {
+      font-size: clamp(20px, 2.2vw, 32px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      text-transform: uppercase;
+      line-height: 0.93;
+      color: var(--white);
+    }
+
+    .project-type-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(4px);
+      padding: 4px 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .project-expand-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--white);
+      transition: transform 350ms cubic-bezier(0.4,0,0.2,1), background 150ms ease;
+      pointer-events: none;
+    }
+    .project.open .project-expand-btn { transform: rotate(45deg); }
+
+    /* ─── PROJECT BODY (accordion) ─── */
+    .project-body {
+      height: 0;
+      overflow: hidden;
+      transition: height 600ms cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .project-body-inner {
+      padding-bottom: 2px;
+    }
+
+    .project-detail {
+      padding: 32px 32px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .project-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .project-client-line {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-top: 12px;
+    }
+
+    .project-year-detail {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ─── PHOTO LAYOUTS ─── */
+    .photos-full {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      margin-bottom: 2px;
+    }
+    .photos-full img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photos-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .photos-grid-3 {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2px;
+    }
+    .photos-grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 2px;
+    }
+
+    .photo-cell {
+      overflow: hidden;
+      background: #111;
+    }
+    .photo-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 4/3;
+      transition: transform 400ms ease;
+    }
+    .photo-cell:hover img { transform: scale(1.03); }
+    .photo-cell.tall img { aspect-ratio: 3/4; }
+    .photo-cell.wide img { aspect-ratio: 16/9; }
+    .photo-cell.square img { aspect-ratio: 1/1; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .footer-logo { text-decoration: none; }
+    .footer-logo img { display: block; filter: invert(1); }
+    .footer-cta {
+      display: inline-block;
+      background: var(--burgundy);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      transition: background 150ms ease;
+    }
+    .footer-cta:hover { background: var(--darkred); }
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .page-hero { grid-template-columns: 1fr; gap: 32px; padding: 56px 24px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-detail { grid-template-columns: 1fr; gap: 16px; }
+      .photos-grid-2,
+      .photos-grid-3,
+      .photos-grid-4 { grid-template-columns: 1fr 1fr; }
+      footer { padding: 36px 24px; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .nav-back { display: none; }
+      .page-hero { padding: 44px 20px; }
+      .page-hero-title { font-size: clamp(52px, 14vw, 90px); }
+      .page-hero-desc { font-size: 14px; }
+      .page-hero-clients { gap: 8px; }
+      .projects-grid { gap: 1px; padding: 1px; }
+      .project-title { font-size: clamp(18px, 5vw, 28px); }
+      .project-detail { padding: 20px; }
+      .photos-grid-2,
+      .photos-grid-3,
+      .photos-grid-4 { grid-template-columns: 1fr; }
+      footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .footer-links { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .project-body { transition: none; }
+      .project-expand-btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="./index.html" class="nav-logo"><img src="./logo.svg" alt="RUNO" height="24"></a>
+    <span class="nav-count">12 Commissions</span>
+    <a href="./index.html" class="nav-back">← Back to Agency</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div>
+      <p class="page-hero-label">Portfolio</p>
+      <h1 class="page-hero-title">Selected<br>Work</h1>
+    </div>
+    <div class="page-hero-right">
+      <p class="page-hero-desc">12 commissions across diplomatic receptions, brand experiences, automotive launches, city-scale festivals, and concert productions. From St. Petersburg to Corsica, from the Arctic to Tbilisi.</p>
+      <div class="page-hero-clients">
+        <span class="client-tag">Chanel</span>
+        <span class="client-tag">Bentley</span>
+        <span class="client-tag">State of Qatar</span>
+        <span class="client-tag">Armani</span>
+        <span class="client-tag">Toyota WRC</span>
+        <span class="client-tag">Ford</span>
+        <span class="client-tag">Gorky Park</span>
+        <span class="client-tag">Kia Motors</span>
+        <span class="client-tag">Hurts</span>
+        <span class="client-tag">G-Gate</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS GRID -->
+  <div class="projects-grid">
+
+    <!-- 01: QATAR -->
+    <div class="project" id="qatar">
+      <div class="project-cover">
+        <img src="./projects/p10_qatar_main.jpeg" alt="Qatar Reception" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">01</p>
+            <h2 class="project-title">Official Reception<br>of Qatar</h2>
+          </div>
+          <span class="project-type-tag">Diplomatic Reception</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">Official reception for the State of Qatar in St. Petersburg. 500 guests — diplomats, royal advisors, and cultural figures from more than 30 countries. Catering by the Emir's personal chef. UN-level security protocol, precise seating by diplomatic rank, arrival sequence coordinated to the minute.</p>
+              <p class="project-client-line">Client: Qatar Embassy, QRCC</p>
+            </div>
+            <div>
+              <p class="project-year-detail">St. Petersburg, Russia · 2021</p>
+            </div>
+          </div>
+          <div class="photos-grid-3">
+            <div class="photo-cell"><img src="./projects/p10_1.jpeg" alt="Qatar Reception" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p10_10.jpeg" alt="Qatar Reception" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p10_11.jpeg" alt="Qatar Reception" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p10_12.jpeg" alt="Qatar Reception" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p10_15.jpeg" alt="Qatar Reception" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p10_16.jpeg" alt="Qatar Reception" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p10_17.jpeg" alt="Qatar Reception" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p10_2.jpeg" alt="Qatar Reception" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p10_3.jpeg" alt="Qatar Reception" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p10_4.jpeg" alt="Qatar Reception" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p10_5.jpeg" alt="Qatar Reception" loading="lazy" style="object-position:top;"></div>
+            <div class="photo-cell"><img src="./projects/p10_9.jpeg" alt="Qatar Reception" loading="lazy" style="object-position:top;"></div>
+            <div class="photo-cell"><img src="./projects/p10_13.jpeg" alt="Qatar Reception" loading="lazy" style="object-position:top;"></div>
+            <div class="photo-cell"><img src="./projects/p10_14.jpeg" alt="Qatar Reception" loading="lazy" style="object-position:top;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02: CHANEL -->
+    <div class="project" id="chanel">
+      <div class="project-cover">
+        <img src="./projects/p11_5.jpeg" alt="Chanel Tbilisi" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">02</p>
+            <h2 class="project-title">Chanel —<br>Chance Eau Splendide</h2>
+          </div>
+          <span class="project-type-tag">Brand Experience</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">Global campaign launch bringing over 200 international guests to Tbilisi. Full production for a fragrance launch in collaboration with DAZZZLING and Chanel CIS. The city served as the backdrop — not as a theme, but as a genuine frame for the collection's character.</p>
+              <p class="project-client-line">Client: DAZZZLING, Chanel CIS · 200+ international guests</p>
+            </div>
+            <div><p class="project-year-detail">Tbilisi, Georgia · 2025</p></div>
+          </div>
+          <div class="photos-full" style="margin-bottom:2px;">
+            <img src="./projects/p11_5.jpeg" alt="Chanel Tbilisi" loading="lazy">
+          </div>
+          <div class="photos-grid-3" style="margin-bottom:2px;">
+            <div class="photo-cell"><img src="./projects/p11_1.jpeg" alt="Chanel Tbilisi" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p11_2.jpeg" alt="Chanel Tbilisi" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p11_8.jpeg" alt="Chanel Tbilisi" loading="lazy"></div>
+          </div>
+          <div class="photos-grid-4">
+            <div class="photo-cell"><img src="./projects/p11_3.jpeg" alt="Chanel Tbilisi" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p11_6.jpeg" alt="Chanel Tbilisi" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p11_7.jpeg" alt="Chanel Tbilisi" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p11_9.jpeg" alt="Chanel Tbilisi" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03: BENTLEY -->
+    <div class="project" id="bentley">
+      <div class="project-cover">
+        <img src="./projects/p12_1.jpeg" alt="Bentley Experience" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">03</p>
+            <h2 class="project-title">Bentley Museum<br>Experience</h2>
+          </div>
+          <span class="project-type-tag">Automotive Launch</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">Five-day premium launch with personalised guest invitations. An under-construction venue transformed through lighting and zoning — the car installed inside the building. Full technical and sound support. Furniture and equipment secured through partnerships, optimising the budget without compromising the environment.</p>
+              <p class="project-client-line">Client: Bentley Motors Limited</p>
+            </div>
+            <div><p class="project-year-detail">Moscow, Russia · 2021</p></div>
+          </div>
+          <div class="photos-grid-2" style="margin-bottom:2px;">
+            <div class="photo-cell wide"><img src="./projects/p12_1.jpeg" alt="Bentley Experience" loading="lazy"></div>
+            <div class="photo-cell wide"><img src="./projects/p12_2.jpeg" alt="Bentley Experience" loading="lazy"></div>
+          </div>
+          <div class="photos-grid-2">
+            <div class="photo-cell wide"><img src="./projects/p12_3.jpeg" alt="Bentley Experience" loading="lazy"></div>
+            <div class="photo-cell wide"><img src="./projects/p12_4.jpeg" alt="Bentley Experience" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04: ARMANI -->
+    <div class="project" id="armani">
+      <div class="project-cover">
+        <img src="./projects/p13_1.jpeg" alt="Armani Perfumes" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">04</p>
+            <h2 class="project-title">Armani Perfumes</h2>
+          </div>
+          <span class="project-type-tag">Brand Experience</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">Exclusive collaboration with La Scala opera soloists — perfume, wine, and live performance in one sensory evening. Programme choreographed around the architecture of the venue and the arc of the collection. The discipline was to make the performance feel inevitable, not added.</p>
+              <p class="project-client-line">Client: Armani Perfumes, WD Events</p>
+            </div>
+            <div><p class="project-year-detail">Tbilisi, Georgia · 2024</p></div>
+          </div>
+          <div class="photos-full" style="margin-bottom:2px;">
+            <img src="./projects/p13_1.jpeg" alt="Armani Perfumes" loading="lazy">
+          </div>
+          <div class="photos-grid-3">
+            <div class="photo-cell"><img src="./projects/p13_2.jpeg" alt="Armani Perfumes" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p13_3.jpeg" alt="Armani Perfumes" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p13_4.jpeg" alt="Armani Perfumes" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05: TOYOTA WRC -->
+    <div class="project">
+      <div class="project-cover">
+        <img src="./projects/p14_1.jpeg" alt="Toyota WRC" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">05</p>
+            <h2 class="project-title">Toyota World<br>Rally Championship</h2>
+          </div>
+          <span class="project-type-tag">Conference + Production</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">Integration into a global-scale project — international dealer conference, custom site build-out, entertainment programming, and seamless coordination with the worldwide Rally Championship infrastructure and stakeholders. The brief was to operate at the level of the event without competing with it.</p>
+              <p class="project-client-line">Client: Toyota Motor LLC</p>
+            </div>
+            <div><p class="project-year-detail">Corsica, France · 2019</p></div>
+          </div>
+          <div class="photos-grid-2" style="margin-bottom:2px;">
+            <div class="photo-cell wide"><img src="./projects/p14_1.jpeg" alt="Toyota WRC" loading="lazy"></div>
+            <div class="photo-cell wide"><img src="./projects/p14_2.jpeg" alt="Toyota WRC" loading="lazy"></div>
+          </div>
+          <div class="photos-grid-2">
+            <div class="photo-cell wide"><img src="./projects/p14_3.jpeg" alt="Toyota WRC" loading="lazy"></div>
+            <div class="photo-cell wide"><img src="./projects/p14_4.jpeg" alt="Toyota WRC" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06: HURTS -->
+    <div class="project" id="hurts">
+      <div class="project-cover">
+        <img src="./projects/p15_5.jpeg" alt="Hurts Concert Tbilisi" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">06</p>
+            <h2 class="project-title">Hurts —<br>Tbilisi Debut</h2>
+          </div>
+          <span class="project-type-tag">Concert Production</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">Full concert production for Hurts' Tbilisi debut — venue management, technical execution, and coordination with the global tour production for an audience of over 2,000. The first time the band played Georgia; the production was calibrated to treat that fact as significant.</p>
+              <p class="project-client-line">Client: HONEYCOMB Global · 2,000+ audience</p>
+            </div>
+            <div><p class="project-year-detail">Tbilisi, Georgia · 2023</p></div>
+          </div>
+          <div class="photos-full" style="margin-bottom:2px;">
+            <img src="./projects/p15_5.jpeg" alt="Hurts Concert Tbilisi" loading="lazy">
+          </div>
+          <div class="photos-grid-4">
+            <div class="photo-cell square"><img src="./projects/p15_1.jpeg" alt="Hurts Concert" loading="lazy"></div>
+            <div class="photo-cell square"><img src="./projects/p15_2.jpeg" alt="Hurts Concert" loading="lazy"></div>
+            <div class="photo-cell square"><img src="./projects/p15_3.jpeg" alt="Hurts Concert" loading="lazy"></div>
+            <div class="photo-cell square"><img src="./projects/p15_4.jpeg" alt="Hurts Concert" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07: FORD ARCTIC -->
+    <div class="project">
+      <div class="project-cover">
+        <img src="./projects/p16_2.jpeg" alt="Ford Arctic" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">07</p>
+            <h2 class="project-title">Ford —<br>Beyond the Arctic Circle</h2>
+          </div>
+          <span class="project-type-tag">Press Expedition</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">A press tour reimagined as expedition. Journalists brought beyond the Arctic Circle to Teriberka — Russia's edge-of-the-world village. No staged routes. Real terrain, real weather, real story. The car proved itself; we made sure the world was watching.</p>
+            </div>
+            <div><p class="project-year-detail">Teriberka, Arctic Circle · 2021</p></div>
+          </div>
+          <div class="photos-full" style="margin-bottom:2px;">
+            <img src="./projects/p16_2.jpeg" alt="Ford Arctic" loading="lazy">
+          </div>
+          <div class="photos-grid-3">
+            <div class="photo-cell"><img src="./projects/p16_1.jpeg" alt="Ford Arctic" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p16_3.jpeg" alt="Ford Arctic" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p16_4.jpeg" alt="Ford Arctic" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08: G-GATE -->
+    <div class="project">
+      <div class="project-cover">
+        <img src="./projects/p17_4.jpeg" alt="G-Gate Conference" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">08</p>
+            <h2 class="project-title">G-Gate Conference</h2>
+          </div>
+          <span class="project-type-tag">Conference + Expo</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">A two-day conference and expo across over 10,000 square metres. More than five custom-built zones, 5,000+ attendees, 100+ partner sponsors. Integrated business, entertainment programming, and F&amp;B zones running simultaneously across the full site.</p>
+              <p class="project-client-line">Client: G Gate LLC, Art Visionary Bureau · 5,000+ attendees</p>
+            </div>
+            <div><p class="project-year-detail">Tbilisi, Georgia · 2025</p></div>
+          </div>
+          <div class="photos-full" style="margin-bottom:2px;">
+            <img src="./projects/p17_4.jpeg" alt="G-Gate Conference" loading="lazy">
+          </div>
+          <div class="photos-grid-3">
+            <div class="photo-cell"><img src="./projects/p17_1.jpeg" alt="G-Gate Conference" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p17_2.jpeg" alt="G-Gate Conference" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p17_3.jpeg" alt="G-Gate Conference" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09: OPERGROUPPA -->
+    <div class="project">
+      <div class="project-cover">
+        <img src="./projects/p18_1.jpeg" alt="Opergrouppa" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">09</p>
+            <h2 class="project-title">Opergrouppa<br>Opera Festival</h2>
+          </div>
+          <span class="project-type-tag">Cultural Festival</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">A contemporary opera festival that redefined the boundaries of classical art. Experimental storytelling, cutting-edge production, and collaborations with world-leading theatres. A platform for new voices and bold ideas in opera, running over four years.</p>
+            </div>
+            <div><p class="project-year-detail">Moscow, Russia · 2011–2015</p></div>
+          </div>
+          <div class="photos-grid-2" style="margin-bottom:2px;">
+            <div class="photo-cell wide"><img src="./projects/p18_1.jpeg" alt="Opergrouppa" loading="lazy"></div>
+            <div class="photo-cell wide"><img src="./projects/p18_4.jpeg" alt="Opergrouppa" loading="lazy"></div>
+          </div>
+          <div class="photos-grid-2">
+            <div class="photo-cell wide"><img src="./projects/p18_2.jpeg" alt="Opergrouppa" loading="lazy"></div>
+            <div class="photo-cell wide"><img src="./projects/p18_3.jpeg" alt="Opergrouppa" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10: GORKY PARK -->
+    <div class="project">
+      <div class="project-cover">
+        <img src="./projects/p19_2.jpeg" alt="Gorky Park Festival" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">10</p>
+            <h2 class="project-title">Gorky Park<br>90th Anniversary</h2>
+          </div>
+          <span class="project-type-tag">City-Scale Festival</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">Moscow's iconic public space transformed into a hub of creativity. Nine days of festival. International headliners. Over one million visitors. The event honoured the park's history while looking ahead to its future — combining culture, innovation, and community engagement at a scale that required a different kind of precision than any single-venue production.</p>
+              <p class="project-client-line">1,024,000+ visitors · 9 days · International headliners</p>
+            </div>
+            <div><p class="project-year-detail">Moscow, Russia · 2018</p></div>
+          </div>
+          <div class="photos-grid-2" style="margin-bottom:2px;">
+            <div class="photo-cell wide"><img src="./projects/p19_2.jpeg" alt="Gorky Park Festival" loading="lazy"></div>
+            <div class="photo-cell wide"><img src="./projects/p19_4.jpeg" alt="Gorky Park Festival" loading="lazy"></div>
+          </div>
+          <div class="photos-grid-2">
+            <div class="photo-cell wide"><img src="./projects/p19_1.jpeg" alt="Gorky Park Festival" loading="lazy"></div>
+            <div class="photo-cell wide"><img src="./projects/p19_3.jpeg" alt="Gorky Park Festival" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11: SEVDALIZA -->
+    <div class="project">
+      <div class="project-cover">
+        <img src="./projects/p20_1.jpeg" alt="Sevdaliza Production" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">11</p>
+            <h2 class="project-title">Sevdaliza</h2>
+          </div>
+          <span class="project-type-tag">Site-Specific Production</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">Managing a multinational team to deliver a complex site-specific production for over 1,500 distinguished guests — business leaders, cultural figures, international diplomats, and artists from more than 10 countries. Full custom build-out and seamless on-site integration. Client: NDA.</p>
+              <p class="project-client-line">1,500+ guests · 10+ countries represented</p>
+            </div>
+            <div><p class="project-year-detail">St. Petersburg, Russia · 2018–2019</p></div>
+          </div>
+          <div class="photos-full" style="margin-bottom:2px;">
+            <img src="./projects/p20_1.jpeg" alt="Sevdaliza Production" loading="lazy">
+          </div>
+          <div class="photos-grid-3">
+            <div class="photo-cell"><img src="./projects/p20_2.jpeg" alt="Sevdaliza Production" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p20_3.jpeg" alt="Sevdaliza Production" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p20_4.jpeg" alt="Sevdaliza Production" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12: KIA QUORIS -->
+    <div class="project">
+      <div class="project-cover">
+        <img src="./projects/p21_1.jpeg" alt="Kia Quoris Launch" loading="lazy">
+        <div class="project-cover-overlay"></div>
+        <div class="project-cover-meta">
+          <div>
+            <p class="project-num">12</p>
+            <h2 class="project-title">Kia Quoris<br>Launch</h2>
+          </div>
+          <span class="project-type-tag">Automotive Launch</span>
+        </div>
+        <div class="project-expand-btn">+</div>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-detail">
+            <div>
+              <p class="project-desc">End-to-end production at the Stanislavsky Theatre. Director: Vasily Barkhatov. Starring: Renata Litvinova. Orchestra, choir, and ballet — five cars presented on stage. A theatrical launch at the intersection of automotive and performing arts that treated the car not as a product to be displayed, but as a character in a production.</p>
+              <p class="project-client-line">Client: KIA Motors, PRT</p>
+            </div>
+            <div><p class="project-year-detail">Moscow, Russia · 2013</p></div>
+          </div>
+          <div class="photos-grid-2" style="margin-bottom:2px;">
+            <div class="photo-cell wide"><img src="./projects/p21_1.jpeg" alt="Kia Quoris Launch" loading="lazy"></div>
+            <div class="photo-cell wide"><img src="./projects/p21_2.jpeg" alt="Kia Quoris Launch" loading="lazy"></div>
+          </div>
+          <div class="photos-grid-4">
+            <div class="photo-cell"><img src="./projects/p21_3.jpeg" alt="Kia Quoris Launch" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p21_4.jpeg" alt="Kia Quoris Launch" loading="lazy"></div>
+            <div class="photo-cell"><img src="./projects/p21_5.jpeg" alt="Kia Quoris Launch" loading="lazy" style="object-position:top;"></div>
+            <div class="photo-cell"><img src="./projects/p21_6.jpeg" alt="Kia Quoris Launch" loading="lazy" style="object-position:top;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /projects-grid -->
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="./index.html" class="footer-logo"><img src="./logo.svg" alt="RUNO" height="22" style="filter:invert(1);"></a>
+    <div>
+      <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:12px;">Ready to start a conversation?</p>
+      <a href="mailto:hello@weareruno.com" class="footer-cta">Discuss Your Brief →</a>
+    </div>
+    <span class="footer-copy">© 2026 Okros Runo LLC · Tbilisi</span>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.style.borderBottomColor = window.scrollY > 20 ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.07)';
+    }, { passive: true });
+
+    function openProject(project) {
+      const body = project.querySelector('.project-body');
+      project.classList.add('open');
+      body.style.height = body.scrollHeight + 'px';
+      body.addEventListener('transitionend', () => {
+        if (project.classList.contains('open')) body.style.height = 'auto';
+      }, { once: true });
+    }
+
+    function closeProject(project) {
+      const body = project.querySelector('.project-body');
+      body.style.height = body.scrollHeight + 'px';
+      requestAnimationFrame(() => requestAnimationFrame(() => { body.style.height = '0'; }));
+      project.classList.remove('open');
+    }
+
+    document.querySelectorAll('.project').forEach(project => {
+      project.addEventListener('click', e => {
+        if (project.classList.contains('open')) {
+          closeProject(project);
+        } else {
+          openProject(project);
+        }
+      });
+    });
+
+    // Auto-open on hash
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      const target = document.getElementById(hash);
+      if (target && target.classList.contains('project')) {
+        openProject(target);
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
+    }
+  </script>
+</body>
+</html>
