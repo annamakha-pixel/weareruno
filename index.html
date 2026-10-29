@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RUNO — Cultural Production Agency, Tbilisi</title>
-  <meta name="description" content="RUNO is a cultural production agency based in Tbilisi. We produce events that change something — for luxury brands, diplomatic receptions, city-scale festivals, and corporate offsites." />
+  <title>RUNO - Cultural Production, Tbilisi</title>
+  <meta name="description" content="RUNO is a cultural production agency based in Tbilisi. Brand experiences, diplomatic receptions, festivals and corporate offsites." />
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
   <style>
@@ -1360,19 +1360,61 @@
       .marquee-track { animation: none; }
       html { scroll-behavior: auto; }
     }
+
+    /* ===== REDESIGN 2026-10 ===== */
+    .intro { position: relative; height: 100vh; overflow: hidden; background: #000; cursor: pointer; }
+    .intro video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+    .intro-shade { position: absolute; inset: 0; background: rgba(0,0,0,.28); }
+    .intro-ticker { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); overflow: hidden; }
+    .intro-ticker-track { display: flex; width: max-content; animation: intro-run 70s linear infinite; }
+    .intro-ticker-track span { white-space: nowrap; padding-right: 8vw; color: #fff; font-family: 'Satoshi', sans-serif; font-weight: 500; font-size: clamp(28px, 5.2vw, 76px); letter-spacing: -0.02em; }
+    @keyframes intro-run { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .intro-enter { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; opacity: .8; }
+    @media (prefers-reduced-motion: reduce) { .intro-ticker-track { animation: none; } .intro-ticker-track span { white-space: normal; } }
+    nav#main-nav.on-intro { opacity: 0; pointer-events: none; }
+    nav#main-nav { transition: opacity 300ms ease, background 200ms ease; }
+    .hero-orange-bottom--min { display: block; margin-top: 48px; }
+
+    .about-min { padding: 120px 40px; max-width: 980px; }
+    .about-min p { font-size: clamp(22px, 2.6vw, 34px); line-height: 1.3; font-weight: 500; letter-spacing: -0.01em; }
+
+    .work-min { padding: 40px 40px 120px; }
+    .work-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 32px; }
+    .work-h { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .work-all { font-size: 13px; color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 24px; }
+    .work-item { color: inherit; text-decoration: none; display: block; }
+    .work-photo { aspect-ratio: 3/2; overflow: hidden; background: #111; margin-bottom: 14px; }
+    .work-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 500ms ease; }
+    .work-item:hover .work-photo img { transform: scale(1.03); }
+    .work-client { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .work-title, .work-place { font-size: 13px; line-height: 1.5; }
+    .work-place { opacity: .5; }
+
+    .forge-min { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: end; padding: 0 40px 120px; color: inherit; text-decoration: none; }
+    .forge-min img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
+    .forge-min p { font-size: 15px; line-height: 1.5; max-width: 360px; }
+    .forge-min b { display: block; font-size: 13px; letter-spacing: .12em; margin-bottom: 6px; }
+
+    .vcontact { background: #000; }
+    @media (max-width: 760px) {
+      .about-min { padding: 72px 24px; }
+      .work-min { padding: 24px 24px 72px; }
+      .work-grid { grid-template-columns: 1fr; gap: 40px; }
+      .forge-min { grid-template-columns: 1fr; padding: 0 24px 72px; }
+    }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav id="main-nav">
-    <a href="#" class="nav-logo"><img src="./logo.svg" alt="RUNO" height="22"></a>
+  <nav id="main-nav" class="on-intro">
+    <a href="#home" class="nav-logo"><img src="./logo.svg" alt="RUNO" height="22"></a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
       <li><a href="./forge.html">Forge</a></li>
+      <li><a href="./offsite-page.html">Offsite</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="./offsite-page.html" class="nav-cta">Offsite →</a></li>
     </ul>
     <button class="nav-burger" aria-label="Menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
@@ -1381,11 +1423,23 @@
 
   <div class="mobile-menu" id="mobile-menu">
     <a href="#work" onclick="toggleMenu()">Work</a>
-    <a href="#about" onclick="toggleMenu()">About</a>
-    <a href="#team" onclick="toggleMenu()">Team</a>
+    <a href="./forge.html">Forge</a>
+    <a href="./offsite-page.html">Offsite</a>
     <a href="#contact" onclick="toggleMenu()">Contact</a>
-    <a href="./offsite-page.html" class="mob-cta">Offsite Programme →</a>
   </div>
+
+  <!-- INTRO -->
+  <section class="intro" id="intro" onclick="document.getElementById('home').scrollIntoView({behavior:'smooth'})">
+    <video id="sr-video" src="./showreel.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
+    <div class="intro-shade"></div>
+    <div class="intro-ticker" aria-label="In ancient mythology, the Argonauts sailed to Colchis seeking the Golden Fleece, Runo. They came for treasure and discovered something greater: the transformative power that emerges where different worlds converge. This land, where continents meet, has always been a place of intersection.">
+      <div class="intro-ticker-track" aria-hidden="true">
+        <span>In ancient mythology, the Argonauts sailed to Colchis seeking the Golden Fleece, Runō. They came for treasure and discovered something greater: the transformative power that emerges where different worlds converge. This land, where continents meet, has always been a place of intersection.</span>
+        <span>In ancient mythology, the Argonauts sailed to Colchis seeking the Golden Fleece, Runō. They came for treasure and discovered something greater: the transformative power that emerges where different worlds converge. This land, where continents meet, has always been a place of intersection.</span>
+      </div>
+    </div>
+    <span class="intro-enter">Enter</span>
+  </section>
 
   <!-- HERO -->
   <div class="hero-orange" id="home">
@@ -1398,364 +1452,74 @@
       For New Partnerships<br>
       And Opportunities<span class="ast">*</span>
     </h1>
-    <div class="hero-orange-bottom reveal reveal-d2 visible">
-      <p class="hero-orange-sub">We produce events that change something — in how a brand is understood, in how a team thinks about itself, in what a guest carries out of the room.</p>
-      <div class="hero-orange-stats">
-        <div class="hero-stat">
-          <span class="hero-stat-num">100+</span>
-          <span class="hero-stat-label">Commissions</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">1M+</span>
-          <span class="hero-stat-label">Peak attendance</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">20+</span>
-          <span class="hero-stat-label">Years experience</span>
-        </div>
-      </div>
+    <div class="hero-orange-bottom hero-orange-bottom--min reveal reveal-d2 visible">
       <a href="#work" class="hero-orange-cta">View Our Work →</a>
     </div>
   </div>
 
-  <!-- MARQUEE -->
-  <div class="marquee-bar" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="marquee-item"><b>Chanel</b></span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">Tbilisi, 2025</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item"><b>State of Qatar</b></span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">St. Petersburg</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item"><b>Gorky Park 90th Anniversary</b></span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">1M+ visitors</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item"><b>Chanel</b></span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">Tbilisi, 2025</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item"><b>State of Qatar</b></span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">St. Petersburg</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item"><b>Gorky Park 90th Anniversary</b></span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">1M+ visitors</span>
-      <span class="marquee-item">·</span>
-    </div>
-  </div>
+  <!-- ABOUT -->
+  <section class="about-min" id="about">
+    <p>RUNO is a cultural production studio in Tbilisi. We apply the logic of cultural programming to commercial briefs: before anything is specified, we ask what the guest should understand or feel a year from now.</p>
+  </section>
 
-  <!-- MANIFESTO -->
-  <section class="manifesto-section" id="about">
-    <div class="manifesto-left reveal">
-      <p class="manifesto-eyebrow">Who We Are</p>
-      <h2 class="manifesto-headline">We<br>Know<br>The Way.</h2>
+  <!-- WORK -->
+  <section class="work-min" id="work">
+    <div class="work-head">
+      <h2 class="work-h">Work</h2>
+      <a href="./projects.html" class="work-all">All projects</a>
     </div>
-    <div class="manifesto-right reveal reveal-d1">
-      <div class="manifesto-body">
-        <p>RUNO is a <strong>cultural production studio</strong> based in Tbilisi. We apply the logic of <strong>cultural programming to commercial briefs</strong> — before anything is specified, we ask what the guest should understand or feel <strong>a year from now.</strong></p>
-        <p>In ancient mythology, the Argonauts sailed to Colchis seeking the <strong>Golden Fleece — "Runō."</strong> They came for treasure but discovered something greater: <strong>the transformative power that emerges where different worlds converge.</strong> This land, where continents meet, has always been a place of intersection.</p>
-        <p>We are based in <strong>Tbilisi</strong> and work worldwide.</p>
-      </div>
-      <div class="manifesto-stats">
-        <div class="mstat reveal reveal-d1">
-          <div class="mstat-num">100+</div>
-          <div class="mstat-desc">Commissions<br>completed</div>
-        </div>
-        <div class="mstat reveal reveal-d2">
-          <div class="mstat-num">1M+</div>
-          <div class="mstat-desc">Peak attendance<br>single event</div>
-        </div>
-        <div class="mstat reveal reveal-d3">
-          <div class="mstat-num">20+</div>
-          <div class="mstat-desc">Years of<br>combined experience</div>
-        </div>
-      </div>
+    <div class="work-grid">
+      <a href="./projects.html" class="work-item">
+        <div class="work-photo"><img src="./projects/p10_1.jpeg" alt="Qatar" loading="lazy"></div>
+        <p class="work-client">State of Qatar</p>
+        <p class="work-title">Official Reception</p>
+        <p class="work-place">St. Petersburg, 2021</p>
+      </a>
+      <a href="./projects.html" class="work-item">
+        <div class="work-photo"><img src="./projects/chanel_logo_pink.jpg" alt="Chanel" loading="lazy"></div>
+        <p class="work-client">Chanel</p>
+        <p class="work-title">Chance Eau Splendide</p>
+        <p class="work-place">Tbilisi, 2025</p>
+      </a>
+      <a href="./projects.html" class="work-item">
+        <div class="work-photo"><img src="./projects/p15_5.jpeg" alt="Hurts" loading="lazy" style="object-position: top;"></div>
+        <p class="work-client">Hurts</p>
+        <p class="work-title">Tbilisi Debut</p>
+        <p class="work-place">Tbilisi, 2023</p>
+      </a>
+      <a href="./projects.html" class="work-item">
+        <div class="work-photo"><img src="./projects/p19_2.jpeg" alt="Gorky Park" loading="lazy"></div>
+        <p class="work-client">Gorky Park</p>
+        <p class="work-title">90th Anniversary</p>
+        <p class="work-place">Moscow, 2018</p>
+      </a>
+      <a href="./projects.html" class="work-item">
+        <div class="work-photo"><img src="./projects/p18_4.jpeg" alt="Opergrouppa" loading="lazy"></div>
+        <p class="work-client">Opergrouppa</p>
+        <p class="work-title">Opera Festival</p>
+        <p class="work-place">Moscow, 2011-2015</p>
+      </a>
+      <a href="./projects.html" class="work-item">
+        <div class="work-photo"><img src="./projects/p21_1.jpeg" alt="Kia" loading="lazy"></div>
+        <p class="work-client">Kia</p>
+        <p class="work-title">Quoris Launch</p>
+        <p class="work-place">Moscow, 2013</p>
+      </a>
     </div>
   </section>
 
-  <!-- DISCIPLINES -->
-  <div class="disciplines-section">
-
-    <!-- 01: HOSPITALITY -->
-    <div class="disc-card d-hosp">
-      <div class="disc-inner">
-        <div class="disc-front text-top">
-          <div class="disc-headline">
-            <span class="disc-we-are">We Are</span>
-            <span class="disc-name">Hospi&shy;tality</span>
-          </div>
-          <div class="disc-symbol-wrap">
-            <img src="./qvevri.svg" class="disc-icon" alt="">
-          </div>
-        </div>
-        <div class="disc-back">
-          <p class="disc-back-label">01 — Hospitality</p>
-          <ul class="disc-list">
-            <li>Guest experience and VVIP management</li>
-            <li>Diplomatic protocol and delegation coordination</li>
-            <li>Venue and travel logistics</li>
-            <li>Concierge and hosting teams</li>
-            <li>Cultural etiquette trained staff</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 02: CULTURE -->
-    <div class="disc-card d-cult">
-      <div class="disc-inner">
-        <div class="disc-front text-bottom">
-          <div class="disc-symbol-wrap">
-            <img src="./fleece2.svg" class="disc-icon" alt="">
-          </div>
-          <div class="disc-headline">
-            <span class="disc-we-are">We Are</span>
-            <span class="disc-name">Culture</span>
-          </div>
-        </div>
-        <div class="disc-back">
-          <p class="disc-back-label">02 — Culture</p>
-          <ul class="disc-list">
-            <li>Creative concepts and event storytelling</li>
-            <li>Artistic direction and scenography</li>
-            <li>Brand experience design</li>
-            <li>Cultural and aesthetic research</li>
-            <li>Curated entertainment programming</li>
-            <li>VVIP and stakeholder engagement</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 03: PRODUCTION -->
-    <div class="disc-card d-prod">
-      <div class="disc-inner">
-        <div class="disc-front text-top">
-          <div class="disc-headline">
-            <span class="disc-we-are">We Are</span>
-            <span class="disc-name">Produc&shy;tion</span>
-          </div>
-          <div class="disc-symbol-wrap">
-            <img src="./horse.svg" class="disc-icon" alt="">
-          </div>
-        </div>
-        <div class="disc-back">
-          <p class="disc-back-label">03 — Production</p>
-          <ul class="disc-list">
-            <li>Full-scale event production and technical management</li>
-            <li>Stage, sound, and light design</li>
-            <li>Spatial decoration and set construction</li>
-            <li>On-site coordination and logistics</li>
-            <li>Global supplier network for equipment and crew</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 04: COMMUNICATION -->
-    <div class="disc-card d-comm">
-      <div class="disc-inner">
-        <div class="disc-front text-bottom">
-          <div class="disc-symbol-wrap">
-            <img src="./bird.svg" class="disc-icon" alt="">
-          </div>
-          <div class="disc-headline">
-            <span class="disc-we-are">We Are</span>
-            <span class="disc-name">Commu&shy;nication</span>
-          </div>
-        </div>
-        <div class="disc-back">
-          <p class="disc-back-label">04 — Communication</p>
-          <ul class="disc-list">
-            <li>Communication strategy and PR</li>
-            <li>Copywriting, media releases, and storytelling</li>
-            <li>Photo and video content production</li>
-            <li>Social media coordination and marketing support</li>
-            <li>Press partnerships, media and influencer relations</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- EDITORIAL MOSAIC -->
-  <div class="mosaic">
-    <a href="./projects.html#qatar" class="mosaic-cell span2">
-      <img src="./projects/p10_qatar_main.jpeg" alt="Qatar Reception St. Petersburg" loading="lazy" style="min-height:420px;">
-      <div class="mosaic-photo-overlay">
-        <p class="overlay-client">Official Reception of Qatar</p>
-        <p class="overlay-meta">Diplomatic Reception · St. Petersburg · 2021</p>
-      </div>
-    </a>
-    <div class="mosaic-text-cell orange reveal">
-      <p class="mcell-label">Production</p>
-      <p class="mcell-big">500<br>Guests</p>
-      <p class="mcell-body">Official Reception of Qatar, St. Petersburg. Catering by the Emir's personal chef.</p>
-    </div>
-
-    <div class="mosaic-text-cell baby-pink reveal">
-      <p class="mcell-label">Scale</p>
-      <p class="mcell-big">1M+</p>
-      <p class="mcell-body">Gorky Park 90th Anniversary — nine days, international headliners, full festival production.</p>
-    </div>
-    <a href="./projects.html#hurts" class="mosaic-cell">
-      <img src="./projects/p15_5.jpeg" alt="Hurts Tbilisi" loading="lazy" style="min-height:380px; object-position: top;">
-      <div class="mosaic-photo-overlay">
-        <p class="overlay-client">Hurts — Tbilisi Debut</p>
-        <p class="overlay-meta">Concert · Georgia · 2023</p>
-      </div>
-    </a>
-    <a href="./forge.html" class="mosaic-text-cell stone reveal reveal-d1">
-      <p class="mcell-label">In-house</p>
-      <p class="mcell-big">FORGE</p>
-      <p class="mcell-body">Our fabrication workshop. Custom tables, installations, set elements — built, not subcontracted.</p>
-    </a>
-
-    <a href="./projects.html#opergrouppa" class="mosaic-cell">
-      <img src="./projects/p18_4.jpeg" alt="Opergrouppa Opera Festival" loading="lazy" style="min-height:380px;">
-      <div class="mosaic-photo-overlay">
-        <p class="overlay-client">Opergrouppa Opera Festival</p>
-        <p class="overlay-meta">Cultural Festival · Moscow · 2011–2015</p>
-      </div>
-    </a>
-    <div class="mosaic-text-cell sky reveal reveal-d2">
-      <p class="mcell-label">Clients</p>
-      <p class="mcell-big">Chanel.<br>Qatar.<br>Gorky Park.</p>
-      <p class="mcell-body">And the productions that never get photographed — the ones where protocol is the whole brief.</p>
-    </div>
-    <a href="./projects.html#gorky" class="mosaic-cell">
-      <img src="./projects/p19_2.jpeg" alt="Gorky Park 90th Anniversary" loading="lazy" style="min-height:380px;">
-      <div class="mosaic-photo-overlay">
-        <p class="overlay-client">Gorky Park 90th Anniversary</p>
-        <p class="overlay-meta">City-Scale Festival · Moscow · 2018</p>
-      </div>
-    </a>
-  </div>
-
-  <!-- PROJECTS -->
-  <section class="projects-section" id="work">
-    <div class="projects-header reveal">
-      <div>
-        <p class="projects-count">6 commissions</p>
-        <h2 class="section-title">Selected<br>Work</h2>
-      </div>
-      <a href="./projects.html" class="projects-view-all">View All Projects →</a>
-    </div>
-
-    <div class="projects-scroll-wrap" id="projScroll">
-      <div class="projects-scroll-track">
-
-        <a href="./projects.html" class="proj-card reveal">
-          <div class="proj-card-photo"><img src="./projects/p10_1.jpeg" alt="Qatar Reception" loading="lazy"></div>
-          <div class="proj-card-body">
-            <div class="proj-card-meta"><span class="proj-card-type">Diplomatic Reception</span><span class="proj-card-year">2021</span></div>
-            <h3 class="proj-card-name">Official Reception of Qatar</h3>
-          </div>
-        </a>
-
-        <a href="./projects.html" class="proj-card reveal reveal-d1">
-          <div class="proj-card-photo"><img src="./projects/chanel_logo_pink.jpg" alt="Chanel" loading="lazy"></div>
-          <div class="proj-card-body">
-            <div class="proj-card-meta"><span class="proj-card-type">Brand Experience</span><span class="proj-card-year">2025</span></div>
-            <h3 class="proj-card-name">Chanel — Chance Eau Splendide</h3>
-          </div>
-        </a>
-
-        <a href="./projects.html" class="proj-card reveal reveal-d2">
-          <div class="proj-card-photo"><img src="./projects/p15_5.jpeg" alt="Hurts" loading="lazy" style="object-position: top;"></div>
-          <div class="proj-card-body">
-            <div class="proj-card-meta"><span class="proj-card-type">Concert Production</span><span class="proj-card-year">2023</span></div>
-            <h3 class="proj-card-name">Hurts — Tbilisi Debut</h3>
-          </div>
-        </a>
-
-        <a href="./projects.html" class="proj-card reveal reveal-d2">
-          <div class="proj-card-photo"><img src="./projects/p19_2.jpeg" alt="Gorky Park" loading="lazy"></div>
-          <div class="proj-card-body">
-            <div class="proj-card-meta"><span class="proj-card-type">City-Scale Festival</span><span class="proj-card-year">2018</span></div>
-            <h3 class="proj-card-name">Gorky Park 90th Anniversary</h3>
-          </div>
-        </a>
-
-        <a href="./projects.html" class="proj-card reveal reveal-d1">
-          <div class="proj-card-photo"><img src="./projects/p18_4.jpeg" alt="Opergrouppa" loading="lazy"></div>
-          <div class="proj-card-body">
-            <div class="proj-card-meta"><span class="proj-card-type">Cultural Festival</span><span class="proj-card-year">2011–15</span></div>
-            <h3 class="proj-card-name">Opergrouppa Opera Festival</h3>
-          </div>
-        </a>
-
-        <a href="./projects.html" class="proj-card reveal reveal-d2">
-          <div class="proj-card-photo"><img src="./projects/p21_1.jpeg" alt="Kia" loading="lazy"></div>
-          <div class="proj-card-body">
-            <div class="proj-card-meta"><span class="proj-card-type">Automotive Launch</span><span class="proj-card-year">2013</span></div>
-            <h3 class="proj-card-name">Kia Quoris Launch</h3>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- NUMBERS -->
-  <div class="numbers-section">
-    <div class="number-cell reveal">
-      <div class="number-big">500</div>
-      <p class="number-label">Guests at the official reception of the State of Qatar — diplomats, royal advisors, under UN-level security protocol.</p>
-    </div>
-    <div class="number-cell reveal reveal-d1">
-      <div class="number-big">1M+</div>
-      <p class="number-label">Peak attendance at Gorky Park 90th Anniversary Festival — nine days, international headliners, city-scale production.</p>
-    </div>
-    <div class="number-cell reveal reveal-d2">
-      <div class="number-big">100+</div>
-      <p class="number-label">Commissions completed — from opera at the Bolshoi and city festivals to brand launches and diplomatic receptions.</p>
-    </div>
-    <div class="number-cell reveal reveal-d3">
-      <div class="number-big">300m²</div>
-      <p class="number-label">FORGE workshop — metalwork, CNC, painting shop, assembly. Built in-house, not subcontracted.</p>
-    </div>
-  </div>
-
-  <!-- TEAM -->
-  <section class="team-section" id="team">
-    <div class="team-left reveal">
-      <p class="team-eyebrow">The People</p>
-      <h2 class="team-title">The Team</h2>
-      <div class="team-desc">
-        <p>RUNO operates on a permanent core and a wide network of specialists assembled per commission — sound and lighting engineers, scenographers, translators, protocol officers, caterers, PR managers, and venue coordinators across Georgia and Europe.</p>
-        <p>The core team has worked together since 2018. The extended network has been built over twenty years of commissions, from major opera houses to city-scale festivals.</p>
-      </div>
-    </div>
-    <div class="team-right reveal reveal-d1">
-      <div class="team-person">
-        <img src="./projects/p23_1.jpeg" alt="Anna Makhova" class="team-avatar">
-        <div>
-          <p class="team-person-name">Anna Makhova</p>
-          <p class="team-person-role">Creative Director &amp; Co-Founder</p>
-        </div>
-      </div>
-      <div class="team-person">
-        <img src="./projects/p23_2.jpeg" alt="Julia Knos" class="team-avatar">
-        <div>
-          <p class="team-person-name">Julia Knos</p>
-          <p class="team-person-role">Production Director &amp; Co-Founder</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- FORGE -->
+  <a href="./forge.html" class="forge-min">
+    <img src="./forge/p01_1.jpeg" alt="FORGE workshop" loading="lazy">
+    <p><b>FORGE</b> Our workshop in Tbilisi. Sets, furniture and installations, built in-house.</p>
+  </a>
 
   <!-- OFFSITE CALLOUT -->
   <section class="offsite-callout">
     <div class="reveal">
-      <p class="offsite-eyebrow">Product</p>
+      <p class="offsite-eyebrow">Offsite</p>
       <h2 class="offsite-title">The 4-Day Corporate Offsite in Georgia</h2>
-      <p class="offsite-sub">Full-service corporate offsite — venue, accommodation, meals, transport, working sessions, and six discipline sessions with Georgia-based practitioners. From $900 per person, all-inclusive. 30 to 600 people.</p>
+      <p class="offsite-sub">Four days in Georgia for teams of 30 to 600 people, from $900 per person.</p>
     </div>
     <div class="reveal reveal-d1">
       <a href="./offsite-page.html" class="btn-neon">See the Programme →</a>
@@ -1764,7 +1528,6 @@
 
   <!-- VIDEO CONTACT FOOTER -->
   <div class="vcontact" id="contact">
-    <video id="sr-video" src="./showreel.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
     <div class="vcontact-overlay">
       <div class="vc-top">
         <a href="#" class="footer-logo"><img src="./logo.svg" alt="RUNO" height="22" style="filter:invert(1);display:block;"></a>
@@ -1783,10 +1546,6 @@
             <a href="mailto:anna@weareruno.com" class="vc-contact-val">anna@weareruno.com</a>
           </div>
           <div class="vc-contact-item">
-            <span class="vc-contact-label">Julia Knos</span>
-            <a href="mailto:julia@weareruno.com" class="vc-contact-val">julia@weareruno.com</a>
-          </div>
-          <div class="vc-contact-item">
             <span class="vc-contact-label">Instagram</span>
             <a href="https://instagram.com/weareruno" class="vc-contact-val" target="_blank" rel="noopener">@weareruno</a>
           </div>
@@ -1797,7 +1556,7 @@
         </div>
       </div>
       <div class="vc-bottom">
-        <span class="vc-copy">© 2026 Okros Runo LLC · Tbilisi · All rights reserved</span>
+        <span class="vc-copy">© 2026 Okros Runo LLC</span>
         <span class="vc-copy">weareruno.com</span>
       </div>
     </div>
@@ -1816,21 +1575,15 @@
     // Nav solid on scroll
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
-      nav.classList.toggle('solid', window.scrollY > 60);
+      const introH = document.getElementById('intro').offsetHeight;
+      nav.classList.toggle('on-intro', window.scrollY < introH - 80);
+      nav.classList.toggle('solid', window.scrollY > introH);
     }, { passive: true });
 
     // Mobile menu
     function toggleMenu() {
       document.getElementById('mobile-menu').classList.toggle('open');
     }
-
-    // Drag-to-scroll projects
-    const scroller = document.getElementById('projScroll');
-    let isDown = false, startX, scrollLeft;
-    scroller.addEventListener('mousedown', e => { isDown = true; scroller.classList.add('dragging'); startX = e.pageX - scroller.offsetLeft; scrollLeft = scroller.scrollLeft; });
-    scroller.addEventListener('mouseleave', () => { isDown = false; scroller.classList.remove('dragging'); });
-    scroller.addEventListener('mouseup', () => { isDown = false; scroller.classList.remove('dragging'); });
-    scroller.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - scroller.offsetLeft; scroller.scrollLeft = scrollLeft - (x - startX) * 1.5; });
 
     // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
