@@ -1,1 +1,16 @@
 .vercel
+.DS_Store
+
+# Internal - never publish (stay local only)
+investor.html
+offsite-presentation.html
+research-slides.html
+website-prototype.html
+generate_tov_pdf.py
+CLAUDE.md
+.agents/
+.claude/
+docs/
+instagram/
+offsite/pdf_imgs/
+.git-credentials
