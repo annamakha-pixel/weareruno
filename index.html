@@ -1397,6 +1397,8 @@
     .forge-min b { display: block; font-size: 13px; letter-spacing: .12em; margin-bottom: 6px; }
 
     .vcontact { background: #000; }
+    .nav-cta-mob { display: none; }
+    @media (max-width: 1100px) { .nav-cta-mob { display: inline-block; margin-left: auto; margin-right: 18px; padding: 8px 14px; } }
     @media (max-width: 760px) {
       .about-min { padding: 72px 24px; }
       .work-min { padding: 24px 24px 72px; }
@@ -1413,9 +1415,10 @@
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="./forge.html">Forge</a></li>
-      <li><a href="./offsite-page.html">Offsite</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="./offsite-page.html" class="nav-cta">Corporate Offsite →</a></li>
     </ul>
+    <a href="./offsite-page.html" class="nav-cta nav-cta-mob">Offsite →</a>
     <button class="nav-burger" aria-label="Menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
@@ -1424,8 +1427,8 @@
   <div class="mobile-menu" id="mobile-menu">
     <a href="#work" onclick="toggleMenu()">Work</a>
     <a href="./forge.html">Forge</a>
-    <a href="./offsite-page.html">Offsite</a>
     <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a href="./offsite-page.html" class="mob-cta">Corporate Offsite →</a>
   </div>
 
   <!-- INTRO -->
@@ -1525,18 +1528,6 @@
     <img src="./forge/p01_1.jpeg" alt="FORGE workshop" loading="lazy">
     <p><b>FORGE</b> Our workshop in Tbilisi. Sets, furniture and installations, built in-house.</p>
   </a>
-
-  <!-- OFFSITE CALLOUT -->
-  <section class="offsite-callout">
-    <div class="reveal">
-      <p class="offsite-eyebrow">Offsite</p>
-      <h2 class="offsite-title">The 4-Day Corporate Offsite in Georgia</h2>
-      <p class="offsite-sub">Four days in Georgia for teams of 30 to 600 people, from $900 per person.</p>
-    </div>
-    <div class="reveal reveal-d1">
-      <a href="./offsite-page.html" class="btn-neon">See the Programme →</a>
-    </div>
-  </section>
 
   <!-- VIDEO CONTACT FOOTER -->
   <div class="vcontact" id="contact">
