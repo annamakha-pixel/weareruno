@@ -6,7 +6,7 @@
   <title>RUNO Offsite - Corporate Offsite in Georgia</title>
   <meta name="description" content="Corporate offsites in Georgia for teams of 30 to 600: venue, accommodation, meals, transfers, working sessions, and art and sport sessions with Tbilisi practitioners. From $900 per person." />
   <link rel="preconnect" href="https://api.fontshare.com">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900,501,901&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
   <style>
@@ -55,7 +55,7 @@
     /* INCLUDED */
     .incs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
     .inc { padding: 24px 26px 32px; min-height: 280px; display: flex; flex-direction: column; }
-    .inc.lav { background: var(--lav); } .inc.neon { background: var(--neon); } .inc.powder { background: #E9DED8; }
+    .inc.lav { background: var(--lav); } .inc.neon { background: var(--neon); } .inc.powder { background: #BFBDA8; }
     .inc .n { font-size: 12px; font-weight: 700; letter-spacing: .12em; }
     .inc h3 { margin-top: auto; font-size: clamp(24px, 2.4vw, 36px); font-weight: 900; letter-spacing: -0.04em; text-transform: uppercase; line-height: 1; margin-bottom: 14px; }
     .inc p { font-size: 15px; line-height: 1.5; color: rgba(0,0,0,.7); max-width: 34ch; }
@@ -142,10 +142,12 @@
     .faq .src { font-size: 12px; color: var(--mute); margin-top: 10px; }
 
     /* CONTACT + FOOTER */
-    .contact { background: #000; color: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+    .contact { background: #FB4827; color: #000; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
     .contact h2 { font-size: clamp(48px, 6vw, 96px); font-weight: 900; letter-spacing: -0.06em; text-transform: uppercase; line-height: .9; }
-    .contact .c-row { padding: 18px 0; border-top: 1px solid rgba(255,255,255,.15); display: flex; justify-content: space-between; gap: 16px; font-size: 16px; }
-    .contact .c-row span { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .5; }
+    .contact .c-row { padding: 18px 0; border-top: 1px solid rgba(0,0,0,.25); display: flex; justify-content: space-between; gap: 16px; font-size: 16px; }
+    .contact .c-row span { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .6; }
+    .contact .btn { background: #000; color: #fff; border-color: #000; }
+    .contact .label { color: #000; opacity: .7; }
     .contact .c-row a { text-decoration: none; }
     .contact .btn { margin-top: 32px; }
     footer { background: #000; color: rgba(255,255,255,.45); padding: 32px var(--pad) 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px; border-top: 1px solid rgba(255,255,255,.1); font-size: 12px; }
@@ -174,15 +176,23 @@
     @media (min-width: 901px) and (max-width: 1200px) { .acts { grid-template-columns: repeat(3, 1fr); } .incs { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 520px) { .venues .grid3 { grid-template-columns: 1fr; } }
 
-    /* ===== BRAND PASS (brandbook: mono + grain imagery, colour blocks, symbols, italic Satoshi) ===== */
-    .contact h2, .inc h3, .act h4, .big, .georgia .facts b { font-style: italic; font-weight: 900; }
+    /* ===== BRAND PASS (brandbook: mono + grain imagery, colour blocks, symbols, Satoshi upright) ===== */
+    .contact h2, .inc h3, .act h4, .big, .georgia .facts b { font-style: normal; font-weight: 900; }
     .dot { display: inline-block; width: .5em; height: .5em; border-radius: 50%; background: currentColor; vertical-align: .12em; margin: 0 .04em; }
     .ast { color: var(--neon); font-style: normal; vertical-align: .35em; font-size: .6em; margin-left: .04em; }
     .contact h2 .ast { color: var(--neon); }
-    .inc { position: relative; overflow: hidden; }
-    .inc .sym { position: absolute; right: 18px; top: 18px; width: 96px; height: 96px; object-fit: contain; filter: brightness(0) invert(1); opacity: .95; }
-    .inc .sym-ast { width: auto; height: auto; filter: none; color: #fff; font-size: 120px; line-height: .8; font-weight: 900; }
-    .inc h3 { text-transform: uppercase; }
+    /* Included: brandbook symbol usage - huge, cropped by the block edge */
+    .inc { position: relative; overflow: hidden; min-height: clamp(460px, 40vw, 600px); padding: 26px 28px; justify-content: flex-start; isolation: isolate; }
+    .inc .n, .inc h3, .inc p { position: relative; z-index: 2; }
+    .inc h3 { margin-top: 18px; font-size: clamp(34px, 3.6vw, 56px); line-height: .92; letter-spacing: -0.045em; text-transform: uppercase; max-width: 9ch; }
+    .inc p { margin-top: 12px; font-size: 15px; color: rgba(0,0,0,.75); max-width: 30ch; }
+    .inc .sym { position: absolute; z-index: 1; width: 108%; height: auto; max-height: none; filter: brightness(0) invert(1); opacity: 1; pointer-events: none; }
+    .inc:nth-child(1) .sym { right: -30%; bottom: -24%; width: 100%; }
+    .inc:nth-child(2) .sym { left: 22%; bottom: -14%; width: 96%; }
+    .inc:nth-child(3) .sym { right: -26%; bottom: -10%; width: 112%; }
+    .inc:nth-child(4) .sym { right: -22%; bottom: -30%; width: 98%; }
+    .inc:nth-child(5) .sym { left: 16%; bottom: -18%; width: 104%; }
+    .inc:nth-child(6) .sym { right: -48%; bottom: -54%; width: 116%; }
     .act .ph { position: relative; }
     .act .ph img { filter: grayscale(1) contrast(1.1); }
     .act:hover .ph img { filter: grayscale(0) contrast(1); }
@@ -192,7 +202,7 @@
     .price { background: var(--neon); }
     .price .price-small, .incl ul.no li { color: rgba(0,0,0,.55); }
     .incl li { border-top-color: rgba(0,0,0,.2); }
-    @media (max-width: 900px) { .inc .sym { width: 64px; height: 64px; } .inc .sym-ast { font-size: 84px; } }
+    @media (max-width: 900px) { .inc { min-height: 460px; } .inc h3 { font-size: 40px; } }
     .hero h1 { font-family: 'Gloock', serif; font-weight: 400; text-transform: none; letter-spacing: -0.03em; line-height: .9; font-size: clamp(60px, 9vw, 150px); max-width: 11ch; }
   </style>
 </head>
@@ -350,7 +360,7 @@
   <section id="contact" class="contact">
     <div>
       <p class="label" style="opacity:.5;margin-bottom:24px">Contact</p>
-      <h2>Tell us about your team<span class="ast">*</span></h2>
+      <h2>Tell us about your team</h2>
     </div>
     <div>
       <div class="c-row"><span>Email</span><a href="mailto:anna@weareruno.com?subject=Offsite%20enquiry">anna@weareruno.com</a></div>
