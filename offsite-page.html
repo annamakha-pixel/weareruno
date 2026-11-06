@@ -9,7 +9,7 @@
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --ink: #000; --paper: #F3F2EE; --white: #fff; --neon: #CEFF58; --mute: rgba(0,0,0,.5); --line: rgba(0,0,0,.12); --nav-h: 64px; --pad: 40px; }
+    :root { --ink: #000; --paper: #F3F2EE; --white: #fff; --neon: #CEFF58; --lav: #ABA5E1; --mute: rgba(0,0,0,.5); --line: rgba(0,0,0,.12); --nav-h: 64px; --pad: 40px; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Satoshi', sans-serif; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
     img { display: block; max-width: 100%; }
@@ -56,8 +56,20 @@
     .prog-row p { font-size: 16px; line-height: 1.5; }
 
     /* PRACTICES */
-    .practices { background: #000; color: #fff; }
-    .practices .sec-head p { color: #fff; }
+    .practices { background: var(--paper); }
+    .track-tag { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .track-tag .label { padding: 9px 12px; }
+    .track-tag small { font-size: 14px; color: var(--mute); }
+    .art .label.tag { background: var(--lav); } .sport .label.tag { background: var(--neon); }
+    .acts { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; }
+    .act .txt { padding: 18px 18px 28px; min-height: 170px; }
+    .art .act .txt { background: var(--lav); } .sport .act .txt { background: var(--neon); }
+    .act h4 { font-size: clamp(16px, 1.4vw, 20px); font-weight: 900; letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 10px; }
+    .act p { font-size: 14px; line-height: 1.5; color: rgba(0,0,0,.65); }
+    .act .ph { aspect-ratio: 1/1; overflow: hidden; background: #ddd; }
+    .act .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms ease; }
+    .act:hover .ph img { transform: scale(1.04); }
+    .sport .act { display: flex; flex-direction: column; }
     .track { margin-top: 72px; }
     .track:first-of-type { margin-top: 0; }
     .track-title { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 16px; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.2); }
@@ -125,10 +137,13 @@
       .prog-row { grid-template-columns: 40px 1fr; gap: 8px 16px; }
       .prog-row p { grid-column: 2; }
       .grid3 { grid-template-columns: 1fr 1fr; gap: 32px 14px; }
+      .acts { grid-template-columns: 1fr 1fr; }
+      .act .txt { min-height: 150px; padding: 14px 14px 22px; }
       .facts { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
       .contact { gap: 48px; }
       footer { flex-direction: column; align-items: flex-start; }
     }
+    @media (min-width: 901px) and (max-width: 1200px) { .acts { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 520px) { .venues .grid3 { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -184,27 +199,27 @@
       <p>Twelve disciplines in two tracks. Each group chooses its own.</p>
     </div>
 
-    <div class="track">
-      <div class="track-title"><p class="label">Art</p><p class="label" style="opacity:.5">6 disciplines</p></div>
-      <div class="grid3">
-        <div class="card"><div class="ph"><img src="./offsite/sound.jpeg" alt="Sound" loading="lazy"></div><h4>Sound</h4><p>Modular synthesizers, loops and textures. The session ends with a recorded composition.</p></div>
-        <div class="card"><div class="ph"><img src="./offsite/move.jpeg" alt="Move" loading="lazy"></div><h4>Move</h4><p>Contemporary dance with a choreographer, about how bodies communicate when they move together.</p></div>
-        <div class="card"><div class="ph"><img src="./offsite/sing.jpeg" alt="Sing" loading="lazy"></div><h4>Sing</h4><p>Georgian polyphonic choir, where each person holds a part while the others hold theirs.</p></div>
-        <div class="card"><div class="ph"><img src="./offsite/build.jpeg" alt="Build" loading="lazy"></div><h4>Build</h4><p>Sculpture and object-making in FORGE. Every participant takes something home.</p></div>
-        <div class="card"><div class="ph"><img src="./offsite/see.jpeg" alt="See" loading="lazy"></div><h4>See</h4><p>Photography and film: an assignment, a shoot and an edit.</p></div>
-        <div class="card"><div class="ph"><img src="./offsite/write.jpeg" alt="Write" loading="lazy"></div><h4>Write</h4><p>Poetry or free writing with a Georgian writer, to a set task and time limit, then read aloud.</p></div>
+    <div class="track art">
+      <div class="track-tag"><span class="label tag">Art Track</span><small>Sound · Move · Sing · Build · See · Write</small></div>
+      <div class="acts">
+        <div class="act"><div class="txt"><h4>Sound</h4><p>Modular synthesizers, loops and textures. The session ends with a recorded composition.</p></div><div class="ph"><img src="./offsite/sound.jpeg" alt="Sound" loading="lazy"></div></div>
+        <div class="act"><div class="txt"><h4>Move</h4><p>Contemporary dance with a choreographer, about how bodies communicate when they move together.</p></div><div class="ph"><img src="./offsite/move.jpeg" alt="Move" loading="lazy"></div></div>
+        <div class="act"><div class="txt"><h4>Sing</h4><p>Georgian polyphonic choir, where each person holds a part while the others hold theirs.</p></div><div class="ph"><img src="./offsite/sing.jpeg" alt="Sing" loading="lazy"></div></div>
+        <div class="act"><div class="txt"><h4>Build</h4><p>Sculpture and object-making in FORGE. Every participant takes something home.</p></div><div class="ph"><img src="./offsite/build.jpeg" alt="Build" loading="lazy"></div></div>
+        <div class="act"><div class="txt"><h4>See</h4><p>Photography and film: an assignment, a shoot and an edit.</p></div><div class="ph"><img src="./offsite/see.jpeg" alt="See" loading="lazy"></div></div>
+        <div class="act"><div class="txt"><h4>Write</h4><p>Poetry or free writing with a Georgian writer, to a set task and time limit, then read aloud.</p></div><div class="ph"><img src="./offsite/write.jpeg" alt="Write" loading="lazy"></div></div>
       </div>
     </div>
 
-    <div class="track">
-      <div class="track-title"><p class="label">Sport</p><p class="label" style="opacity:.5">6 disciplines</p></div>
-      <div class="grid3">
-        <div class="card"><div class="ph"><img src="./offsite/yoga.jpeg" alt="Yoga" loading="lazy"></div><h4>Yoga</h4><p>Adapted for all levels, outdoors when the weather allows.</p></div>
-        <div class="card"><div class="ph"><img src="./offsite/run.jpeg" alt="Run" loading="lazy"></div><h4>Run</h4><p>A guided run through the venue grounds and the countryside around it.</p></div>
-        <div class="card"><div class="ph"><img src="./offsite/climb.jpeg" alt="Climb" loading="lazy"></div><h4>Climb</h4><p>Bouldering or rope climbing, with the rest of the group watching from below.</p></div>
-        <div class="card"><div class="ph"><img src="./offsite/horse.jpeg" alt="Horse" loading="lazy"></div><h4>Horse</h4><p>Riding with local horsemen, for complete beginners as well.</p></div>
-        <div class="card"><div class="ph"><img src="./offsite/bike.jpeg" alt="Bike" loading="lazy"></div><h4>Bike</h4><p>A guided cycling route through the countryside, chosen for the views, not the difficulty.</p></div>
-        <div class="card"><div class="ph"><img src="./offsite/row.jpeg" alt="Row" loading="lazy"></div><h4>Row</h4><p>Rowing for technique, rhythm and synchrony, at venues with a lake or river.</p></div>
+    <div class="track sport" style="margin-top:72px">
+      <div class="track-tag"><span class="label tag">Sport Track</span><small>Yoga · Run · Climb · Horse · Bike · Row</small></div>
+      <div class="acts">
+        <div class="act"><div class="txt"><h4>Yoga</h4><p>Adapted for all levels, outdoors when the weather allows.</p></div><div class="ph"><img src="./offsite/yoga.jpeg" alt="Yoga" loading="lazy"></div></div>
+        <div class="act"><div class="txt"><h4>Run</h4><p>A guided run through the venue grounds and the countryside around it.</p></div><div class="ph"><img src="./offsite/run.jpeg" alt="Run" loading="lazy"></div></div>
+        <div class="act"><div class="txt"><h4>Climb</h4><p>Bouldering or rope climbing, with the rest of the group watching from below.</p></div><div class="ph"><img src="./offsite/climb.jpeg" alt="Climb" loading="lazy"></div></div>
+        <div class="act"><div class="txt"><h4>Horse</h4><p>Riding with local horsemen, for complete beginners as well.</p></div><div class="ph"><img src="./offsite/horse.jpeg" alt="Horse" loading="lazy"></div></div>
+        <div class="act"><div class="txt"><h4>Bike</h4><p>A guided cycling route through the countryside, chosen for the views, not the difficulty.</p></div><div class="ph"><img src="./offsite/bike.jpeg" alt="Bike" loading="lazy"></div></div>
+        <div class="act"><div class="txt"><h4>Row</h4><p>Rowing for technique, rhythm and synchrony, at venues with a lake or river.</p></div><div class="ph"><img src="./offsite/row.jpeg" alt="Row" loading="lazy"></div></div>
       </div>
     </div>
   </section>
