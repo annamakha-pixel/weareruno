@@ -49,11 +49,14 @@
     .intro p { font-size: clamp(24px, 3vw, 42px); line-height: 1.25; font-weight: 500; letter-spacing: -0.02em; max-width: 30ch; }
 
     /* PROGRAMME */
-    .prog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 24px; }
-    .prog-row { border-top: 1px solid var(--ink); padding: 20px 0 56px; }
-    .prog-row .n { display: block; font-size: 12px; font-weight: 700; letter-spacing: .12em; margin-bottom: 40px; }
-    .prog-row h3 { font-size: clamp(22px, 2.2vw, 30px); font-weight: 900; letter-spacing: -0.03em; text-transform: uppercase; margin-bottom: 12px; }
-    .prog-row p { font-size: 15px; line-height: 1.55; color: rgba(0,0,0,.7); max-width: 34ch; }
+
+    /* INCLUDED */
+    .incs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+    .inc { padding: 24px 26px 32px; min-height: 280px; display: flex; flex-direction: column; }
+    .inc.lav { background: var(--lav); } .inc.neon { background: var(--neon); } .inc.powder { background: #E9DED8; }
+    .inc .n { font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+    .inc h3 { margin-top: auto; font-size: clamp(24px, 2.4vw, 36px); font-weight: 900; letter-spacing: -0.04em; text-transform: uppercase; line-height: 1; margin-bottom: 14px; }
+    .inc p { font-size: 15px; line-height: 1.5; color: rgba(0,0,0,.7); max-width: 34ch; }
 
     /* PRACTICES */
     .practices { background: var(--paper); }
@@ -141,17 +144,16 @@
       .specs { grid-template-columns: 1fr 1fr; }
       .specs .btn { grid-column: 1 / -1; text-align: center; }
       .sec-head, .price-grid, .contact { grid-template-columns: 1fr; gap: 24px; }
-      .prog { grid-template-columns: 1fr 1fr; gap: 0 16px; }
-      .prog-row { padding: 16px 0 36px; }
-      .prog-row .n { margin-bottom: 20px; }
       .grid3 { grid-template-columns: 1fr 1fr; gap: 32px 14px; }
       .acts { grid-template-columns: 1fr 1fr; }
+      .incs { grid-template-columns: 1fr; }
+      .inc { min-height: 200px; padding: 20px 20px 26px; }
       .act .txt { min-height: 150px; padding: 14px 14px 22px; }
       .facts { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
       .contact { gap: 48px; }
       footer { flex-direction: column; align-items: flex-start; }
     }
-    @media (min-width: 901px) and (max-width: 1200px) { .acts { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 901px) and (max-width: 1200px) { .acts { grid-template-columns: repeat(3, 1fr); } .incs { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 520px) { .venues .grid3 { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -160,6 +162,7 @@
   <nav id="nav">
     <a href="/" class="logo"><img src="./logo.svg" alt="RUNO"></a>
     <ul>
+      <li class="hide-m"><a href="#programme">Included</a></li>
       <li class="hide-m"><a href="#practices">Practices</a></li>
       <li class="hide-m"><a href="#venues">Venues</a></li>
       <li class="hide-m"><a href="#price">Price</a></li>
@@ -183,6 +186,21 @@
 
   <section class="intro">
     <p>A team that works apart rarely makes anything together. On the offsite each group spends its afternoons with a Tbilisi practitioner and leaves with something made: a recording, a route, an object built in our workshop.</p>
+  </section>
+
+  <section id="programme">
+    <div class="sec-head">
+      <p class="label">What's included</p>
+      <p>RUNO takes care of every part of the offsite, from start to finish.</p>
+    </div>
+    <div class="incs">
+      <div class="inc lav"><span class="n">01</span><h3>Arrival</h3><p>A welcome desk at the airport and transfers in both directions. Keys and programme booklets are handed out before the team reaches the hotel.</p></div>
+      <div class="inc powder"><span class="n">02</span><h3>Working sessions</h3><p>A room set up for the team, with AV, translation, fast connectivity and materials.</p></div>
+      <div class="inc neon"><span class="n">03</span><h3>Practices</h3><p>Art and sport sessions of three to four hours, each led by a Tbilisi practitioner and each ending with something made.</p></div>
+      <div class="inc powder"><span class="n">04</span><h3>Food</h3><p>Dietary profiles are collected in advance, and every meal is planned around them.</p></div>
+      <div class="inc neon"><span class="n">05</span><h3>Evenings</h3><p>Live music, themed dinners and wine, and on the last night a supra with a tamada.</p></div>
+      <div class="inc lav"><span class="n">06</span><h3>Merch and decor</h3><p>Branded materials and keepsakes, made in FORGE, our workshop in Tbilisi.</p></div>
+    </div>
   </section>
 
   <section id="practices" class="practices">
@@ -254,14 +272,12 @@
       <div class="incl">
         <h4 class="label">Included</h4>
         <ul>
-          <li>Airport welcome and all transfers</li>
           <li>Accommodation throughout</li>
-          <li>Working sessions with AV, translation and materials</li>
-          <li>Art and sport sessions with Tbilisi practitioners</li>
-          <li>All meals, planned around each guest's diet</li>
-          <li>Evenings with live music and the closing supra</li>
-          <li>Branded materials made in FORGE</li>
-          <li>Production by RUNO from start to finish</li>
+          <li>Venue for working sessions and practices</li>
+          <li>All meals and the closing supra</li>
+          <li>All transfers</li>
+          <li>Practice sessions with local practitioners</li>
+          <li>Production management by RUNO</li>
         </ul>
         <h4 class="label">Not included</h4>
         <ul class="no">
