@@ -101,6 +101,22 @@
     .venue .where { font-size: 13px; color: var(--mute); margin-bottom: 6px; }
     .venue p { opacity: 1; color: var(--ink); }
 
+
+    /* VENUE SLIDERS */
+    .slider { position: relative; }
+    .slider .track { display: flex; width: 100%; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .slider .track::-webkit-scrollbar { display: none; }
+    .slider .track img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; scroll-snap-align: start; }
+    .card.venue:hover .ph img { transform: none; }
+    .slider .nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border: none; background: rgba(243,242,238,.92); color: #000; font-size: 16px; cursor: pointer; opacity: 0; transition: opacity 200ms ease; }
+    .slider .prev { left: 10px; } .slider .next { right: 10px; }
+    .slider:hover .nav { opacity: 1; }
+    .slider .nav[disabled] { opacity: 0 !important; pointer-events: none; }
+    .slider .dots { position: absolute; left: 0; right: 0; bottom: 10px; display: flex; justify-content: center; gap: 6px; pointer-events: none; }
+    .slider .dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.5); }
+    .slider .dots i.on { background: #fff; }
+    @media (hover: none) { .slider .nav { display: none; } }
+
     /* PRICE */
     .price { background: #fff; }
     .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
@@ -252,11 +268,11 @@
       <p>We work with hotels our team has tested, and choose one by group size, season and brief.</p>
     </div>
     <div class="grid3">
-      <div class="card venue"><div class="ph"><img src="./offsite/venue_kazbegi.jpg" alt="Rooms Hotel Kazbegi" loading="lazy"></div><p class="where">Kazbegi · 3 hours from Tbilisi</p><h4>Rooms Hotel Kazbegi</h4><p>A design hotel in a former Soviet sanatorium, with about 150 rooms, a spa and views of Mount Kazbek.</p></div>
-      <div class="card venue"><div class="ph"><img src="./offsite/venue_tsinandali.jpg" alt="Radisson Collection Tsinandali" loading="lazy"></div><p class="where">Kakheti · 1 h 45 min from Tbilisi</p><h4>Radisson Collection Tsinandali</h4><p>A five-star wine estate with about 140 rooms, an amphitheatre for 1,200 and a 600-seat concert hall.</p></div>
-      <div class="card venue"><div class="ph"><img src="./offsite/venue_tabori.jpg" alt="Paragraph Tabori Golf and Spa" loading="lazy"></div><p class="where">Tbilisi · 10 min by cable car</p><h4>Paragraph Tabori Golf &amp; Spa</h4><p>About 175 rooms above the city, with golf, a spa and conference rooms.</p></div>
-      <div class="card venue"><div class="ph"><img src="./offsite/venue_kvareli.jpg" alt="Kvareli Lake Resort" loading="lazy"></div><p class="where">Kakheti · 2 hours from Tbilisi</p><h4>Kvareli Lake Resort</h4><p>100 rooms on a lake, with pools, a spa and 300 hectares of landscape.</p></div>
-      <div class="card venue"><div class="ph"><img src="./offsite/venue_lopota.jpg" alt="Lopota Lake Resort" loading="lazy"></div><p class="where">Kakheti · 2 hours from Tbilisi</p><h4>Lopota Lake Resort</h4><p>More than 300 rooms on a 60-hectare lakeside estate, suited to large groups.</p></div>
+      <div class="card venue"><div class="ph slider"><div class="track"><img src="./offsite/venues/kazbegi_1.jpg" alt="Rooms Hotel Kazbegi" loading="lazy"><img src="./offsite/venues/kazbegi_2.jpg" alt="Rooms Hotel Kazbegi" loading="lazy"><img src="./offsite/venues/kazbegi_3.jpg" alt="Rooms Hotel Kazbegi" loading="lazy"><img src="./offsite/venues/kazbegi_4.jpg" alt="Rooms Hotel Kazbegi" loading="lazy"><img src="./offsite/venues/kazbegi_5.jpg" alt="Rooms Hotel Kazbegi" loading="lazy"></div><button class="nav prev" aria-label="Previous photo">&#8592;</button><button class="nav next" aria-label="Next photo">&#8594;</button><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div></div><p class="where">Kazbegi · 3 hours from Tbilisi</p><h4>Rooms Hotel Kazbegi</h4><p>A design hotel in a former Soviet sanatorium, with about 150 rooms, a spa and views of Mount Kazbek.</p></div>
+      <div class="card venue"><div class="ph slider"><div class="track"><img src="./offsite/venues/tsinandali_1.jpg" alt="Radisson Collection Tsinandali" loading="lazy"><img src="./offsite/venues/tsinandali_2.jpg" alt="Radisson Collection Tsinandali" loading="lazy"><img src="./offsite/venues/tsinandali_3.jpg" alt="Radisson Collection Tsinandali" loading="lazy"><img src="./offsite/venues/tsinandali_4.jpg" alt="Radisson Collection Tsinandali" loading="lazy"><img src="./offsite/venues/tsinandali_5.jpg" alt="Radisson Collection Tsinandali" loading="lazy"><img src="./offsite/venues/tsinandali_6.jpg" alt="Radisson Collection Tsinandali" loading="lazy"></div><button class="nav prev" aria-label="Previous photo">&#8592;</button><button class="nav next" aria-label="Next photo">&#8594;</button><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div><p class="where">Kakheti · 1 h 45 min from Tbilisi</p><h4>Radisson Collection Tsinandali</h4><p>A five-star wine estate with about 140 rooms, an amphitheatre for 1,200 and a 600-seat concert hall.</p></div>
+      <div class="card venue"><div class="ph slider"><div class="track"><img src="./offsite/venues/tabori_1.jpg" alt="Paragraph Tabori Golf and Spa" loading="lazy"><img src="./offsite/venues/tabori_2.jpg" alt="Paragraph Tabori Golf and Spa" loading="lazy"><img src="./offsite/venues/tabori_3.jpg" alt="Paragraph Tabori Golf and Spa" loading="lazy"><img src="./offsite/venues/tabori_4.jpg" alt="Paragraph Tabori Golf and Spa" loading="lazy"><img src="./offsite/venues/tabori_5.jpg" alt="Paragraph Tabori Golf and Spa" loading="lazy"></div><button class="nav prev" aria-label="Previous photo">&#8592;</button><button class="nav next" aria-label="Next photo">&#8594;</button><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div></div><p class="where">Tbilisi · 10 min by cable car</p><h4>Paragraph Tabori Golf &amp; Spa</h4><p>About 175 rooms above the city, with golf, a spa and conference rooms.</p></div>
+      <div class="card venue"><div class="ph slider"><div class="track"><img src="./offsite/venues/kvareli_1.jpg" alt="Kvareli Lake Resort" loading="lazy"><img src="./offsite/venues/kvareli_2.jpg" alt="Kvareli Lake Resort" loading="lazy"><img src="./offsite/venues/kvareli_3.jpg" alt="Kvareli Lake Resort" loading="lazy"><img src="./offsite/venues/kvareli_4.jpg" alt="Kvareli Lake Resort" loading="lazy"><img src="./offsite/venues/kvareli_5.jpg" alt="Kvareli Lake Resort" loading="lazy"><img src="./offsite/venues/kvareli_6.jpg" alt="Kvareli Lake Resort" loading="lazy"></div><button class="nav prev" aria-label="Previous photo">&#8592;</button><button class="nav next" aria-label="Next photo">&#8594;</button><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div><p class="where">Kakheti · 2 hours from Tbilisi</p><h4>Kvareli Lake Resort</h4><p>100 rooms on a lake, with pools, a spa and 300 hectares of landscape.</p></div>
+      <div class="card venue"><div class="ph slider"><div class="track"><img src="./offsite/venues/lopota_1.jpg" alt="Lopota Lake Resort" loading="lazy"><img src="./offsite/venues/lopota_2.jpg" alt="Lopota Lake Resort" loading="lazy"><img src="./offsite/venues/lopota_3.jpg" alt="Lopota Lake Resort" loading="lazy"><img src="./offsite/venues/lopota_4.jpg" alt="Lopota Lake Resort" loading="lazy"><img src="./offsite/venues/lopota_5.jpg" alt="Lopota Lake Resort" loading="lazy"><img src="./offsite/venues/lopota_6.jpg" alt="Lopota Lake Resort" loading="lazy"></div><button class="nav prev" aria-label="Previous photo">&#8592;</button><button class="nav next" aria-label="Next photo">&#8594;</button><div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div><p class="where">Kakheti · 2 hours from Tbilisi</p><h4>Lopota Lake Resort</h4><p>More than 300 rooms on a 60-hectare lakeside estate, suited to large groups.</p></div>
     </div>
   </section>
 
@@ -338,6 +354,16 @@
     const hero = document.querySelector('.hero');
     const onScroll = () => nav.classList.toggle('solid', window.scrollY > hero.offsetHeight - 80);
     window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    document.querySelectorAll('.slider').forEach(sl => {
+      const tr = sl.querySelector('.track'), dots = [...sl.querySelectorAll('.dots i')];
+      const prev = sl.querySelector('.prev'), next = sl.querySelector('.next');
+      const idx = () => Math.round(tr.scrollLeft / tr.clientWidth);
+      const upd = () => { const i = idx(); dots.forEach((d,k)=>d.classList.toggle('on', k===i)); prev.disabled = i===0; next.disabled = i===dots.length-1; };
+      prev.addEventListener('click', () => tr.scrollBy({ left: -tr.clientWidth, behavior: 'smooth' }));
+      next.addEventListener('click', () => tr.scrollBy({ left: tr.clientWidth, behavior: 'smooth' }));
+      tr.addEventListener('scroll', () => requestAnimationFrame(upd), { passive: true }); upd();
+    });
   </script>
 </body>
 </html>
