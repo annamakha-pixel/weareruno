@@ -1365,7 +1365,7 @@
     .intro { position: fixed; inset: 0; z-index: 1000; overflow: hidden; background: #000; cursor: pointer; transition: opacity 700ms ease, visibility 0s linear 700ms; }
     .intro.gone { opacity: 0; visibility: hidden; pointer-events: none; }
     html.entered .intro { display: none; }
-    body.locked { overflow: hidden; }
+    html.locked, html.locked body { overflow: hidden; height: 100%; }
     .intro video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
     .intro-shade { position: absolute; inset: 0; background: rgba(0,0,0,.28); }
     .intro-ticker { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); overflow: hidden; }
@@ -1588,9 +1588,9 @@
     (function(){
       const intro = document.getElementById('intro');
       if (!intro || document.documentElement.classList.contains('entered')) { if (intro) intro.remove(); return; }
-      document.body.classList.add('locked'); window.scrollTo(0,0);
+      document.documentElement.classList.add('locked'); window.scrollTo(0,0);
       const enter = () => {
-        intro.classList.add('gone'); document.body.classList.remove('locked');
+        window.scrollTo(0,0); intro.classList.add('gone'); document.documentElement.classList.remove('locked');
         try { sessionStorage.setItem('runoEntered','1'); } catch(e){}
         setTimeout(() => intro.remove(), 800);
         document.removeEventListener('keydown', onKey);
