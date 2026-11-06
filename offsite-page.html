@@ -6,7 +6,7 @@
   <title>RUNO Offsite - Corporate Offsite in Georgia</title>
   <meta name="description" content="Corporate offsites in Georgia for teams of 30 to 600: venue, accommodation, meals, transfers, working sessions, and art and sport sessions with Tbilisi practitioners. From $900 per person." />
   <link rel="preconnect" href="https://api.fontshare.com">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900,501,901&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --ink: #000; --paper: #F3F2EE; --white: #fff; --neon: #CEFF58; --lav: #ABA5E1; --mute: rgba(0,0,0,.5); --line: rgba(0,0,0,.12); --nav-h: 64px; --pad: 40px; }
@@ -30,7 +30,7 @@
     nav .btn { padding: 9px 18px; font-size: 11px; }
 
     /* HERO */
-    .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: calc(var(--nav-h) + 40px) var(--pad) 48px; color: #fff; background: #111 url('./georgia-mountains.jpg') center/cover no-repeat; }
+    .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: calc(var(--nav-h) + 40px) var(--pad) 48px; color: #fff; background: #111 url('./offsite/mountains_grain.jpg') center/cover no-repeat; }
     .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,.65) 100%); }
     .hero > * { position: relative; }
     .hero h1 { font-size: clamp(48px, 8.5vw, 132px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.05em; line-height: .9; margin: 18px 0 28px; max-width: 12ch; }
@@ -170,6 +170,27 @@
     }
     @media (min-width: 901px) and (max-width: 1200px) { .acts { grid-template-columns: repeat(3, 1fr); } .incs { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 520px) { .venues .grid3 { grid-template-columns: 1fr; } }
+
+    /* ===== BRAND PASS (brandbook: mono + grain imagery, colour blocks, symbols, italic Satoshi) ===== */
+    .hero h1, .contact h2, .inc h3, .act h4, .big, .georgia .facts b { font-style: italic; font-weight: 900; }
+    .hero h1 { text-transform: uppercase; letter-spacing: -0.045em; max-width: 13ch; }
+    .dot { display: inline-block; width: .5em; height: .5em; border-radius: 50%; background: currentColor; vertical-align: .12em; margin: 0 .04em; }
+    .ast { color: var(--neon); font-style: normal; vertical-align: .35em; font-size: .6em; margin-left: .04em; }
+    .contact h2 .ast { color: var(--neon); }
+    .inc { position: relative; overflow: hidden; }
+    .inc .sym { position: absolute; right: 18px; top: 18px; width: 96px; height: 96px; object-fit: contain; filter: brightness(0) invert(1); opacity: .95; }
+    .inc .sym-ast { width: auto; height: auto; filter: none; color: #fff; font-size: 120px; line-height: .8; font-weight: 900; }
+    .inc h3 { text-transform: uppercase; }
+    .act .ph { position: relative; }
+    .act .ph img { filter: grayscale(1) contrast(1.1); }
+    .act:hover .ph img { filter: grayscale(0) contrast(1); }
+    .grain::after, .act .ph::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .35; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+    .georgia .facts b { color: #EDFF52; }
+    .price { background: var(--neon); }
+    .price .price-small, .incl ul.no li { color: rgba(0,0,0,.55); }
+    .incl li { border-top-color: rgba(0,0,0,.2); }
+    @media (max-width: 900px) { .inc .sym { width: 64px; height: 64px; } .inc .sym-ast { font-size: 84px; } }
   </style>
 </head>
 <body>
@@ -188,7 +209,7 @@
 
   <header class="hero">
     <p class="label">RUNO Offsite · Georgia</p>
-    <h1>Corporate Offsite in Georgia</h1>
+    <h1>Corporate <span class="dot"></span> offsite in Georgia<span class="ast">*</span></h1>
     <p class="hero-sub">A programme for distributed teams that covers the venue, accommodation, meals, transfers and working sessions, with art and sport sessions led by Tbilisi practitioners.</p>
     <div class="specs">
       <div class="spec"><span>Duration</span><b>2 to 7 days</b></div>
@@ -209,12 +230,12 @@
       <p>RUNO takes care of every part of the offsite, from start to finish.</p>
     </div>
     <div class="incs">
-      <div class="inc lav"><span class="n">01</span><h3>Arrival</h3><p>A welcome desk at the airport and transfers in both directions. Keys and programme booklets are handed out before the team reaches the hotel.</p></div>
-      <div class="inc powder"><span class="n">02</span><h3>Working sessions</h3><p>A room set up for the team, with AV, translation, fast connectivity and materials.</p></div>
-      <div class="inc neon"><span class="n">03</span><h3>Practices</h3><p>Art and sport sessions of three to four hours, each led by a Tbilisi practitioner and each ending with something made.</p></div>
-      <div class="inc powder"><span class="n">04</span><h3>Food</h3><p>Dietary profiles are collected in advance, and every meal is planned around them.</p></div>
-      <div class="inc neon"><span class="n">05</span><h3>Evenings</h3><p>Live music, themed dinners and wine, and on the last night a supra with a tamada.</p></div>
-      <div class="inc lav"><span class="n">06</span><h3>Merch and decor</h3><p>Branded materials and keepsakes, made in FORGE, our workshop in Tbilisi.</p></div>
+      <div class="inc lav"><span class="n">01</span><img class="sym" src="./bird.svg" alt="" aria-hidden="true"><h3>Arrival</h3><p>A welcome desk at the airport and transfers in both directions. Keys and programme booklets are handed out before the team reaches the hotel.</p></div>
+      <div class="inc powder"><span class="n">02</span><img class="sym" src="./qvevri.svg" alt="" aria-hidden="true"><h3>Working sessions</h3><p>A room set up for the team, with AV, translation, fast connectivity and materials.</p></div>
+      <div class="inc neon"><span class="n">03</span><img class="sym" src="./horse.svg" alt="" aria-hidden="true"><h3>Practices</h3><p>Art and sport sessions of three to four hours, each led by a Tbilisi practitioner and each ending with something made.</p></div>
+      <div class="inc powder"><span class="n">04</span><img class="sym" src="./pomegranate.svg" alt="" aria-hidden="true"><h3>Food</h3><p>Dietary profiles are collected in advance, and every meal is planned around them.</p></div>
+      <div class="inc neon"><span class="n">05</span><img class="sym" src="./grape.svg" alt="" aria-hidden="true"><h3>Evenings</h3><p>Live music, themed dinners and wine, and on the last night a supra with a tamada.</p></div>
+      <div class="inc lav"><span class="n">06</span><span class="sym sym-ast" aria-hidden="true">*</span><h3>Merch and decor</h3><p>Branded materials and keepsakes, made in FORGE, our workshop in Tbilisi.</p></div>
     </div>
   </section>
 
@@ -329,7 +350,7 @@
   <section id="contact" class="contact">
     <div>
       <p class="label" style="opacity:.5;margin-bottom:24px">Contact</p>
-      <h2>Tell us about your team.</h2>
+      <h2>Tell us about your team<span class="ast">*</span></h2>
     </div>
     <div>
       <div class="c-row"><span>Email</span><a href="mailto:anna@weareruno.com?subject=Offsite%20enquiry">anna@weareruno.com</a></div>
