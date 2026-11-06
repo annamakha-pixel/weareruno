@@ -1362,16 +1362,18 @@
     }
 
     /* ===== REDESIGN 2026-10 ===== */
-    .intro { position: relative; height: 100vh; overflow: hidden; background: #000; cursor: pointer; }
+    .intro { position: fixed; inset: 0; z-index: 1000; overflow: hidden; background: #000; cursor: pointer; transition: opacity 700ms ease, visibility 0s linear 700ms; }
+    .intro.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+    html.entered .intro { display: none; }
+    body.locked { overflow: hidden; }
     .intro video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
     .intro-shade { position: absolute; inset: 0; background: rgba(0,0,0,.28); }
     .intro-ticker { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); overflow: hidden; }
     .intro-ticker-track { display: flex; width: max-content; animation: intro-run 70s linear infinite; }
     .intro-ticker-track span { white-space: nowrap; padding-right: 8vw; color: #fff; font-family: 'Satoshi', sans-serif; font-weight: 500; font-size: clamp(28px, 5.2vw, 76px); letter-spacing: -0.02em; }
     @keyframes intro-run { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .intro-enter { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; opacity: .8; }
+    .intro-enter { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); color: #fff; background: none; border: 1px solid rgba(255,255,255,.6); padding: 12px 28px; cursor: pointer; font-family: inherit; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; opacity: .8; }
     @media (prefers-reduced-motion: reduce) { .intro-ticker-track { animation: none; } .intro-ticker-track span { white-space: normal; } }
-    nav#main-nav.on-intro { opacity: 0; pointer-events: none; }
     nav#main-nav { transition: opacity 300ms ease, background 200ms ease; }
     .hero-orange-bottom--min { display: block; margin-top: 48px; }
 
@@ -1410,7 +1412,7 @@
 <body>
 
   <!-- NAV -->
-  <nav id="main-nav" class="on-intro">
+  <nav id="main-nav">
     <a href="#home" class="nav-logo"><img src="./logo.svg" alt="RUNO" height="22"></a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
@@ -1432,7 +1434,8 @@
   </div>
 
   <!-- INTRO -->
-  <section class="intro" id="intro" onclick="document.getElementById('home').scrollIntoView({behavior:'smooth'})">
+  <script>try{ if(sessionStorage.getItem('runoEntered')) document.documentElement.classList.add('entered'); }catch(e){}</script>
+  <section class="intro" id="intro" role="dialog" aria-label="RUNO">
     <video id="sr-video" src="./showreel.mp4" poster="./showreel-poster.jpg" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
     <div class="intro-shade"></div>
     <div class="intro-ticker" aria-label="In ancient mythology, the Argonauts sailed to Colchis seeking the Golden Fleece, Runo. They came for treasure and discovered something greater: the transformative power that emerges where different worlds converge. This land, where continents meet, has always been a place of intersection.">
@@ -1441,7 +1444,7 @@
         <span>In ancient mythology, the Argonauts sailed to Colchis seeking the Golden Fleece, Runō. They came for treasure and discovered something greater: the transformative power that emerges where different worlds converge. This land, where continents meet, has always been a place of intersection.</span>
       </div>
     </div>
-    <span class="intro-enter">Enter</span>
+    <button type="button" class="intro-enter" id="intro-enter">Enter</button>
   </section>
 
   <!-- HERO -->
@@ -1578,10 +1581,24 @@
     // Nav solid on scroll
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
-      const introH = document.getElementById('intro').offsetHeight;
-      nav.classList.toggle('on-intro', window.scrollY < introH - 80);
-      nav.classList.toggle('solid', window.scrollY > introH);
+      nav.classList.toggle('solid', window.scrollY > 60);
     }, { passive: true });
+
+    // Intro splash: shown once per visit, Enter opens the site
+    (function(){
+      const intro = document.getElementById('intro');
+      if (!intro || document.documentElement.classList.contains('entered')) { if (intro) intro.remove(); return; }
+      document.body.classList.add('locked'); window.scrollTo(0,0);
+      const enter = () => {
+        intro.classList.add('gone'); document.body.classList.remove('locked');
+        try { sessionStorage.setItem('runoEntered','1'); } catch(e){}
+        setTimeout(() => intro.remove(), 800);
+        document.removeEventListener('keydown', onKey);
+      };
+      const onKey = e => { if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') { e.preventDefault(); enter(); } };
+      intro.addEventListener('click', enter);
+      document.addEventListener('keydown', onKey);
+    })();
 
     // Mobile menu
     function toggleMenu() {
