@@ -49,11 +49,11 @@
     .intro p { font-size: clamp(24px, 3vw, 42px); line-height: 1.25; font-weight: 500; letter-spacing: -0.02em; max-width: 30ch; }
 
     /* PROGRAMME */
-    .prog { border-top: 1px solid var(--line); }
-    .prog-row { display: grid; grid-template-columns: 1fr 2fr 2fr; gap: 40px; padding: 28px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
-    .prog-row .n { font-size: 12px; color: var(--mute); font-weight: 700; }
-    .prog-row h3 { font-size: clamp(20px, 2vw, 28px); font-weight: 700; letter-spacing: -0.02em; }
-    .prog-row p { font-size: 16px; line-height: 1.5; }
+    .prog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 24px; }
+    .prog-row { border-top: 1px solid var(--ink); padding: 20px 0 56px; }
+    .prog-row .n { display: block; font-size: 12px; font-weight: 700; letter-spacing: .12em; margin-bottom: 40px; }
+    .prog-row h3 { font-size: clamp(22px, 2.2vw, 30px); font-weight: 900; letter-spacing: -0.03em; text-transform: uppercase; margin-bottom: 12px; }
+    .prog-row p { font-size: 15px; line-height: 1.55; color: rgba(0,0,0,.7); max-width: 34ch; }
 
     /* PRACTICES */
     .practices { background: var(--paper); }
@@ -134,8 +134,9 @@
       .specs { grid-template-columns: 1fr 1fr; }
       .specs .btn { grid-column: 1 / -1; text-align: center; }
       .sec-head, .price-grid, .contact { grid-template-columns: 1fr; gap: 24px; }
-      .prog-row { grid-template-columns: 40px 1fr; gap: 8px 16px; }
-      .prog-row p { grid-column: 2; }
+      .prog { grid-template-columns: 1fr 1fr; gap: 0 16px; }
+      .prog-row { padding: 16px 0 36px; }
+      .prog-row .n { margin-bottom: 20px; }
       .grid3 { grid-template-columns: 1fr 1fr; gap: 32px 14px; }
       .acts { grid-template-columns: 1fr 1fr; }
       .act .txt { min-height: 150px; padding: 14px 14px 22px; }
@@ -180,8 +181,8 @@
 
   <section id="programme" style="padding-top:0">
     <div class="sec-head">
-      <p class="label">Programme</p>
-      <p>One RUNO producer runs everything, from the airport to the closing supra.</p>
+      <p class="label">What's included</p>
+      <p>RUNO takes care of every part of the offsite, from start to finish.</p>
     </div>
     <div class="prog">
       <div class="prog-row"><span class="n">01</span><h3>Arrival</h3><p>A welcome desk at the airport and transfers in both directions. Keys and programme booklets are handed out before the team reaches the hotel.</p></div>
