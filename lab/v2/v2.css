@@ -29,8 +29,9 @@ a { color: inherit; text-decoration: none; }
 .track { position: absolute; top: 50%; left: 0; display: flex; width: max-content; transform: translate(0, -50%); animation: run var(--dur) linear infinite; }
 .track.rev { animation-direction: reverse; }
 .chunk { display: flex; align-items: center; white-space: nowrap; }
-.chunk span, .chunk i { font-size: clamp(26px, 3.4vw, 52px); line-height: 1; font-style: normal; text-transform: uppercase; letter-spacing: -0.01em; }
+.chunk span, .chunk i { font-size: clamp(24px, 3vw, 46px); line-height: 1; font-style: normal; text-transform: uppercase; letter-spacing: -0.01em; }
 .chunk i { margin: 0 .35em; display: inline-block; }
+.chunk .u { display: inline-flex; align-items: center; font-weight: 400; padding-right: clamp(80px, 22vw, 420px); }
 .chunk span + i + span { margin-left: 0; }
 @keyframes run { from { transform: translate(0, -50%); } to { transform: translate(-50%, -50%); } }
 .row:hover { background: var(--ink); color: var(--ground); }

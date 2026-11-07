@@ -61,7 +61,7 @@
   ];
   const all = P.map(p => ({...p, href: "project.html?p=" + p.id})).concat(extra);
   all.forEach((it, i) => {
-    const unit = it.row.map(w => `<span>${w}</span><i>${it.glyph}</i>`).join('');
+    const unit = '<b class="u">' + it.row.map(w => `<span>${w}</span><i>${it.glyph}</i>`).join('') + '</b>';
     const a = document.createElement('a');
     a.className = 'row';
     a.href = it.href || '#';
@@ -70,7 +70,7 @@
     const dir = i % 2 ? 'rev' : '';
     const dur = 38 + (i * 7) % 30;
     const offset = [8, 46, 22, 60, 0, 34, 52, 14, 40, 26, 4, 30][i % 12];
-    a.innerHTML = `<div class="track ${dir}" style="--dur:${dur}s; animation-delay:-${(offset/100*dur).toFixed(1)}s"><div class="chunk">${unit.repeat(6)}</div><div class="chunk" aria-hidden="true">${unit.repeat(6)}</div></div>`;
+    a.innerHTML = `<div class="track ${dir}" style="--dur:${dur}s; animation-delay:-${(offset/100*dur).toFixed(1)}s"><div class="chunk">${unit.repeat(4)}</div><div class="chunk" aria-hidden="true">${unit.repeat(4)}</div></div>`;
     rows.appendChild(a);
   });
 
