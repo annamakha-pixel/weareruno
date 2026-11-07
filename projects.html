@@ -752,13 +752,23 @@
       project.classList.remove('open');
     }
 
+    function scrollToProject(project, smooth) {
+      const navH = (nav && nav.offsetHeight) || 72;
+      const y = project.getBoundingClientRect().top + window.scrollY - navH;
+      window.scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' });
+    }
+
     document.querySelectorAll('.project').forEach(project => {
-      project.addEventListener('click', e => {
-        if (project.classList.contains('open')) {
-          closeProject(project);
-        } else {
-          openProject(project);
-        }
+      const trigger = project.querySelector('.project-cover') || project;
+      trigger.style.cursor = 'pointer';
+      trigger.addEventListener('click', () => {
+        if (project.classList.contains('open')) { closeProject(project); return; }
+        const others = [...document.querySelectorAll('.project.open')].filter(p => p !== project);
+        others.forEach(closeProject);
+        openProject(project);
+        history.replaceState(null, '', '#' + project.id);
+        // wait for the other project to collapse, then bring this one to the top
+        setTimeout(() => scrollToProject(project, true), others.length ? 640 : 30);
       });
     });
 
@@ -768,7 +778,7 @@
       const target = document.getElementById(hash);
       if (target && target.classList.contains('project')) {
         openProject(target);
-        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+        setTimeout(() => scrollToProject(target, true), 150);
       }
     }
   </script>
