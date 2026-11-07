@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>TSF Layout Lab</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+<style>
+  :root { --beige:#EDE3D6; --orange:#FB4827; --sun:#D9822B; --ink:#111; --neon:#CEFF58; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Satoshi',sans-serif; background:#0b0b0b; color:#fff; }
+  .switch { position:sticky; top:0; z-index:50; display:flex; gap:2px; background:#0b0b0b; padding:10px 16px; border-bottom:1px solid #222; flex-wrap:wrap; }
+  .switch a { color:#fff; text-decoration:none; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:10px 14px; background:#1b1b1b; }
+  .switch a:hover { background:var(--orange); }
+  section { position:relative; overflow:hidden; }
+  .vlabel { position:absolute; top:20px; left:20px; z-index:5; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; padding:6px 10px; background:#000; color:#fff; }
+
+  /* ===== A. CONTACT SHEET ===== */
+  #a { background:var(--beige); color:var(--ink); padding:90px 4vw 70px; }
+  #a .head { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:28px; flex-wrap:wrap; }
+  #a h2 { font-size:clamp(44px,7vw,120px); font-weight:900; letter-spacing:-.06em; line-height:.86; text-transform:uppercase; }
+  #a .meta { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-align:right; line-height:1.6; }
+  .sheet { background:#141414; padding:18px 14px; display:grid; grid-template-columns:repeat(8,1fr); gap:14px 8px; }
+  .fr { position:relative; }
+  .fr img { width:100%; aspect-ratio:3/2; object-fit:cover; display:block; }
+  .fr span { display:block; font-size:9px; font-weight:700; letter-spacing:.1em; color:#E8A33A; margin-top:4px; font-family:ui-monospace,Menlo,monospace; }
+  .fr.pick svg { position:absolute; inset:-14% -10% 0 -10%; width:120%; height:120%; pointer-events:none; overflow:visible; }
+  .fr.pick svg path { fill:none; stroke:var(--orange); stroke-width:3.2; stroke-linecap:round; }
+  .fr.x::after { content:''; position:absolute; left:0; right:0; top:0; aspect-ratio:3/2; background:linear-gradient(45deg,transparent 48.5%,var(--orange) 49%,var(--orange) 51%,transparent 51.5%),linear-gradient(-45deg,transparent 48.5%,var(--orange) 49%,var(--orange) 51%,transparent 51.5%); opacity:.85; }
+  .picks { display:grid; grid-template-columns:2fr 1fr 1fr; gap:8px; margin-top:8px; }
+  .picks img { width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:4/3; }
+  .picks .cap { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-top:8px; }
+  @media (max-width:800px){ .sheet{grid-template-columns:repeat(4,1fr);} .picks{grid-template-columns:1fr;} }
+
+  /* ===== B. BRAND DUOTONE COLLAGE ===== */
+  #b { background:var(--orange); color:#000; padding:90px 4vw 80px; min-height:100vh; }
+  #b .big { font-size:clamp(70px,15vw,250px); font-weight:900; letter-spacing:-.07em; line-height:.8; text-transform:uppercase; position:relative; z-index:3; mix-blend-mode:multiply; }
+  .collage { position:relative; height:clamp(620px,72vw,1100px); margin-top:-6vw; }
+  .tile { position:absolute; overflow:hidden; background:#000; }
+  .tile img { width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) contrast(1.25) brightness(1.05); mix-blend-mode:screen; opacity:.95; }
+  .tile.o { background:#9D1813; } .tile.k { background:#000; } .tile.b { background:#2C52FF; }
+  .tile.color img { filter:none; mix-blend-mode:normal; }
+  .sun { position:absolute; z-index:6; width:clamp(110px,14vw,220px); }
+  .sticker { position:absolute; z-index:6; background:var(--neon); color:#000; font-weight:900; text-transform:uppercase; letter-spacing:-.03em; padding:10px 14px; font-size:clamp(14px,1.6vw,22px); transform:rotate(-4deg); }
+  #b .foot { display:flex; justify-content:space-between; gap:30px; margin-top:30px; font-size:15px; line-height:1.45; flex-wrap:wrap; }
+  #b .foot p { max-width:46ch; }
+  #b .foot b { font-weight:900; }
+
+  /* ===== C. ZINE / PRINTS ON THE TABLE ===== */
+  #c { background:#E6DCCD url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E"); color:var(--ink); padding:90px 4vw 120px; }
+  #c .row { display:grid; grid-template-columns:repeat(12,1fr); gap:0 2vw; align-items:start; }
+  #c h2 { grid-column:1/8; font-size:clamp(40px,6vw,96px); font-weight:900; letter-spacing:-.06em; line-height:.88; text-transform:uppercase; }
+  #c .intro { grid-column:9/13; font-size:15px; line-height:1.45; padding-top:10px; }
+  .board { position:relative; height:clamp(900px,95vw,1500px); margin-top:30px; }
+  .print { position:absolute; background:#fff; padding:10px 10px 34px; box-shadow:0 18px 40px rgba(0,0,0,.18), 0 2px 4px rgba(0,0,0,.12); }
+  .print img { display:block; width:100%; height:auto; }
+  .print figcaption { position:absolute; left:12px; right:12px; bottom:9px; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#333; }
+  .print::before { content:''; position:absolute; top:-12px; left:50%; width:84px; height:24px; margin-left:-42px; background:rgba(255,255,240,.55); border:1px solid rgba(0,0,0,.05); transform:rotate(-3deg); }
+  .note { position:absolute; font-size:clamp(18px,2vw,30px); font-weight:900; letter-spacing:-.04em; text-transform:uppercase; line-height:.95; }
+  .note .ast { color:var(--orange); }
+  @media (max-width:800px){ #c h2,#c .intro{grid-column:1/13;} .board{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:18px} .print,.note{position:relative!important;left:auto!important;top:auto!important;width:auto!important} .note{grid-column:1/3} }
+</style>
+</head>
+<body>
+<nav class="switch"><a href="#a">A - Contact sheet</a><a href="#b">B - Brand collage</a><a href="#c">C - Prints on the table</a></nav>
+
+<!-- A -->
+<section id="a">
+  <span class="vlabel">A - Contact sheet</span>
+  <div class="head">
+    <h2>Tbilisi Shopping<br>Festival</h2>
+    <p class="meta">Tbilisi Outlet Village<br>2 weekends · 2026<br>32 of 129 frames</p>
+  </div>
+  <div class="sheet">
+    <div class="fr"><img src="tsf/001.jpg"><span>01A</span></div>
+    <div class="fr pick"><img src="tsf/068.jpg"><svg viewBox="0 0 120 100" preserveAspectRatio="none"><path d="M10 52 C 6 20, 60 6, 100 18 C 122 28, 118 74, 80 86 C 44 96, 4 84, 12 46"/></svg><span>02A</span></div>
+    <div class="fr"><img src="tsf/008.jpg"><span>03A</span></div>
+    <div class="fr x"><img src="tsf/010.jpg"><span>04A</span></div>
+    <div class="fr"><img src="tsf/011.jpg"><span>05A</span></div>
+    <div class="fr"><img src="tsf/017.jpg"><span>06A</span></div>
+    <div class="fr pick"><img src="tsf/053.jpg"><svg viewBox="0 0 120 100" preserveAspectRatio="none"><path d="M14 40 C 20 10, 92 4, 108 30 C 120 60, 96 92, 54 90 C 18 88, 2 66, 18 36"/></svg><span>07A</span></div>
+    <div class="fr"><img src="tsf/021.jpg"><span>08A</span></div>
+    <div class="fr"><img src="tsf/023.jpg"><span>09A</span></div>
+    <div class="fr"><img src="tsf/029.jpg"><span>10A</span></div>
+    <div class="fr x"><img src="tsf/034.jpg"><span>11A</span></div>
+    <div class="fr"><img src="tsf/038.jpg"><span>12A</span></div>
+    <div class="fr"><img src="tsf/046.jpg"><span>13A</span></div>
+    <div class="fr"><img src="tsf/047.jpg"><span>14A</span></div>
+    <div class="fr pick"><img src="tsf/027.jpg"><svg viewBox="0 0 120 100" preserveAspectRatio="none"><path d="M8 48 C 10 14, 70 2, 104 22 C 124 40, 110 84, 70 90 C 30 96, 0 76, 10 42"/></svg><span>15A</span></div>
+    <div class="fr"><img src="tsf/049.jpg"><span>16A</span></div>
+    <div class="fr"><img src="tsf/058.jpg"><span>17A</span></div>
+    <div class="fr"><img src="tsf/066.jpg"><span>18A</span></div>
+    <div class="fr"><img src="tsf/077.jpg"><span>19A</span></div>
+    <div class="fr"><img src="tsf/079.jpg"><span>20A</span></div>
+    <div class="fr"><img src="tsf/085.jpg"><span>21A</span></div>
+    <div class="fr"><img src="tsf/094.jpg"><span>22A</span></div>
+    <div class="fr"><img src="tsf/095.jpg"><span>23A</span></div>
+    <div class="fr x"><img src="tsf/099.jpg"><span>24A</span></div>
+    <div class="fr"><img src="tsf/100.jpg"><span>25A</span></div>
+    <div class="fr"><img src="tsf/103.jpg"><span>26A</span></div>
+    <div class="fr"><img src="tsf/107.jpg"><span>27A</span></div>
+    <div class="fr"><img src="tsf/111.jpg"><span>28A</span></div>
+    <div class="fr pick"><img src="tsf/112.jpg"><svg viewBox="0 0 120 100" preserveAspectRatio="none"><path d="M12 44 C 8 16, 74 4, 106 26 C 122 46, 104 88, 62 90 C 26 92, 4 72, 14 40"/></svg><span>29A</span></div>
+    <div class="fr"><img src="tsf/117.jpg"><span>30A</span></div>
+    <div class="fr"><img src="tsf/121.jpg"><span>31A</span></div>
+    <div class="fr"><img src="tsf/125.jpg"><span>32A</span></div>
+  </div>
+  <div class="picks">
+    <div><img src="tsf/053.jpg"><p class="cap">(laundry over the street - the carnival motif)*</p></div>
+    <div><img src="tsf/068.jpg"><p class="cap">(main stage)</p></div>
+    <div><img src="tsf/112.jpg"><p class="cap">(festival merch)</p></div>
+  </div>
+</section>
+
+<!-- B -->
+<section id="b">
+  <span class="vlabel">B - Brand collage</span>
+  <p class="big">Shopping<br>Festival</p>
+  <div class="collage">
+    <div class="tile k" style="left:0;top:4%;width:38%;height:46%"><img src="tsf/068.jpg"></div>
+    <div class="tile o" style="left:42%;top:0;width:24%;height:34%"><img src="tsf/079.jpg"></div>
+    <div class="tile b" style="left:70%;top:8%;width:30%;height:40%"><img src="tsf/112.jpg"></div>
+    <div class="tile color" style="left:12%;top:54%;width:46%;height:40%"><img src="tsf/053.jpg"></div>
+    <div class="tile k" style="left:62%;top:52%;width:22%;height:30%"><img src="tsf/027.jpg"></div>
+    <div class="tile o" style="left:86%;top:58%;width:14%;height:36%"><img src="tsf/121.jpg"></div>
+    <svg class="sun" viewBox="0 0 100 100" style="left:52%;top:30%"><g fill="#D9822B"><circle cx="50" cy="50" r="24"/><g stroke="#D9822B" stroke-width="6" stroke-linecap="round"><line x1="50" y1="6" x2="50" y2="20"/><line x1="50" y1="80" x2="50" y2="94"/><line x1="6" y1="50" x2="20" y2="50"/><line x1="80" y1="50" x2="94" y2="50"/><line x1="19" y1="19" x2="29" y2="29"/><line x1="71" y1="71" x2="81" y2="81"/><line x1="19" y1="81" x2="29" y2="71"/><line x1="71" y1="29" x2="81" y2="19"/></g></g><ellipse cx="41" cy="48" rx="6" ry="3.5" fill="#111"/><ellipse cx="59" cy="48" rx="6" ry="3.5" fill="#111"/></svg>
+    <span class="sticker" style="left:4%;top:47%">2 weekends</span>
+    <span class="sticker" style="left:64%;top:84%;transform:rotate(3deg)">Concerts · Talks · Beach</span>
+  </div>
+  <div class="foot">
+    <p><b>The first shopping festival in Tbilisi.</b> RUNO developed the concept and produced it end to end at Tbilisi Outlet Village.</p>
+    <p>(Client: Tbilisi Outlet Village · 2026)*</p>
+  </div>
+</section>
+
+<!-- C -->
+<section id="c">
+  <span class="vlabel">C - Prints on the table</span>
+  <div class="row">
+    <h2>Two weekends<br>at the outlet</h2>
+    <p class="intro">Concerts, public talks, a beach zone and brand activations, built on pre-Soviet Georgian carnival traditions. Concept and production by RUNO.</p>
+  </div>
+  <div class="board">
+    <figure class="print" style="left:2%;top:2%;width:34%;transform:rotate(-3deg)"><img src="tsf/053.jpg"><figcaption>Sat, 12:40 - laundry line</figcaption></figure>
+    <figure class="print" style="left:40%;top:0;width:24%;transform:rotate(2.5deg)"><img src="tsf/079.jpg"><figcaption>The youngest guest</figcaption></figure>
+    <figure class="print" style="left:68%;top:4%;width:30%;transform:rotate(-1.5deg)"><img src="tsf/068.jpg"><figcaption>Sat, 19:10 - main stage</figcaption></figure>
+    <p class="note" style="left:40%;top:30%">Opening<br>day<span class="ast">*</span></p>
+    <figure class="print" style="left:6%;top:34%;width:26%;transform:rotate(3deg)"><img src="tsf/112.jpg"><figcaption>Merch</figcaption></figure>
+    <figure class="print" style="left:36%;top:40%;width:32%;transform:rotate(-2deg)"><img src="tsf/027.jpg"><figcaption>Sun, 15:00 - kids zone</figcaption></figure>
+    <figure class="print" style="left:72%;top:38%;width:22%;transform:rotate(4deg)"><img src="tsf/121.jpg"><figcaption>Glitter station</figcaption></figure>
+    <figure class="print" style="left:14%;top:66%;width:30%;transform:rotate(-4deg)"><img src="tsf/095.jpg"><figcaption>Sun, 20:30 - crowd</figcaption></figure>
+    <figure class="print" style="left:50%;top:70%;width:28%;transform:rotate(2deg)"><img src="tsf/058.jpg"><figcaption>In the shops</figcaption></figure>
+    <p class="note" style="left:82%;top:76%">129<br>frames<span class="ast">*</span></p>
+  </div>
+</section>
+</body>
+</html>
