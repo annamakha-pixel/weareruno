@@ -26,13 +26,13 @@ a { color: inherit; text-decoration: none; }
 /* moving rows */
 .rows { border-top: var(--rule) solid var(--ink); }
 .row { display: block; position: relative; overflow: hidden; border-bottom: var(--rule) solid var(--ink); height: clamp(46px, 6.4vh, 74px); }
-.track { position: absolute; top: 50%; left: 0; display: flex; width: max-content; transform: translate(var(--off), -50%); animation: run var(--dur) linear infinite; }
+.track { position: absolute; top: 50%; left: 0; display: flex; width: max-content; transform: translate(0, -50%); animation: run var(--dur) linear infinite; }
 .track.rev { animation-direction: reverse; }
 .chunk { display: flex; align-items: center; white-space: nowrap; }
 .chunk span, .chunk i { font-size: clamp(26px, 3.4vw, 52px); line-height: 1; font-style: normal; text-transform: uppercase; letter-spacing: -0.01em; }
 .chunk i { margin: 0 .35em; display: inline-block; }
 .chunk span + i + span { margin-left: 0; }
-@keyframes run { from { transform: translate(calc(var(--off)), -50%); } to { transform: translate(calc(var(--off) - 50%), -50%); } }
+@keyframes run { from { transform: translate(0, -50%); } to { transform: translate(-50%, -50%); } }
 .row:hover { background: var(--ink); color: var(--ground); }
 .row:hover .track { animation-play-state: paused; }
 

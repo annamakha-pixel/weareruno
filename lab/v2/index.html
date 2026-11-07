@@ -70,7 +70,7 @@
     const dir = i % 2 ? 'rev' : '';
     const dur = 38 + (i * 7) % 30;
     const offset = [8, 46, 22, 60, 0, 34, 52, 14, 40, 26, 4, 30][i % 12];
-    a.innerHTML = `<div class="track ${dir}" style="--dur:${dur}s; --off:-${offset}%"><div class="chunk">${unit.repeat(6)}</div><div class="chunk" aria-hidden="true">${unit.repeat(6)}</div></div>`;
+    a.innerHTML = `<div class="track ${dir}" style="--dur:${dur}s; animation-delay:-${(offset/100*dur).toFixed(1)}s"><div class="chunk">${unit.repeat(6)}</div><div class="chunk" aria-hidden="true">${unit.repeat(6)}</div></div>`;
     rows.appendChild(a);
   });
 
