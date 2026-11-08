@@ -1536,7 +1536,7 @@
 
     /* ===== services as a stage: each scroll step is a scene change ===== */
     .svc-stage { height: calc(var(--n) * 75vh + 100vh); position: relative; }
-    .stage { position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--bg); transition: background-color .6s cubic-bezier(.4,0,.2,1); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); padding: 96px 40px 40px; }
+    .stage { position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--bg); transition: background-color .6s cubic-bezier(.4,0,.2,1); display: grid; grid-template-columns: 1fr; padding: 96px 40px 40px; }
     .stage-label { position: absolute; top: 76px; left: 40px; }
     .stage-list { list-style: none; align-self: center; position: relative; z-index: 2; }
     .stage-list button { background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
@@ -1650,7 +1650,7 @@
     <div class="stage" id="stage" style="--bg:#CEFF58">
       <p class="stage-label mono">Services</p>
       <ul class="stage-list"><li><button type="button" data-i="0"><span class="nm">Concept</span></button><p class="ds">Creative concepts and storytelling, artistic direction and scenography, brand experience design.</p></li><li><button type="button" data-i="1"><span class="nm">Production</span></button><p class="ds">Full-scale production and technical management: stage, sound and light, sets, logistics.</p></li><li><button type="button" data-i="2"><span class="nm">Hospitality</span></button><p class="ds">Guest experience and VVIP management, diplomatic protocol, venues, travel and hosting teams.</p></li><li><button type="button" data-i="3"><span class="nm">Storytelling</span></button><p class="ds">Communication strategy and PR, press releases, photo and video content, media relations.</p></li><li><button type="button" data-i="4"><span class="nm">Corporate offsites</span></button><p class="ds">Team retreats in Georgia for 30 to 600 people: venue, programme, food and transfers in one package.</p></li></ul>
-      <div class="stage-syms"><span class="st-sym" data-i="0" style="--m:url(./symbols/bird.svg)" aria-hidden="true"></span><span class="st-sym" data-i="1" style="--m:url(./symbols/qvevri.svg)" aria-hidden="true"></span><span class="st-sym" data-i="2" style="--m:url(./symbols/pomegranate.svg)" aria-hidden="true"></span><span class="st-sym" data-i="3" style="--m:url(./symbols/grape.svg)" aria-hidden="true"></span><span class="st-sym" data-i="4" style="--m:url(./symbols/horse.svg)" aria-hidden="true"></span></div>
+      
     </div>
   </section>
   <script>
