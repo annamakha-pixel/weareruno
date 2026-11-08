@@ -1529,6 +1529,10 @@
     .sc-grid { gap: 0; }
     .scard { cursor: default; }
     @media (max-width: 900px) { .sc-grid { gap: 0; } }
+
+    /* services v4: same rule, symbol spans the card edge to edge */
+    .scard { min-height: 0; }
+    .scard .sc-sym { position: static; display: block; width: calc(100% + 44px); max-width: none; max-height: none; height: auto; margin: auto -22px 0; padding-top: 36px; object-fit: fill; }
   </style>
 </head>
 <body>

@@ -212,6 +212,10 @@
     .inc p { color: #000; font-size: 17px; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; max-width: 26ch; }
     .inc .sym, .inc:nth-child(n) .sym { left: 0; right: auto; bottom: 0; top: auto; width: 100%; height: auto; max-height: 58%; max-width: none; object-fit: contain; object-position: left bottom; transform: none; }
     @media (max-width: 900px) { .inc { min-height: 520px; } }
+
+    /* Included v4: symbol is the full width of the card, touching left, right and bottom */
+    .inc { display: flex; flex-direction: column; min-height: 0; }
+    .inc .sym, .inc:nth-child(n) .sym { position: static; display: block; width: calc(100% + 52px); max-width: none; max-height: none; height: auto; margin: auto -26px 0; padding-top: 40px; object-fit: fill; }
   </style>
 </head>
 <body>
