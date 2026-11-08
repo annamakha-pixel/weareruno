@@ -9,6 +9,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
   <meta name="description" content="RUNO portfolio: 8 commissions across Tbilisi, St. Petersburg, and Moscow. Chanel, Qatar Embassy, Gorky Park, and more." />
   <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -386,6 +387,17 @@
     @media (prefers-reduced-motion: reduce) {
       .project-body { transition: none; }
       .project-expand-btn { transition: none; }
+    }
+
+    /* ===== photos with air: smaller, asymmetric, numbered ===== */
+    .air { display: grid; grid-template-columns: repeat(12, 1fr); gap: 5vw 2vw; align-items: start; padding: 40px 32px 90px; }
+    .air figure { margin: 0; }
+    .air img { width: 100%; height: auto; display: block; }
+    .air figcaption { margin-top: 8px; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .04em; color: rgba(255,255,255,.4); }
+    @media (max-width: 800px) {
+      .air { grid-template-columns: 1fr 1fr; gap: 16px; padding: 24px 20px 60px; }
+      .air figure { grid-column: auto !important; margin-top: 0 !important; }
+      .air figure:first-child { grid-column: 1 / -1 !important; }
     }
   </style>
 </head>
@@ -788,6 +800,41 @@
         setTimeout(() => scrollToProject(target, true), 150);
       }
     }
+  </script>
+
+  <script>
+    // rebuild each project's photos into an airy, asymmetric layout
+    (function(){
+      const slots = [
+        'grid-column: 1 / 8;',
+        'grid-column: 9 / 13; margin-top: 12vw;',
+        'grid-column: 3 / 7;',
+        'grid-column: 8 / 12; margin-top: 6vw;',
+        'grid-column: 1 / 5; margin-top: 4vw;',
+        'grid-column: 6 / 13;',
+        'grid-column: 2 / 6; margin-top: 8vw;',
+        'grid-column: 8 / 11;',
+        'grid-column: 4 / 10; margin-top: 4vw;'
+      ];
+      document.querySelectorAll('.project').forEach(project => {
+        const inner = project.querySelector('.project-body-inner');
+        if (!inner) return;
+        const blocks = inner.querySelectorAll('.photos-full, .photos-grid-2, .photos-grid-3, .photos-grid-4');
+        if (!blocks.length) return;
+        const coverSrc = (project.querySelector('.project-cover img') || {}).getAttribute ? project.querySelector('.project-cover img').getAttribute('src') : '';
+        const seen = new Set(); const srcs = [];
+        blocks.forEach(b => b.querySelectorAll('img').forEach(i => { const s = i.getAttribute('src'); if (!seen.has(s)) { seen.add(s); srcs.push([s, i.alt]); } }));
+        const air = document.createElement('div'); air.className = 'air';
+        srcs.forEach(([src, alt], k) => {
+          const f = document.createElement('figure');
+          f.style.cssText = slots[k % slots.length];
+          f.innerHTML = '<img src="' + src + '" alt="' + (alt || '') + '" loading="lazy"><figcaption>' + String(k + 1).padStart(2, '0') + ' / ' + String(srcs.length).padStart(2, '0') + '</figcaption>';
+          air.appendChild(f);
+        });
+        blocks[0].before(air);
+        blocks.forEach(b => b.remove());
+      });
+    })();
   </script>
 </body>
 </html>
