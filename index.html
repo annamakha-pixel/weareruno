@@ -1504,6 +1504,31 @@
     .scard:hover .sc-sym { transform: none; }
     .pcard .pc-head { line-height: 1.15; letter-spacing: -0.02em; }
     .wrow .wt { line-height: 1.15; letter-spacing: -0.02em; }
+
+    /* work: rows open inline */
+    button.wrow { width: 100%; background: none; border: 0; border-bottom: 3px solid #000; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+    .wproj.open button.wrow { background: #000; color: #fff; }
+    .wproj .wa { transition: transform .3s; }
+    .wproj.open .wa { transform: rotate(90deg); }
+    .wbody { height: 0; overflow: hidden; transition: height .55s cubic-bezier(.4,0,.2,1); }
+    .wbody-in { padding: 36px 0 80px; border-bottom: 3px solid #000; }
+    .wtext { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; }
+    .wdesc { grid-column: 2; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.25; letter-spacing: -0.02em; max-width: 46ch; }
+    .wmeta { grid-column: 2; margin-top: 16px; }
+    .wair { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4vw 2vw; align-items: start; margin-top: 48px; }
+    .wair figure { margin: 0; }
+    .wair img { width: 100%; height: auto; display: block; }
+    .wair figcaption { margin-top: 8px; }
+    @media (max-width: 900px) {
+      .wtext { grid-template-columns: 1fr; } .wdesc, .wmeta { grid-column: 1; }
+      .wair { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .wair figure { grid-column: auto !important; margin-top: 0 !important; }
+      .wair figure:first-child { grid-column: 1 / -1 !important; }
+    }
+    /* services: one solid band of colour, no gaps, all symbols white */
+    .sc-grid { gap: 0; }
+    .scard { cursor: default; }
+    @media (max-width: 900px) { .sc-grid { gap: 0; } }
   </style>
 </head>
 <body>
@@ -1567,17 +1592,17 @@
   <section class="work-min" id="work">
     <div class="work-head">
       <h2 class="work-h">Work</h2>
-      <a href="./projects.html" class="work-all">All projects</a>
+      
     </div>
     <div class="work-list">
-      <a href="./projects.html#qatar" class="wrow" data-img="./projects/p10_1.jpeg"><span class="wn mono">01</span><span class="wc">State of Qatar</span><span class="wt">Official Reception</span><span class="wp mono">St. Petersburg, 2021</span><span class="wa">→</span></a>
-      <a href="./projects.html#chanel" class="wrow" data-img="./projects/chanel_logo_pink.jpg"><span class="wn mono">02</span><span class="wc">Chanel</span><span class="wt">Chance Eau Splendide</span><span class="wp mono">Tbilisi, 2025</span><span class="wa">→</span></a>
-      <a href="./projects.html#tsf" class="wrow" data-img="./projects/tsf_logo_card.jpg"><span class="wn mono">03</span><span class="wc">Tbilisi Outlet Village</span><span class="wt">Tbilisi Shopping Festival</span><span class="wp mono">Tbilisi, 2026</span><span class="wa">→</span></a>
-      <a href="./projects.html#loco" class="wrow" data-img="./projects/loco_1.jpg"><span class="wn mono">04</span><span class="wc">Loco Park</span><span class="wt">Former factory, new public space</span><span class="wp mono">Tbilisi, 2025-2026</span><span class="wa">→</span></a>
-      <a href="./projects.html#hurts" class="wrow" data-img="./projects/p15_5.jpeg"><span class="wn mono">05</span><span class="wc">Hurts</span><span class="wt">Tbilisi Debut</span><span class="wp mono">Tbilisi, 2023</span><span class="wa">→</span></a>
-      <a href="./projects.html#gorky" class="wrow" data-img="./projects/p19_2.jpeg"><span class="wn mono">06</span><span class="wc">Gorky Park</span><span class="wt">90th Anniversary</span><span class="wp mono">Moscow, 2018</span><span class="wa">→</span></a>
-      <a href="./projects.html#opergrouppa" class="wrow" data-img="./projects/p18_4.jpeg"><span class="wn mono">07</span><span class="wc">Opergrouppa</span><span class="wt">Opera Festival</span><span class="wp mono">Moscow, 2011-2015</span><span class="wa">→</span></a>
-      <a href="./projects.html#kia" class="wrow" data-img="./projects/p21_1.jpeg"><span class="wn mono">08</span><span class="wc">Kia</span><span class="wt">Quoris Launch</span><span class="wp mono">Moscow, 2013</span><span class="wa">→</span></a>
+      <div class="wproj" id="w-qatar"><button type="button" class="wrow" aria-expanded="false"><span class="wn mono">01</span><span class="wc">State of Qatar</span><span class="wt">Official Reception</span><span class="wp mono">St. Petersburg, 2021</span><span class="wa">→</span></button><div class="wbody"><div class="wbody-in"><div class="wtext"><p class="wdesc">Official reception for the State of Qatar in St. Petersburg. 500 guests - diplomats, royal advisors, and cultural figures from more than 30 countries. Catering by the Emir's personal chef. UN-level security protocol, precise seating by diplomatic rank, arrival sequence coordinated to the minute.</p><p class="wmeta mono">Client: Qatar Embassy, QRCC · St. Petersburg, Russia · 2021</p></div><div class="wair"></div></div></div></div>
+      <div class="wproj" id="w-chanel"><button type="button" class="wrow" aria-expanded="false"><span class="wn mono">02</span><span class="wc">Chanel</span><span class="wt">Chance Eau Splendide</span><span class="wp mono">Tbilisi, 2025</span><span class="wa">→</span></button><div class="wbody"><div class="wbody-in"><div class="wtext"><p class="wdesc">Global campaign launch bringing over 200 international guests to Tbilisi. Full production for a fragrance launch in collaboration with DAZZZLING and Chanel CIS. The city served as the backdrop - not as a theme, but as a genuine frame for the collection's character.</p><p class="wmeta mono">Client: DAZZZLING, Chanel CIS · 200+ international guests · Tbilisi, Georgia · 2025</p></div><div class="wair"></div></div></div></div>
+      <div class="wproj" id="w-tsf"><button type="button" class="wrow" aria-expanded="false"><span class="wn mono">03</span><span class="wc">Tbilisi Outlet Village</span><span class="wt">Tbilisi Shopping Festival</span><span class="wp mono">Tbilisi, 2026</span><span class="wa">→</span></button><div class="wbody"><div class="wbody-in"><div class="wtext"><p class="wdesc">The first shopping festival in Tbilisi, held over two weekends at Tbilisi Outlet Village. RUNO developed the concept and produced the festival end to end: concerts, public talks, a beach zone, brand activations, and a programme built on pre-Soviet Georgian carnival traditions.</p><p class="wmeta mono">Client: Tbilisi Outlet Village · Tbilisi, Georgia · 2026</p></div><div class="wair"></div></div></div></div>
+      <div class="wproj" id="w-loco"><button type="button" class="wrow" aria-expanded="false"><span class="wn mono">04</span><span class="wc">Loco Park</span><span class="wt">Former factory, new public space</span><span class="wp mono">Tbilisi, 2025-2026</span><span class="wa">→</span></button><div class="wbody"><div class="wbody-in"><div class="wtext"><p class="wdesc">RUNO is the production team behind Loco Park, the revitalization of a former factory into a new zone for recreation, culture, and creative life.</p><p class="wmeta mono">Client: Loco Alliance · Tbilisi, Georgia · 2025-2026</p></div><div class="wair"></div></div></div></div>
+      <div class="wproj" id="w-hurts"><button type="button" class="wrow" aria-expanded="false"><span class="wn mono">05</span><span class="wc">Hurts</span><span class="wt">Tbilisi Debut</span><span class="wp mono">Tbilisi, 2023</span><span class="wa">→</span></button><div class="wbody"><div class="wbody-in"><div class="wtext"><p class="wdesc">Full concert production for Hurts' Tbilisi debut - venue management, technical execution, and coordination with the global tour production for an audience of over 2,000. The first time the band played Georgia; the production was calibrated to treat that fact as significant.</p><p class="wmeta mono">Client: HONEYCOMB Global · 2,000+ audience · Tbilisi, Georgia · 2023</p></div><div class="wair"></div></div></div></div>
+      <div class="wproj" id="w-gorky"><button type="button" class="wrow" aria-expanded="false"><span class="wn mono">06</span><span class="wc">Gorky Park</span><span class="wt">90th Anniversary</span><span class="wp mono">Moscow, 2018</span><span class="wa">→</span></button><div class="wbody"><div class="wbody-in"><div class="wtext"><p class="wdesc">Moscow's iconic public space transformed into a hub of creativity. Nine days of festival. International headliners. Over one million visitors. The event honoured the park's history while looking ahead to its future - combining culture, innovation, and community engagement at a scale that required a different kind of precision than any single-venue production.</p><p class="wmeta mono">1,024,000+ visitors · 9 days · International headliners · Moscow, Russia · 2018</p></div><div class="wair"></div></div></div></div>
+      <div class="wproj" id="w-opergrouppa"><button type="button" class="wrow" aria-expanded="false"><span class="wn mono">07</span><span class="wc">Opergrouppa</span><span class="wt">Opera Festival</span><span class="wp mono">Moscow, 2011-2015</span><span class="wa">→</span></button><div class="wbody"><div class="wbody-in"><div class="wtext"><p class="wdesc">A contemporary opera festival that redefined the boundaries of classical art. Experimental storytelling, cutting-edge production, and collaborations with world-leading theatres. A platform for new voices and bold ideas in opera, running over four years.</p><p class="wmeta mono">Moscow, Russia · 2011–2015</p></div><div class="wair"></div></div></div></div>
+      <div class="wproj" id="w-kia"><button type="button" class="wrow" aria-expanded="false"><span class="wn mono">08</span><span class="wc">Kia</span><span class="wt">Quoris Launch</span><span class="wp mono">Moscow, 2013</span><span class="wa">→</span></button><div class="wbody"><div class="wbody-in"><div class="wtext"><p class="wdesc">End-to-end production at the Stanislavsky Theatre. Director: Vasily Barkhatov. Starring: Renata Litvinova. Orchestra, choir, and ballet - five cars presented on stage. A theatrical launch at the intersection of automotive and performing arts that treated the car not as a product to be displayed, but as a character in a production.</p><p class="wmeta mono">Client: KIA Motors, PRT · Moscow, Russia · 2013</p></div><div class="wair"></div></div></div></div>
     </div>
   </section>
 
@@ -1592,13 +1617,13 @@
 
   <!-- SERVICES -->
   <section class="svc-cards" id="services">
-    <div class="work-head"><h2 class="work-h">Services</h2><a href="./services.html" class="work-all">All services</a></div>
+    <div class="work-head"><h2 class="work-h">Services</h2></div>
     <div class="sc-grid">
-      <a href="./services.html#culture" class="scard" style="--c:#CEFF58"><h3>Concept</h3><p>Creative concepts and storytelling, artistic direction and scenography, brand experience design.</p><img class="sc-sym" src="./symbols/bird.svg" alt="" aria-hidden="true"></a>
-      <a href="./services.html#production" class="scard" style="--c:#82B4E2"><h3>Production</h3><p>Full-scale production and technical management, stage, sound and light, sets, logistics.</p><img class="sc-sym" src="./symbols/qvevri.svg" alt="" aria-hidden="true"></a>
-      <a href="./services.html#hospitality" class="scard dark-sym" style="--c:#E9DED8"><h3>Hospitality</h3><p>Guest experience and VVIP management, diplomatic protocol, venues, travel and hosting teams.</p><img class="sc-sym" src="./symbols/pomegranate.svg" alt="" aria-hidden="true"></a>
-      <a href="./services.html#storytelling" class="scard" style="--c:#F4B1FF"><h3>Storytelling</h3><p>Communication strategy and PR, press releases, photo and video content, media relations.</p><img class="sc-sym" src="./symbols/grape.svg" alt="" aria-hidden="true"></a>
-      <a href="./offsite-page.html" class="scard" style="--c:#FB4827"><h3>Corporate offsites</h3><p>Team retreats in Georgia for 30 to 600 people, all in one package.</p><img class="sc-sym" src="./symbols/horse.svg" alt="" aria-hidden="true"></a>
+      <div class="scard" style="--c:#CEFF58"><h3>Concept</h3><p>Creative concepts and storytelling, artistic direction and scenography, brand experience design.</p><img class="sc-sym" src="./symbols/bird.svg" alt="" aria-hidden="true"></div>
+      <div class="scard" style="--c:#82B4E2"><h3>Production</h3><p>Full-scale production and technical management, stage, sound and light, sets, logistics.</p><img class="sc-sym" src="./symbols/qvevri.svg" alt="" aria-hidden="true"></div>
+      <div class="scard" style="--c:#E9DED8"><h3>Hospitality</h3><p>Guest experience and VVIP management, diplomatic protocol, venues, travel and hosting teams.</p><img class="sc-sym" src="./symbols/pomegranate.svg" alt="" aria-hidden="true"></div>
+      <div class="scard" style="--c:#F4B1FF"><h3>Storytelling</h3><p>Communication strategy and PR, press releases, photo and video content, media relations.</p><img class="sc-sym" src="./symbols/grape.svg" alt="" aria-hidden="true"></div>
+      <div class="scard" style="--c:#FB4827"><h3>Corporate offsites</h3><p>Team retreats in Georgia for 30 to 600 people, all in one package.</p><img class="sc-sym" src="./symbols/horse.svg" alt="" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -1608,7 +1633,7 @@
       <div class="vc-top">
         <a href="#" class="footer-logo"><img src="./logo.svg" alt="RUNO" height="22" style="filter:invert(1);display:block;"></a>
         <ul class="vc-nav">
-          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="#work">Projects</a></li>
           <li><a href="./services.html">Services</a></li>
           <li><a href="./offsite-page.html">Offsite</a></li>
         </ul>
@@ -1686,7 +1711,6 @@
     revealEls.forEach(el => observer.observe(el));
   </script>
 
-  <img class="peek" id="peek" alt="" aria-hidden="true">
   <script>
     (function(){
       const peek = document.getElementById('peek');
@@ -1696,6 +1720,25 @@
         el.addEventListener('mouseleave', () => peek.classList.remove('on'));
       });
       addEventListener('mousemove', e => { peek.style.transform = 'translate(' + (e.clientX + 28) + 'px,' + (e.clientY - 110) + 'px)'; }, { passive: true });
+    })();
+  </script>
+
+  <script>
+    (function(){
+      const nav = document.querySelector('nav');
+      function setH(el, h){ el.style.height = h; }
+      document.querySelectorAll('.wproj').forEach(p => {
+        const btn = p.querySelector('button.wrow'), body = p.querySelector('.wbody');
+        btn.addEventListener('click', () => {
+          const open = p.classList.contains('open');
+          document.querySelectorAll('.wproj.open').forEach(o => { if (o !== p) { const b = o.querySelector('.wbody'); setH(b, b.scrollHeight + 'px'); requestAnimationFrame(() => setH(b, '0')); o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded','false'); } });
+          if (open) { setH(body, body.scrollHeight + 'px'); requestAnimationFrame(() => setH(body, '0')); p.classList.remove('open'); btn.setAttribute('aria-expanded','false'); return; }
+          p.classList.add('open'); btn.setAttribute('aria-expanded','true');
+          setH(body, body.scrollHeight + 'px');
+          body.addEventListener('transitionend', () => { if (p.classList.contains('open')) setH(body, 'auto'); }, { once: true });
+          setTimeout(() => { const y = p.getBoundingClientRect().top + scrollY - ((nav && nav.offsetHeight) || 64); scrollTo({ top: y, behavior: 'smooth' }); }, 580);
+        });
+      });
     })();
   </script>
 </body>
