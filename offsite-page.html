@@ -204,6 +204,14 @@
     .incl li { border-top-color: rgba(0,0,0,.2); }
     @media (max-width: 900px) { .georgia .facts b { white-space: normal; font-size: 30px; } .inc { min-height: 520px; } .inc h3 { font-size: 40px; } }
     .hero h1 { font-family: 'Gloock', serif; font-weight: 400; text-transform: none; letter-spacing: -0.03em; line-height: .9; font-size: clamp(60px, 9vw, 150px); max-width: 11ch; }
+
+    /* Included v3: no numbers, no gaps, symbol flush to the card's bottom edge, brand leading */
+    .incs { gap: 0; }
+    .inc { padding: 26px 26px 0; min-height: clamp(520px, 44vw, 660px); }
+    .inc h3 { margin-top: 0; letter-spacing: -0.05em; line-height: .92; }
+    .inc p { color: #000; font-size: 17px; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; max-width: 26ch; }
+    .inc .sym, .inc:nth-child(n) .sym { left: 0; right: auto; bottom: 0; top: auto; width: 100%; height: auto; max-height: 58%; max-width: none; object-fit: contain; object-position: left bottom; transform: none; }
+    @media (max-width: 900px) { .inc { min-height: 520px; } }
   </style>
 </head>
 <body>
@@ -243,12 +251,12 @@
       <p>RUNO takes care of every part of the offsite, from start to finish.</p>
     </div>
     <div class="incs">
-      <div class="inc lav"><span class="n">01</span><img class="sym" src="./bird.svg" alt="" aria-hidden="true"><h3>Arrival</h3><p>A welcome desk at the airport and transfers in both directions. Keys and programme booklets are handed out before the team reaches the hotel.</p></div>
-      <div class="inc powder"><span class="n">02</span><img class="sym" src="./qvevri.svg" alt="" aria-hidden="true"><h3>Working sessions</h3><p>A room set up for the team, with AV, translation, fast connectivity and materials.</p></div>
-      <div class="inc neon"><span class="n">03</span><img class="sym" src="./horse.svg" alt="" aria-hidden="true"><h3>Practices</h3><p>Art and sport sessions of three to four hours, each led by a Tbilisi practitioner and each ending with something made.</p></div>
-      <div class="inc powder"><span class="n">04</span><img class="sym" src="./pomegranate.svg" alt="" aria-hidden="true"><h3>Food</h3><p>Dietary profiles are collected in advance, and every meal is planned around them.</p></div>
-      <div class="inc neon"><span class="n">05</span><img class="sym" src="./grape.svg" alt="" aria-hidden="true"><h3>Evenings</h3><p>Live music, themed dinners and wine, and on the last night a supra with a tamada.</p></div>
-      <div class="inc lav"><span class="n">06</span><img class="sym" src="./fleece2.svg" alt="" aria-hidden="true"><h3>Merch and decor</h3><p>Branded materials and keepsakes, designed and made by our team in Tbilisi.</p></div>
+      <div class="inc lav"><img class="sym" src="./symbols/bird.svg" alt="" aria-hidden="true"><h3>Arrival</h3><p>A welcome desk at the airport and transfers in both directions. Keys and programme booklets are handed out before the team reaches the hotel.</p></div>
+      <div class="inc powder"><img class="sym" src="./symbols/qvevri.svg" alt="" aria-hidden="true"><h3>Working sessions</h3><p>A room set up for the team, with AV, translation, fast connectivity and materials.</p></div>
+      <div class="inc neon"><img class="sym" src="./symbols/horse.svg" alt="" aria-hidden="true"><h3>Practices</h3><p>Art and sport sessions of three to four hours, each led by a Tbilisi practitioner and each ending with something made.</p></div>
+      <div class="inc powder"><img class="sym" src="./symbols/pomegranate.svg" alt="" aria-hidden="true"><h3>Food</h3><p>Dietary profiles are collected in advance, and every meal is planned around them.</p></div>
+      <div class="inc neon"><img class="sym" src="./symbols/grape.svg" alt="" aria-hidden="true"><h3>Evenings</h3><p>Live music, themed dinners and wine, and on the last night a supra with a tamada.</p></div>
+      <div class="inc lav"><img class="sym" src="./symbols/fleece.svg" alt="" aria-hidden="true"><h3>Merch and decor</h3><p>Branded materials and keepsakes, designed and made by our team in Tbilisi.</p></div>
     </div>
   </section>
 
