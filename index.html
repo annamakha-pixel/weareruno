@@ -1533,6 +1533,32 @@
     /* services v4: same rule, symbol spans the card edge to edge */
     .scard { min-height: 0; }
     .scard .sc-sym { position: static; display: block; width: calc(100% + 44px); max-width: none; max-height: none; height: auto; margin: auto -22px 0; padding-top: 36px; object-fit: fill; }
+
+    /* ===== services as a stage: each scroll step is a scene change ===== */
+    .svc-stage { height: calc(var(--n) * 75vh + 100vh); position: relative; }
+    .stage { position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--bg); transition: background-color .6s cubic-bezier(.4,0,.2,1); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); padding: 96px 40px 40px; }
+    .stage-label { position: absolute; top: 76px; left: 40px; }
+    .stage-list { list-style: none; align-self: center; position: relative; z-index: 2; }
+    .stage-list button { background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+    .stage-list .nm { display: block; font-size: clamp(44px, 6.4vw, 108px); font-weight: 900; letter-spacing: -0.06em; line-height: .9; text-transform: uppercase; color: transparent; -webkit-text-stroke: 1.5px #000; transition: color .35s; }
+    .stage-list li.on .nm, .stage-list button:hover .nm { color: #000; }
+    .stage-list .ds { max-width: 30ch; font-size: 18px; line-height: 1.2; letter-spacing: -0.02em; height: 0; overflow: hidden; opacity: 0; transition: opacity .35s, height .35s, margin .35s; }
+    .stage-list li.on .ds { height: 3.8em; opacity: 1; margin: 12px 0 16px; }
+    .stage-syms { position: relative; }
+    .st-sym { position: absolute; right: -8%; bottom: -14%; width: 118%; aspect-ratio: 1; background: #fff; -webkit-mask: var(--m) right bottom / contain no-repeat; mask: var(--m) right bottom / contain no-repeat; transition: transform .8s cubic-bezier(.65,0,.25,1); }
+    .st-sym.next { transform: translateY(-140%); }
+    .st-sym.past { transform: translateY(140%); }
+    .st-sym.on { transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .st-sym, .stage { transition: none; } }
+    @media (max-width: 900px) {
+      .svc-stage { height: auto; }
+      .stage { position: relative; height: auto; min-height: 92vh; grid-template-columns: 1fr; padding: 72px 20px 0; }
+      .stage-label { top: 28px; left: 20px; }
+      .stage-list { align-self: start; }
+      .stage-list .nm { font-size: 46px; }
+      .stage-syms { height: 46vh; }
+      .st-sym { right: -10%; bottom: -8%; width: 90%; }
+    }
   </style>
 </head>
 <body>
@@ -1619,17 +1645,43 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="svc-cards" id="services">
-    <div class="work-head"><h2 class="work-h">Services</h2></div>
-    <div class="sc-grid">
-      <div class="scard" style="--c:#CEFF58"><h3>Concept</h3><p>Creative concepts and storytelling, artistic direction and scenography, brand experience design.</p><img class="sc-sym" src="./symbols/bird.svg" alt="" aria-hidden="true"></div>
-      <div class="scard" style="--c:#82B4E2"><h3>Production</h3><p>Full-scale production and technical management, stage, sound and light, sets, logistics.</p><img class="sc-sym" src="./symbols/qvevri.svg" alt="" aria-hidden="true"></div>
-      <div class="scard" style="--c:#E9DED8"><h3>Hospitality</h3><p>Guest experience and VVIP management, diplomatic protocol, venues, travel and hosting teams.</p><img class="sc-sym" src="./symbols/pomegranate.svg" alt="" aria-hidden="true"></div>
-      <div class="scard" style="--c:#F4B1FF"><h3>Storytelling</h3><p>Communication strategy and PR, press releases, photo and video content, media relations.</p><img class="sc-sym" src="./symbols/grape.svg" alt="" aria-hidden="true"></div>
-      <div class="scard" style="--c:#FB4827"><h3>Corporate offsites</h3><p>Team retreats in Georgia for 30 to 600 people, all in one package.</p><img class="sc-sym" src="./symbols/horse.svg" alt="" aria-hidden="true"></div>
+  <!-- SERVICES: a stage where each service is a scene change -->
+  <section class="svc-stage" id="services" style="--n:5">
+    <div class="stage" id="stage" style="--bg:#CEFF58">
+      <p class="stage-label mono">Services</p>
+      <ul class="stage-list"><li><button type="button" data-i="0"><span class="nm">Concept</span></button><p class="ds">Creative concepts and storytelling, artistic direction and scenography, brand experience design.</p></li><li><button type="button" data-i="1"><span class="nm">Production</span></button><p class="ds">Full-scale production and technical management: stage, sound and light, sets, logistics.</p></li><li><button type="button" data-i="2"><span class="nm">Hospitality</span></button><p class="ds">Guest experience and VVIP management, diplomatic protocol, venues, travel and hosting teams.</p></li><li><button type="button" data-i="3"><span class="nm">Storytelling</span></button><p class="ds">Communication strategy and PR, press releases, photo and video content, media relations.</p></li><li><button type="button" data-i="4"><span class="nm">Corporate offsites</span></button><p class="ds">Team retreats in Georgia for 30 to 600 people: venue, programme, food and transfers in one package.</p></li></ul>
+      <div class="stage-syms"><span class="st-sym" data-i="0" style="--m:url(./symbols/bird.svg)" aria-hidden="true"></span><span class="st-sym" data-i="1" style="--m:url(./symbols/qvevri.svg)" aria-hidden="true"></span><span class="st-sym" data-i="2" style="--m:url(./symbols/pomegranate.svg)" aria-hidden="true"></span><span class="st-sym" data-i="3" style="--m:url(./symbols/grape.svg)" aria-hidden="true"></span><span class="st-sym" data-i="4" style="--m:url(./symbols/horse.svg)" aria-hidden="true"></span></div>
     </div>
   </section>
+  <script>
+    (function(){
+      const sec = document.querySelector('.svc-stage'), stage = document.getElementById('stage');
+      const cols = ["#CEFF58","#82B4E2","#BFBDA8","#F4B1FF","#FB4827"];
+      const items = stage.querySelectorAll('.stage-list li'), syms = stage.querySelectorAll('.st-sym');
+      let cur = -1;
+      function set(i){
+        if (i === cur) return; cur = i;
+        stage.style.setProperty('--bg', cols[i]);
+        items.forEach((li, k) => li.classList.toggle('on', k === i));
+        syms.forEach((sy, k) => { sy.classList.toggle('on', k === i); sy.classList.toggle('past', k < i); sy.classList.toggle('next', k > i); });
+      }
+      const mobile = () => matchMedia('(max-width: 900px)').matches;
+      function onScroll(){
+        if (mobile()) return;
+        const r = sec.getBoundingClientRect(), total = sec.offsetHeight - innerHeight;
+        const p = Math.min(Math.max(-r.top / total, 0), 0.999);
+        set(Math.floor(p * cols.length));
+      }
+      addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll);
+      stage.querySelectorAll('button[data-i]').forEach(b => b.addEventListener('click', () => {
+        const i = +b.dataset.i;
+        if (mobile()) { set(i); return; }
+        const total = sec.offsetHeight - innerHeight;
+        scrollTo({ top: sec.offsetTop + total * (i + 0.5) / cols.length, behavior: 'smooth' });
+      }));
+      set(0); onScroll();
+    })();
+  </script>
 
   <!-- VIDEO CONTACT FOOTER -->
   <div class="vcontact" id="contact">
