@@ -1441,6 +1441,20 @@
       .prow .pm, .prow .ph, .prow .pd { grid-column: 2; text-align: left; }
       .peek { display: none; }
     }
+
+    .svc-min { padding: 0 40px 120px; }
+    .srow { display: grid; grid-template-columns: 56px minmax(0,1fr) minmax(0,1.4fr) 40px; align-items: baseline; gap: 16px; padding: 20px 0 18px; border-bottom: 3px solid #000; color: inherit; text-decoration: none; }
+    .srow .wc { font-size: clamp(24px, 3vw, 44px); font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; line-height: 1; }
+    .srow .st { font-size: 16px; line-height: 1.4; max-width: 56ch; }
+    .srow .wa { font-size: 28px; text-align: right; transition: transform .25s; }
+    .srow:hover { background: #FB4827; }
+    .srow:hover .wa { transform: translateX(-8px); }
+    @media (max-width: 900px) {
+      .svc-min { padding: 0 24px 72px; }
+      .srow { grid-template-columns: 34px 1fr 28px; gap: 6px 10px; }
+      .srow .st { grid-column: 2; }
+      .srow .wa { grid-row: 1; grid-column: 3; }
+    }
   </style>
 </head>
 <body>
@@ -1450,7 +1464,7 @@
     <a href="#home" class="nav-logo"><img src="./logo.svg" alt="RUNO" height="22"></a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
-      <li><a href="./forge.html">Forge</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="./offsite-page.html" class="nav-cta">Corporate Offsite →</a></li>
     </ul>
@@ -1462,7 +1476,7 @@
 
   <div class="mobile-menu" id="mobile-menu">
     <a href="#work" onclick="toggleMenu()">Work</a>
-    <a href="./forge.html">Forge</a>
+    <a href="#services" onclick="toggleMenu()">Services</a>
     <a href="#contact" onclick="toggleMenu()">Contact</a>
     <a href="./offsite-page.html" class="mob-cta">Corporate Offsite →</a>
   </div>
@@ -1537,11 +1551,17 @@
     </div>
   </section>
 
-  <!-- FORGE -->
-  <a href="./forge.html" class="forge-min">
-    <img src="./forge/p01_1.jpeg" alt="FORGE workshop" loading="lazy">
-    <p><b>FORGE</b> Our workshop in Tbilisi. Sets, furniture and installations, built in-house.</p>
-  </a>
+  <!-- SERVICES -->
+  <section class="svc-min" id="services">
+    <div class="work-head"><h2 class="work-h">Services</h2><a href="./services.html" class="work-all">All services</a></div>
+    <div class="work-list">
+      <a href="./services.html#culture" class="srow"><span class="wn mono">01</span><span class="wc">Concept</span><span class="st">Creative concepts and event storytelling, artistic direction and scenography, brand experience design, curated programming.</span><span class="wa">→</span></a>
+      <a href="./services.html#production" class="srow"><span class="wn mono">02</span><span class="wc">Production</span><span class="st">Full-scale production and technical management, stage, sound and light, set construction, on-site coordination and logistics.</span><span class="wa">→</span></a>
+      <a href="./services.html#hospitality" class="srow"><span class="wn mono">03</span><span class="wc">Hospitality</span><span class="st">Guest experience and VVIP management, diplomatic protocol and delegations, venues, travel and hosting teams.</span><span class="wa">→</span></a>
+      <a href="./services.html#storytelling" class="srow"><span class="wn mono">04</span><span class="wc">Storytelling</span><span class="st">Communication strategy and PR, copywriting and press releases, photo and video content, media and influencer relations.</span><span class="wa">→</span></a>
+      <a href="./offsite-page.html" class="srow"><span class="wn mono">05</span><span class="wc">Corporate offsites</span><span class="st">Team retreats in Georgia for 30 to 600 people: venue, programme, food, transfers and working sessions in one package.</span><span class="wa">→</span></a>
+    </div>
+  </section>
 
   <!-- VIDEO CONTACT FOOTER -->
   <div class="vcontact" id="contact">
@@ -1551,7 +1571,6 @@
         <ul class="vc-nav">
           <li><a href="./projects.html">Projects</a></li>
           <li><a href="./services.html">Services</a></li>
-          <li><a href="./forge.html">Forge</a></li>
           <li><a href="./offsite-page.html">Offsite</a></li>
         </ul>
       </div>
