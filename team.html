@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team - RUNO</title>
+  <meta name="description" content="The RUNO collective: cultural producers, art direction and PR in Tbilisi.">
+  <link rel="icon" href="/favicon.ico?v=2" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Satoshi', sans-serif; background: #E9DED8; color: #000; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .02em; text-transform: uppercase; }
+    .top { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
+    .top img { height: 22px; display: block; filter: brightness(0); }
+    .top nav { display: flex; gap: 28px; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .top nav a:hover { color: #FB4827; }
+    .foot { display: flex; justify-content: space-between; gap: 20px; padding: 28px 40px 36px; border-top: 3px solid #000; margin: 0 40px; }
+    .foot a:hover { color: #FB4827; }
+    @media (max-width: 900px) { .top { padding: 16px 20px; } .top nav { gap: 16px; } .foot { margin: 0 20px; padding: 24px 0 30px; flex-direction: column; } }
+    /* ===== team ===== */
+    .team-min { background: #E9DED8; padding: 110px 40px 120px; display: grid; grid-template-columns: 1fr; gap: 48px; }
+    .team-h { font-size: clamp(44px, 5.4vw, 92px); font-weight: 900; letter-spacing: -0.06em; line-height: .88; text-transform: uppercase; }
+    .team-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px 20px; }
+    .tm { margin: 0; }
+    .tm:nth-child(even) { margin-top: 72px; }
+    .tm img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; filter: grayscale(1) contrast(1.08); transition: filter .35s; }
+    .tm:hover img { filter: none; }
+    .tm figcaption { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
+    .tm-n { font-size: clamp(22px, 1.9vw, 30px); font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; line-height: 1; }
+    .tm-b { font-size: 15px; line-height: 1.2; letter-spacing: -0.02em; margin-top: 4px; }
+    @media (max-width: 1100px) { .team-min { grid-template-columns: 1fr; } .team-h { position: static; } }
+    @media (max-width: 900px) {
+      .team-min { padding: 72px 20px 80px; }
+      .team-row { grid-template-columns: 1fr 1fr; gap: 28px 14px; }
+      .tm:nth-child(even) { margin-top: 40px; }
+    }
+
+    /* team: bio drops over the portrait */
+    .tm { cursor: pointer; outline: none; }
+    .tm-ph { position: relative; overflow: hidden; }
+    .tm-bio { position: absolute; inset: 0; margin: 0; padding: 18px 16px; background: var(--tc); color: #000; font-size: 16px; line-height: 1.18; letter-spacing: -0.02em; display: flex; align-items: flex-end; transform: translateY(-101%); transition: transform .5s cubic-bezier(.65,0,.25,1); }
+    .tm:hover .tm-bio, .tm:focus .tm-bio, .tm.open .tm-bio { transform: translateY(0); }
+    @media (max-width: 900px) { .tm-bio { font-size: 14px; padding: 12px; } }
+    /* team: bio drops over the portrait */
+    .tm { cursor: pointer; outline: none; }
+    .tm-ph { position: relative; overflow: hidden; }
+    .tm-bio { position: absolute; inset: 0; margin: 0; padding: 18px 16px; background: var(--tc); color: #000; font-size: 16px; line-height: 1.18; letter-spacing: -0.02em; display: flex; align-items: flex-end; transform: translateY(-101%); transition: transform .5s cubic-bezier(.65,0,.25,1); }
+    .tm:hover .tm-bio, .tm:focus .tm-bio, .tm.open .tm-bio { transform: translateY(0); }
+    @media (max-width: 900px) { .tm-bio { font-size: 14px; padding: 12px; } }
+    .team-min { padding-top: 70px; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a href="/"><img src="./logo.svg" alt="RUNO"></a>
+    <nav><a href="/#work">Work</a><a href="/#services">Services</a><a href="/offsite">Offsite</a><a href="/#contact">Contact</a></nav>
+  </header>
+  <!-- TEAM -->
+  <section class="team-min" id="team">
+    <h1 class="team-h">Runo Collective</h1>
+    <div class="team-row"><figure class="tm" tabindex="0" style="--tc:#FB4827"><div class="tm-ph"><img src="./team/anna.jpg" alt="Anna" loading="lazy"><p class="tm-bio">Cultural producer with over 20 years of experience and a Master of Fine Arts in Cultural Programming. Founder and creative director of RUNO, producing large-scale cultural events and brand experiences.</p></div><figcaption><span class="tm-n">Anna</span><span class="tm-r mono">Founder, Creative Director</span></figcaption></figure><figure class="tm" tabindex="0" style="--tc:#CEFF58"><div class="tm-ph"><img src="./team/parviz.jpg" alt="Parviz" loading="lazy"><p class="tm-bio">Producer with 10+ years producing culture, music and brand projects, from creative strategy to the technical execution of large-scale international events and content series.</p></div><figcaption><span class="tm-n">Parviz</span><span class="tm-r mono">Producer</span></figcaption></figure><figure class="tm" tabindex="0" style="--tc:#ABA5E1"><div class="tm-ph"><img src="./team/anel.jpg" alt="Anel" loading="lazy"><p class="tm-bio">Graphic designer and art director. Known for branding and visual identity work for the Kazakhstan Pavilion at the 2022 Venice Biennale.</p></div><figcaption><span class="tm-n">Anel</span><span class="tm-r mono">Art Director</span></figcaption></figure><figure class="tm" tabindex="0" style="--tc:#F4B1FF"><div class="tm-ph"><img src="./team/elene.jpg" alt="Elene" loading="lazy"><p class="tm-bio">Producer and project coordinator who, early in her career, has already served as lead producer on a project for the House of Chanel and secured several recurring clients for the agency.</p></div><figcaption><span class="tm-n">Elene</span><span class="tm-r mono">Producer, Project Coordinator</span></figcaption></figure><figure class="tm" tabindex="0" style="--tc:#82B4E2"><div class="tm-ph"><img src="./team/khristo.jpg" alt="Khristo" loading="lazy"><p class="tm-bio">Producer and PR director. A musicologist and graduate of the Moscow Conservatory, she speaks regularly at international conferences across Europe and Georgia.</p></div><figcaption><span class="tm-n">Khristo</span><span class="tm-r mono">Producer, PR Director</span></figcaption></figure></div>
+  </section>
+  <footer class="foot mono">
+    <span>© 2026 Okros Runo LLC · Tbilisi</span>
+    <a href="mailto:hello@weareruno.com">hello@weareruno.com</a>
+  </footer>
+  <script>
+    document.querySelectorAll('.tm').forEach(t => t.addEventListener('click', () => { const o = t.classList.contains('open'); document.querySelectorAll('.tm.open').forEach(x => x.classList.remove('open')); if (!o) t.classList.add('open'); }));
+  </script>
+</body>
+</html>
