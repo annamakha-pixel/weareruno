@@ -1533,6 +1533,13 @@
     /* services v4: same rule, symbol spans the card edge to edge */
     .scard { min-height: 0; }
     .scard .sc-sym { position: static; display: block; width: calc(100% + 44px); max-width: none; max-height: none; height: auto; margin: auto -22px 0; padding-top: 36px; object-fit: fill; }
+
+    /* services: symbols live freely across the colour band, crossing card edges */
+    .sc-wrap { position: relative; overflow: hidden; }
+    .scard { min-height: clamp(540px, 44vw, 680px); }
+    .fsyms { position: absolute; inset: 0; pointer-events: none; }
+    .fsym { position: absolute; display: block; aspect-ratio: 1; background: var(--sc); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+    @media (max-width: 900px) { .fsyms { display: none; } .scard { min-height: 320px; } }
   </style>
 </head>
 <body>
@@ -1622,13 +1629,14 @@
   <!-- SERVICES -->
   <section class="svc-cards" id="services">
     <div class="work-head"><h2 class="work-h">Services</h2></div>
-    <div class="sc-grid">
-      <div class="scard" style="--c:#CEFF58"><h3>Concept</h3><p>Creative concepts and storytelling, artistic direction and scenography, brand experience design.</p><img class="sc-sym" src="./symbols/bird.svg" alt="" aria-hidden="true"></div>
-      <div class="scard" style="--c:#82B4E2"><h3>Production</h3><p>Full-scale production and technical management, stage, sound and light, sets, logistics.</p><img class="sc-sym" src="./symbols/qvevri.svg" alt="" aria-hidden="true"></div>
-      <div class="scard" style="--c:#E9DED8"><h3>Hospitality</h3><p>Guest experience and VVIP management, diplomatic protocol, venues, travel and hosting teams.</p><img class="sc-sym" src="./symbols/pomegranate.svg" alt="" aria-hidden="true"></div>
-      <div class="scard" style="--c:#F4B1FF"><h3>Storytelling</h3><p>Communication strategy and PR, press releases, photo and video content, media relations.</p><img class="sc-sym" src="./symbols/grape.svg" alt="" aria-hidden="true"></div>
-      <div class="scard" style="--c:#FB4827"><h3>Corporate offsites</h3><p>Team retreats in Georgia for 30 to 600 people, all in one package.</p><img class="sc-sym" src="./symbols/horse.svg" alt="" aria-hidden="true"></div>
+    <div class="sc-wrap"><div class="sc-grid">
+      <div class="scard" style="--c:#CEFF58"><h3>Concept</h3><p>Creative concepts and storytelling, artistic direction and scenography, brand experience design.</p></div>
+      <div class="scard" style="--c:#82B4E2"><h3>Production</h3><p>Full-scale production and technical management, stage, sound and light, sets, logistics.</p></div>
+      <div class="scard" style="--c:#E9DED8"><h3>Hospitality</h3><p>Guest experience and VVIP management, diplomatic protocol, venues, travel and hosting teams.</p></div>
+      <div class="scard" style="--c:#F4B1FF"><h3>Storytelling</h3><p>Communication strategy and PR, press releases, photo and video content, media relations.</p></div>
+      <div class="scard" style="--c:#FB4827"><h3>Corporate offsites</h3><p>Team retreats in Georgia for 30 to 600 people, all in one package.</p></div>
     </div>
+    <div class="fsyms"><span class="fsym" style="--m:url(./symbols/bird.svg);--sc:#fff;left:4%;top:44%;width:30%;transform:rotate(-8deg);" aria-hidden="true"></span><span class="fsym" style="--m:url(./symbols/qvevri.svg);--sc:#fff;left:30%;top:52%;width:15%;" aria-hidden="true"></span><span class="fsym" style="--m:url(./symbols/pomegranate.svg);--sc:#fff;left:47%;top:58%;width:17%;transform:rotate(6deg);" aria-hidden="true"></span><span class="fsym" style="--m:url(./symbols/grape.svg);--sc:#fff;left:66%;top:48%;width:13%;" aria-hidden="true"></span><span class="fsym" style="--m:url(./symbols/horse.svg);--sc:#fff;left:79%;top:46%;width:24%;" aria-hidden="true"></span></div></div>
   </section>
 
   <!-- VIDEO CONTACT FOOTER -->
