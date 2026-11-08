@@ -1533,6 +1533,23 @@
     /* services v4: same rule, symbol spans the card edge to edge */
     .scard { min-height: 0; }
     .scard .sc-sym { position: static; display: block; width: calc(100% + 44px); max-width: none; max-height: none; height: auto; margin: auto -22px 0; padding-top: 36px; object-fit: fill; }
+
+    /* ===== drive: brand symbols used on their own, not only inside cards ===== */
+    .msym { position: absolute; display: block; aspect-ratio: 1; background: var(--sc); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; pointer-events: none; }
+    .cross { position: relative; height: 0; z-index: 5; }
+    .collage { position: relative; height: clamp(520px, 58vw, 900px); margin: 0 40px 100px; }
+    .collage img { position: absolute; display: block; height: auto; filter: grayscale(1) contrast(1.1); transition: filter .3s; }
+    .collage img:hover { filter: none; }
+    .collage .msym { z-index: 3; mix-blend-mode: multiply; }
+    .ribbon { background: #000; overflow: hidden; padding: 26px 0; margin-bottom: 0; }
+    .ribbon-track { display: flex; gap: 56px; width: max-content; animation: ribbon 40s linear infinite; }
+    .ribbon .ri { width: 90px; height: 90px; flex: 0 0 auto; background: var(--sc); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+    @keyframes ribbon { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .press-strip { margin-top: 0; }
+    @media (max-width: 900px) {
+      .collage { margin: 0 16px 64px; height: 130vw; }
+      .ribbon .ri { width: 56px; height: 56px; }
+    }
   </style>
 </head>
 <body>
@@ -1588,8 +1605,19 @@
   </div>
 
   <!-- ABOUT -->
+  <div class="cross"><span class="msym " style="--m:url(./symbols/bird.svg);--sc:#CEFF58;width:min(46vw,640px);right:-4vw;top:-22vw;" aria-hidden="true"></span></div>
   <section class="about-min" id="about">
     <p>RUNO is a cultural production studio in Tbilisi. We apply the logic of cultural programming to commercial briefs: before anything is specified, we ask what the guest should understand or feel a year from now.</p>
+  </section>
+
+
+  <!-- COLLAGE -->
+  <section class="collage" aria-label="RUNO projects">
+    <img src="./projects/p10_qatar_main.jpeg" alt="" loading="lazy" style="left:2%;top:4%;width:30%"><img src="./projects/p19_2.jpeg" alt="" loading="lazy" style="left:36%;top:0;width:20%"><img src="./projects/tsf_2.jpg?v=2" alt="" loading="lazy" style="left:60%;top:10%;width:26%"><img src="./projects/p15_5.jpeg" alt="" loading="lazy" style="left:88%;top:2%;width:11%"><img src="./projects/p21_1.jpeg" alt="" loading="lazy" style="left:8%;top:52%;width:22%"><img src="./projects/loco_2.jpg" alt="" loading="lazy" style="left:34%;top:46%;width:30%"><img src="./projects/p11_1.jpeg" alt="" loading="lazy" style="left:68%;top:58%;width:18%"><img src="./projects/p18_4.jpeg" alt="" loading="lazy" style="left:89%;top:50%;width:10%">
+    <span class="msym " style="--m:url(./symbols/horse.svg);--sc:#FB4827;left:22%;top:18%;width:24%;" aria-hidden="true"></span>
+    <span class="msym " style="--m:url(./symbols/grape.svg);--sc:#F4B1FF;left:55%;top:36%;width:15%;" aria-hidden="true"></span>
+    <span class="msym " style="--m:url(./symbols/pomegranate.svg);--sc:#CEFF58;left:80%;top:30%;width:14%;" aria-hidden="true"></span>
+    <span class="msym " style="--m:url(./symbols/qvevri.svg);--sc:#2C52FF;left:2%;top:40%;width:9%;" aria-hidden="true"></span>
   </section>
 
   <!-- WORK -->
@@ -1610,6 +1638,10 @@
     </div>
   </section>
 
+
+
+  <!-- SYMBOL RIBBON -->
+  <div class="ribbon" aria-hidden="true"><div class="ribbon-track"><span class="ri" style="--m:url(./symbols/bird.svg);--sc:#CEFF58"></span><span class="ri" style="--m:url(./symbols/qvevri.svg);--sc:#FB4827"></span><span class="ri" style="--m:url(./symbols/horse.svg);--sc:#F4B1FF"></span><span class="ri" style="--m:url(./symbols/pomegranate.svg);--sc:#ABA5E1"></span><span class="ri" style="--m:url(./symbols/grape.svg);--sc:#CEFF58"></span><span class="ri" style="--m:url(./symbols/fleece.svg);--sc:#FB4827"></span><span class="ri" style="--m:url(./symbols/bird.svg);--sc:#CEFF58"></span><span class="ri" style="--m:url(./symbols/qvevri.svg);--sc:#FB4827"></span><span class="ri" style="--m:url(./symbols/horse.svg);--sc:#F4B1FF"></span><span class="ri" style="--m:url(./symbols/pomegranate.svg);--sc:#ABA5E1"></span><span class="ri" style="--m:url(./symbols/grape.svg);--sc:#CEFF58"></span><span class="ri" style="--m:url(./symbols/fleece.svg);--sc:#FB4827"></span><span class="ri" style="--m:url(./symbols/bird.svg);--sc:#CEFF58"></span><span class="ri" style="--m:url(./symbols/qvevri.svg);--sc:#FB4827"></span><span class="ri" style="--m:url(./symbols/horse.svg);--sc:#F4B1FF"></span><span class="ri" style="--m:url(./symbols/pomegranate.svg);--sc:#ABA5E1"></span><span class="ri" style="--m:url(./symbols/grape.svg);--sc:#CEFF58"></span><span class="ri" style="--m:url(./symbols/fleece.svg);--sc:#FB4827"></span><span class="ri" style="--m:url(./symbols/bird.svg);--sc:#CEFF58"></span><span class="ri" style="--m:url(./symbols/qvevri.svg);--sc:#FB4827"></span><span class="ri" style="--m:url(./symbols/horse.svg);--sc:#F4B1FF"></span><span class="ri" style="--m:url(./symbols/pomegranate.svg);--sc:#ABA5E1"></span><span class="ri" style="--m:url(./symbols/grape.svg);--sc:#CEFF58"></span><span class="ri" style="--m:url(./symbols/fleece.svg);--sc:#FB4827"></span></div></div>
 
   <!-- PRESS -->
   <section class="press-strip" id="press">
