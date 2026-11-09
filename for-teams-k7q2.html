@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>RUNO - Culture for Teams</title>
+  <meta property="og:title" content="RUNO - Culture for Teams">
+  <meta property="og:description" content="Selected HR and hospitality work by RUNO.">
+  <meta property="og:image" content="https://www.weareruno.com/og/og-home.jpg">
+  <link rel="icon" href="/favicon.ico?v=2" sizes="any">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    :root { --orange: #FB4827; --neon: #CEFF58; --beige: #E9DED8; --stone: #BFBDA8; --pad: clamp(20px, 3vw, 40px); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Satoshi', sans-serif; background: #fff; color: #000; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .02em; text-transform: uppercase; }
+    .top { display: flex; justify-content: space-between; align-items: center; padding: 20px var(--pad); }
+    .top img { height: 22px; display: block; }
+    .top a.mail { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; }
+
+    .hero { background: var(--orange); padding: 18vh var(--pad) 8vh; }
+    .hero h1 { font-size: clamp(52px, 9vw, 150px); font-weight: 900; letter-spacing: -0.065em; line-height: .86; text-transform: uppercase; max-width: 11ch; }
+    .hero p { margin-top: 36px; font-size: clamp(19px, 1.7vw, 26px); line-height: 1.15; letter-spacing: -0.03em; max-width: 30ch; }
+    .hero .mono { margin-bottom: 24px; }
+
+    .case { padding: 100px var(--pad); border-top: 3px solid #000; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 40px 6vw; }
+    .case h2 { font-size: clamp(40px, 6vw, 96px); font-weight: 900; letter-spacing: -0.06em; line-height: .88; text-transform: uppercase; }
+    .case .meta { margin-top: 18px; display: flex; flex-direction: column; gap: 4px; }
+    .case .lead { font-size: clamp(21px, 1.9vw, 30px); line-height: 1.12; letter-spacing: -0.035em; font-weight: 500; }
+    .case .body { font-size: 17px; line-height: 1.25; letter-spacing: -0.02em; margin-top: 22px; max-width: 54ch; }
+    .list { list-style: none; margin-top: 32px; border-top: 3px solid #000; }
+    .list li { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.6fr); gap: 16px; padding: 16px 0 14px; border-bottom: 1px solid rgba(0,0,0,.25); font-size: 17px; line-height: 1.2; letter-spacing: -0.02em; }
+    .list li b { font-weight: 900; text-transform: uppercase; letter-spacing: -0.04em; font-size: 19px; }
+    .clients { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .clients span { background: #000; color: #fff; padding: 10px 14px; font-weight: 900; letter-spacing: -0.03em; text-transform: uppercase; font-size: 18px; }
+
+    .case.kp { background: var(--neon); }
+    .case.qa { background: #fff; }
+    .case.of { background: var(--beige); }
+
+    .gal { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, 1fr); gap: 4vw 2vw; align-items: start; margin-top: 20px; }
+    .gal img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+    .press { margin-top: 28px; display: flex; flex-direction: column; gap: 8px; }
+    .press a { text-decoration: none; font-size: 16px; }
+    .press a:hover { color: var(--orange); }
+    .btn { display: inline-block; margin-top: 30px; background: #000; color: #fff; text-decoration: none; padding: 16px 22px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; font-size: 13px; }
+    .btn:hover { background: var(--orange); }
+
+    .contact { background: #000; color: #fff; padding: 90px var(--pad); display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; }
+    .contact h2 { font-size: clamp(40px, 6vw, 96px); font-weight: 900; letter-spacing: -0.06em; line-height: .88; text-transform: uppercase; }
+    .contact a { font-size: 20px; text-decoration: none; }
+    .contact a:hover { color: var(--neon); }
+
+    .lb { position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,.94); display: none; align-items: center; justify-content: center; }
+    .lb.on { display: flex; }
+    .lb img { max-width: 92vw; max-height: 86vh; object-fit: contain; }
+    .lb button { position: absolute; background: none; border: 0; color: #fff; cursor: pointer; font-size: 40px; padding: 16px; font-family: inherit; }
+    .lb .x { top: 10px; right: 14px; } .lb .p { left: 8px; top: 50%; transform: translateY(-50%); } .lb .n { right: 8px; top: 50%; transform: translateY(-50%); }
+    .lb button:hover { color: var(--orange); }
+
+    @media (max-width: 900px) {
+      .case { grid-template-columns: 1fr; padding: 64px var(--pad); }
+      .list li { grid-template-columns: 1fr; gap: 4px; }
+      .gal { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .gal img { grid-column: auto !important; margin-top: 0 !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a href="/"><img src="/logo.svg" alt="RUNO" style="filter:brightness(0)"></a>
+    <a class="mail" href="mailto:hello@weareruno.com">hello@weareruno.com</a>
+  </header>
+
+  <section class="hero">
+    <p class="mono">(For HR and people teams)*</p>
+    <h1>Culture as a team tool</h1>
+    <p>We design programmes where art does real work for a company: the mission and business goals become something a team can see, hear and live through together.</p>
+  </section>
+
+  <section class="case kp">
+    <div>
+      <h2>Kultpokhod</h2>
+      <div class="meta mono"><span>Programme developed for HR</span><span>Moscow · 2015-2016</span></div>
+    </div>
+    <div>
+      <p class="lead">A cultural programme built for HR departments, based on our own research into how a company's mission and business goals can be revealed through art.</p>
+      <p class="body">Each programme started from the client's goals, not from a ticket. We chose the performance, exhibition or concert that spoke to what the company was trying to say to its people, and built the evening around it.</p>
+      <ul class="list">
+        <li><b>Kultpokhod</b><span>Curated outings to theatre, opera, ballet and exhibitions, matched to the company's goals and hosted by the team behind them.</span></li>
+        <li><b>Corporate lecture series</b><span>Talks with directors, musicians, curators and critics on how to read contemporary culture.</span></li>
+        <li><b>Kultpokhod School</b><span>A six-week course with a set programme and teachers, finishing with a Kultpokhod.</span></li>
+      </ul>
+      <div class="clients"><span>Agent Provocateur</span><span>Trinity Monsters</span></div>
+    </div>
+  </section>
+
+  <section class="case qa">
+    <div>
+      <h2>State of Qatar</h2>
+      <div class="meta mono"><span>Full-cycle hospitality</span><span>St. Petersburg · 2021</span></div>
+    </div>
+    <div>
+      <p class="lead">An official reception for 500 guests from more than 30 countries: diplomats, royal advisors and cultural figures.</p>
+      <ul class="list">
+        <li><b>VVIP</b><span>Guest management from invitation to departure for royal advisors and heads of delegations.</span></li>
+        <li><b>Protocol</b><span>Seating by diplomatic rank and an arrival sequence coordinated to the minute.</span></li>
+        <li><b>Security</b><span>A UN-level security protocol across the venue.</span></li>
+        <li><b>Food</b><span>Catering by the Emir's personal chef.</span></li>
+      </ul>
+      <div class="press mono">
+        <a href="https://thepeninsulaqatar.com/article/14/06/2021/Exhibition-highlights-Qatari-culture,-history-spanning-centuries" target="_blank" rel="noopener">↳ The Peninsula · Jun 2021</a>
+        <a href="https://www.gulf-times.com/story/693336/Qatar-Between-Land-and-Sea-Through-Arts-and-Heritage" target="_blank" rel="noopener">↳ Gulf Times · Jun 2021</a>
+      </div>
+    </div>
+    <div class="gal">
+      <img src="/projects/p10_qatar_main.jpeg" alt="Qatar reception - photo 1" style="grid-column:1/8">
+      <img src="/projects/p10_1.jpeg" alt="Qatar reception - photo 2" style="grid-column:9/13;margin-top:8vw">
+      <img src="/projects/p10_10.jpeg" alt="Qatar reception - photo 3" style="grid-column:2/6">
+      <img src="/projects/p10_11.jpeg" alt="Qatar reception - photo 4" style="grid-column:7/12;margin-top:5vw">
+      <img src="/projects/p10_12.jpeg" alt="Qatar reception - photo 5" style="grid-column:1/5;margin-top:3vw">
+      <img src="/projects/p10_2.jpeg" alt="Qatar reception - photo 6" style="grid-column:6/13">
+    </div>
+  </section>
+
+  <section class="case of">
+    <div>
+      <h2>Offsites in Georgia</h2>
+      <div class="meta mono"><span>Our current programme</span><span>30 to 600 people · from $900</span></div>
+    </div>
+    <div>
+      <p class="lead">Two to seven days in Georgia: venue, accommodation, food, transfers and working sessions, with art and sport practices led by Tbilisi practitioners.</p>
+      <a class="btn" href="/offsite">See the offsite programme →</a>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Let's talk<br>about your team</h2>
+    <div class="mono" style="display:flex;flex-direction:column;gap:10px;font-size:14px"><a href="mailto:hello@weareruno.com">hello@weareruno.com</a><a href="tel:+995555212216">+995 555 21 22 16</a></div>
+  </section>
+
+  <div class="lb" id="lb"><img alt=""><button class="x" aria-label="Close">✕</button><button class="p" aria-label="Previous">←</button><button class="n" aria-label="Next">→</button></div>
+  <script>
+    (function(){
+      const lb = document.getElementById('lb'), im = lb.querySelector('img'); let list = [], i = 0, x0 = null;
+      const show = () => { im.src = list[i].src; im.alt = list[i].alt; };
+      const close = () => lb.classList.remove('on');
+      const step = d => { i = (i + d + list.length) % list.length; show(); };
+      document.querySelectorAll('.gal').forEach(g => g.addEventListener('click', e => { const t = e.target.closest('img'); if (!t) return; list = [...g.querySelectorAll('img')]; i = list.indexOf(t); show(); lb.classList.add('on'); }));
+      lb.querySelector('.x').onclick = close; lb.querySelector('.p').onclick = () => step(-1); lb.querySelector('.n').onclick = () => step(1);
+      lb.addEventListener('click', e => { if (e.target === lb) close(); });
+      lb.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+      lb.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1); x0 = null; });
+      document.addEventListener('keydown', e => { if (!lb.classList.contains('on')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1); });
+    })();
+  </script>
+</body>
+</html>
