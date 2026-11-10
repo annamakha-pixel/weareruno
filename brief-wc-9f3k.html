@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>RUNO - Offsite brief for WalletConnect</title>
+  <meta property="og:title" content="RUNO - Offsite brief">
+  <meta property="og:description" content="A short questionnaire for the WalletConnect spring 2027 offsite in Tbilisi.">
+  <meta property="og:image" content="https://www.weareruno.com/og/og-home.jpg">
+  <link rel="icon" href="/favicon.ico?v=3" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+  <style>
+    :root { --orange: #FB4827; --neon: #CEFF58; --beige: #E9DED8; --pad: clamp(20px, 3vw, 40px); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Satoshi', sans-serif; background: #fff; color: #000; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .02em; text-transform: uppercase; }
+    .top { display: flex; justify-content: space-between; align-items: center; padding: 20px var(--pad); }
+    .top img { height: 22px; display: block; }
+    .top a.mail { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; }
+
+    .hero { background: var(--orange); padding: 16vh var(--pad) 8vh; }
+    .hero .mono { margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(52px, 9vw, 150px); font-weight: 900; letter-spacing: -0.065em; line-height: .86; text-transform: uppercase; max-width: 11ch; }
+    .hero p { margin-top: 36px; font-size: clamp(19px, 1.7vw, 26px); line-height: 1.15; letter-spacing: -0.03em; max-width: 34ch; }
+
+    form { display: block; }
+    .block { padding: 80px var(--pad); border-top: 3px solid #000; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 32px 6vw; }
+    .block:nth-of-type(odd) { background: var(--beige); }
+    .block h2 { font-size: clamp(36px, 5vw, 80px); font-weight: 900; letter-spacing: -0.06em; line-height: .88; text-transform: uppercase; }
+    .block h2 .n { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 400; letter-spacing: .02em; margin-bottom: 14px; }
+    .qs { display: flex; flex-direction: column; gap: 34px; }
+    label.q { display: block; }
+    label.q span { display: block; font-size: clamp(19px, 1.6vw, 24px); font-weight: 500; line-height: 1.15; letter-spacing: -0.03em; max-width: 46ch; }
+    label.q small { display: block; margin-top: 6px; font-size: 15px; line-height: 1.25; opacity: .6; letter-spacing: -0.01em; max-width: 56ch; }
+    textarea, input[type=text], input[type=email] { width: 100%; margin-top: 12px; font-family: inherit; font-size: 17px; line-height: 1.35; letter-spacing: -0.01em; color: #000; background: transparent; border: 0; border-bottom: 2px solid #000; padding: 8px 0; border-radius: 0; resize: vertical; outline: none; }
+    textarea { min-height: 84px; }
+    textarea:focus, input:focus { border-bottom-color: var(--orange); }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    .send { background: #000; color: #fff; padding: 80px var(--pad); display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; }
+    .send h2 { font-size: clamp(40px, 6vw, 96px); font-weight: 900; letter-spacing: -0.06em; line-height: .88; text-transform: uppercase; }
+    .send p { margin-top: 18px; max-width: 40ch; font-size: 17px; line-height: 1.25; opacity: .75; }
+    button.btn { background: var(--neon); color: #000; border: 0; cursor: pointer; padding: 20px 28px; font-family: inherit; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 14px; }
+    button.btn:hover { background: var(--orange); }
+    button.btn[disabled] { opacity: .5; cursor: wait; }
+    .status { margin-top: 14px; min-height: 18px; }
+    .hp { position: absolute; left: -9999px; }
+
+    .done { display: none; background: var(--neon); padding: 18vh var(--pad); }
+    .done h2 { font-size: clamp(52px, 9vw, 150px); font-weight: 900; letter-spacing: -0.065em; line-height: .86; text-transform: uppercase; }
+    .done p { margin-top: 30px; font-size: clamp(19px, 1.7vw, 26px); line-height: 1.15; letter-spacing: -0.03em; max-width: 34ch; }
+    body.sent form, body.sent .hero { display: none; }
+    body.sent .done { display: block; }
+
+    @media (max-width: 900px) {
+      .block { grid-template-columns: 1fr; padding: 60px var(--pad); }
+      .row2 { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+  <header class="top">
+    <a href="/"><img src="/logo.svg" alt="RUNO" style="filter:brightness(0)"></a>
+    <a class="mail" href="mailto:hello@weareruno.com">hello@weareruno.com</a>
+  </header>
+
+  <section class="hero">
+    <p class="mono">(WalletConnect · Spring 2027 offsite · Tbilisi)*</p>
+    <h1>Offsite brief</h1>
+    <p>Thank you for the call. These questions help us hold the brief precisely before we come back with anything. Answer what you can in your own words; a line or two is enough, and whatever stays empty we will cover on the next call.</p>
+  </section>
+
+  <form id="brief" novalidate>
+    <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+
+    <section class="block">
+      <h2><span class="n">01</span>The purpose</h2>
+      <div class="qs">
+        <label class="q"><span>What has to be different for the team after this week, compared to before it?</span><textarea name="01 Purpose - what should change"></textarea></label>
+        <label class="q"><span>What is happening in the company around spring 2027 that this week should support?</span><small>A launch, a new strategy, new people, a change in how you work.</small><textarea name="01 Purpose - company context"></textarea></label>
+        <label class="q"><span>When did the team last meet in person? What worked, and what would you never repeat?</span><textarea name="01 Purpose - last offsite"></textarea></label>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="n">02</span>The people</h2>
+      <div class="qs">
+        <label class="q"><span>How many people have never met each other in person?</span><textarea name="02 People - never met"></textarea></label>
+        <label class="q"><span>Where will people fly in from?</span><small>Any passports that may need a visa for Georgia.</small><textarea name="02 People - flying from, visas"></textarea></label>
+        <label class="q"><span>What does a good evening look like for this team?</span><small>A long table until 2am, or back at the hotel by 11.</small><textarea name="02 People - good evening"></textarea></label>
+        <label class="q"><span>Dietary needs, alcohol-free guests, accessibility, plus-ones.</span><textarea name="02 People - dietary, access, plus-ones"></textarea></label>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="n">03</span>The working days</h2>
+      <div class="qs">
+        <label class="q"><span>Who owns the agenda, and where would you like us involved?</span><textarea name="03 Work - agenda owner, our role"></textarea></label>
+        <label class="q"><span>What format do the sessions take?</span><small>Plenary only or breakouts as well, how many parallel rooms, anyone joining remotely, technical needs.</small><textarea name="03 Work - format"></textarea></label>
+        <label class="q"><span>Should work and experience blend, or stay separate?</span><small>Sessions held in spaces around the city, or work in the hotel and everything else after.</small><textarea name="03 Work - blend or separate"></textarea></label>
+        <label class="q"><span>Any confidentiality requirements?</span><small>NDAs, no photos in sessions, network security.</small><textarea name="03 Work - confidentiality"></textarea></label>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="n">04</span>Georgia</h2>
+      <div class="qs">
+        <label class="q"><span>Should people see the Georgia they already know from photos, or get access to things a visitor normally doesn't?</span><textarea name="04 Georgia - familiar or access"></textarea></label>
+        <label class="q"><span>For the day trip, how much time on the road is acceptable?</span><small>Kakheti is about two hours each way, Kazbegi three or more.</small><textarea name="04 Georgia - day trip distance"></textarea></label>
+        <label class="q"><span>How much unstructured time do people actually want?</span><textarea name="04 Georgia - free time"></textarea></label>
+        <label class="q"><span>Photo, video, merch, internal communication after the trip: what do you need?</span><textarea name="04 Georgia - content and merch"></textarea></label>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="n">05</span>The framework</h2>
+      <div class="qs">
+        <label class="q"><span>How firm is mid-May, and what makes mid-April the backup?</span><textarea name="05 Framework - dates"></textarea></label>
+        <label class="q"><span>One group arrival or staggered? Single rooms for everyone?</span><textarea name="05 Framework - arrivals, rooms"></textarea></label>
+        <label class="q"><span>Is there a budget range?</span><small>Per person or total, and whether flights are included. We prefer to design to it rather than around it.</small><textarea name="05 Framework - budget"></textarea></label>
+        <label class="q"><span>Who else is part of the decision, what is the timeline, and what will you compare proposals on?</span><textarea name="05 Framework - decision"></textarea></label>
+        <label class="q"><span>Which entity contracts and pays, in what currency, and with what invoicing requirements?</span><textarea name="05 Framework - contracting"></textarea></label>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="n">06</span>Anything else</h2>
+      <div class="qs">
+        <label class="q"><span>Whatever we didn't ask and you think we should know.</span><textarea name="06 Anything else"></textarea></label>
+        <div class="row2">
+          <label class="q"><span>Your name</span><input type="text" name="Name" value="Paul LeRoy" autocomplete="name"></label>
+          <label class="q"><span>Your email</span><input type="email" name="email" value="paul.leroy@reown.com" autocomplete="email"></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="send">
+      <div>
+        <h2>Send to RUNO</h2>
+        <p>Your answers come straight to Anna. Drafts are kept in this browser, so you can close the page and come back.</p>
+      </div>
+      <div>
+        <button type="submit" class="btn" id="go">Send answers →</button>
+        <p class="status mono" id="st"></p>
+      </div>
+    </section>
+  </form>
+
+  <section class="done">
+    <h2>Thank you</h2>
+    <p>Your answers are with us. Anna will come back to you with the next step.</p>
+  </section>
+
+  <script>
+    (function(){
+      var KEY = 'runo-brief-wc-9f3k';
+      var f = document.getElementById('brief'), st = document.getElementById('st'), go = document.getElementById('go');
+      var fields = f.querySelectorAll('textarea, input[type=text]:not(.hp), input[type=email]');
+      try {
+        var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+        fields.forEach(function(el){ if (saved[el.name]) el.value = saved[el.name]; });
+      } catch (e) {}
+      var t;
+      f.addEventListener('input', function(){
+        clearTimeout(t);
+        t = setTimeout(function(){
+          try { var d = {}; fields.forEach(function(el){ d[el.name] = el.value; }); localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+        }, 400);
+      });
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (f._honey.value) return;
+        var data = { _subject: 'WalletConnect offsite brief - answers', _template: 'box', _captcha: 'false' };
+        fields.forEach(function(el){ data[el.name] = el.value.trim() || '-'; });
+        go.disabled = true; st.textContent = 'Sending...';
+        fetch('https://formsubmit.co/ajax/hello@weareruno.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        }).then(function(r){ return r.json(); }).then(function(r){
+          if (String(r.success) !== 'true') throw new Error(r.message || 'error');
+          try { localStorage.removeItem(KEY); } catch (e) {}
+          document.body.classList.add('sent'); window.scrollTo(0, 0);
+        }).catch(function(){
+          go.disabled = false;
+          st.innerHTML = 'Something went wrong. Your answers are saved here - please try again, or write to <a href="mailto:hello@weareruno.com">hello@weareruno.com</a>.';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
