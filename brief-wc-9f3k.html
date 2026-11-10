@@ -69,7 +69,7 @@
 <body>
   <header class="top">
     <a href="/"><img src="/logo.svg" alt="RUNO" style="filter:brightness(0)"></a>
-    <a class="mail" href="mailto:hello@weareruno.com">hello@weareruno.com</a>
+    <a class="mail" href="mailto:offsite@weareruno.com">offsite@weareruno.com</a>
   </header>
 
   <section class="hero">
@@ -181,7 +181,7 @@
         var data = { _subject: 'WalletConnect offsite brief - answers', _template: 'box', _captcha: 'false' };
         fields.forEach(function(el){ data[el.name] = el.value.trim() || '-'; });
         go.disabled = true; st.textContent = 'Sending...';
-        fetch('https://formsubmit.co/ajax/hello@weareruno.com', {
+        fetch('https://formsubmit.co/ajax/offsite@weareruno.com', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(data)
@@ -191,7 +191,7 @@
           document.body.classList.add('sent'); window.scrollTo(0, 0);
         }).catch(function(){
           go.disabled = false;
-          st.innerHTML = 'Something went wrong. Your answers are saved here - please try again, or write to <a href="mailto:hello@weareruno.com">hello@weareruno.com</a>.';
+          st.innerHTML = 'Something went wrong. Your answers are saved here - please try again, or write to <a href="mailto:offsite@weareruno.com">offsite@weareruno.com</a>.';
         });
       });
     })();
