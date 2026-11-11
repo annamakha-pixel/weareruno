@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Свадьба Николая и Анны - RUNO</title>
-<meta property="og:title" content="Свадьба Николая и Анны">
+<title>Свадьба Анны и Николая - RUNO</title>
+<meta property="og:title" content="Свадьба Анны и Николая">
 <meta property="og:description" content="Поездка, площадки, концепция и дизайнеры. RUNO">
-<meta property="og:image" content="https://www.weareruno.com/wedding/mood_6.jpg">
+<meta property="og:image" content="https://www.weareruno.com/wedding/ceremony_1.jpg">
 <link rel="icon" href="/favicon.ico?v=3" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Great+Vibes&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
 <style>
 :root{--orange:#FB4827;--neon:#CEFF58;--beige:#E9DED8;--stone:#BFBDA8;--lav:#ABA5E1;--pink:#F4B1FF;--blue:#82B4E2;--red:#9D1813;--pad:clamp(16px,3vw,40px);--nav:52px}
@@ -32,12 +32,16 @@ img{display:block;max-width:100%}
 .nav a:hover:not(.on){background:#222}
 
 /* hero */
-.hero{background:var(--orange);padding:clamp(56px,10vh,120px) var(--pad) clamp(40px,7vh,80px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:end}
-.hero h1{font-size:clamp(46px,8.4vw,140px);font-weight:900;letter-spacing:-.065em;line-height:.86;text-transform:uppercase}
+.hero{position:relative;overflow:hidden;color:#fff;min-height:calc(100svh - var(--nav));padding:clamp(56px,10vh,120px) var(--pad) clamp(40px,7vh,72px);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:end;background:#2a2a24}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 82%;z-index:0}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.25) 45%,rgba(0,0,0,.7) 100%);z-index:1}
+.hero>div{position:relative;z-index:2}
+.hero h1{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(64px,10.5vw,176px);line-height:.92;letter-spacing:0;text-transform:none}
+.hero h1 small{display:block;font-family:'Satoshi',sans-serif;font-weight:900;font-size:clamp(18px,1.8vw,28px);letter-spacing:.02em;text-transform:uppercase;margin-bottom:18px}
 .hero .sub{margin-top:22px;font-size:clamp(18px,1.6vw,24px);line-height:1.18;letter-spacing:-.025em;max-width:30ch}
-.hero .facts{display:flex;flex-direction:column;gap:2px;border-top:3px solid #000;padding-top:14px}
+.hero .facts{display:flex;flex-direction:column;gap:2px;border-top:3px solid #fff;padding-top:14px}
 .hero .facts b{font-weight:900;font-size:clamp(22px,2.2vw,32px);letter-spacing:-.04em}
-.now{margin-top:18px;background:#000;color:#fff;padding:14px 16px;font-size:16px;line-height:1.25}
+.now{margin-top:18px;background:var(--neon);color:#000;padding:14px 16px;font-size:16px;line-height:1.25}
 .now:empty{display:none}
 
 section.blk{padding:clamp(56px,8vh,100px) var(--pad);border-top:3px solid #000}
@@ -159,9 +163,10 @@ section.blk{padding:clamp(56px,8vh,100px) var(--pad);border-top:3px solid #000}
 </nav>
 
 <header class="hero">
+  <img class="bg" src="/wedding/ceremony_1.jpg" alt="" fetchpriority="high">
   <div>
     <p class="mono">Wedding in Wonderland · by RUNO</p>
-    <h1 style="margin-top:16px">Свадьба Николая и Анны</h1>
+    <h1 style="margin-top:16px"><small>Свадьба</small>Анны и Николая</h1>
     <p class="sub">Всё в одном месте: программа поездки, площадки в Кахетии, концепция свадьбы и грузинские дизайнеры.</p>
   </div>
   <div>
@@ -417,13 +422,13 @@ document.addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;i
   const days=[...document.querySelectorAll('.day')];let cur=null;
   days.forEach(d=>{if(d.dataset.date<today)d.classList.add('past');if(d.dataset.date===today){d.classList.add('today');d.insertAdjacentHTML('afterbegin','<span class="badge mono">Сегодня</span>');cur=d}});
   const now=document.getElementById('now');
-  if(cur){now.innerHTML='<span class="mono" style="color:var(--neon)">Сегодня</span><br>'+cur.querySelector('.t').textContent}
-  else if(today<'2026-11-28'){const ms=new Date('2026-11-28T00:00:00+04:00')-new Date();const n=Math.ceil(ms/864e5);now.innerHTML='<span class="mono" style="color:var(--neon)">До поездки</span><br>'+n+' '+(n%10===1&&n%100!==11?'день':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'дня':'дней'))}
+  if(cur){now.innerHTML='<span class="mono">Сегодня</span><br>'+cur.querySelector('.t').textContent}
+  else if(today<'2026-11-28'){const ms=new Date('2026-11-28T00:00:00+04:00')-new Date();const n=Math.ceil(ms/864e5);now.innerHTML='<span class="mono">До поездки</span><br>'+n+' '+(n%10===1&&n%100!==11?'день':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'дня':'дней'))}
 })();
 
 // active menu item
 const links=[...document.querySelectorAll('.nav ul a')];
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));const a=links.find(a=>a.classList.contains('on'));a&&a.scrollIntoView({block:'nearest',inline:'nearest'})}})},{rootMargin:'-45% 0px -50% 0px'});
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id='#'+e.target.id;const cur=links.find(a=>a.classList.contains('on'));if(cur&&cur.getAttribute('href')===id)return;links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')===id));const a=links.find(a=>a.classList.contains('on'));if(a){const ul=a.parentElement.parentElement;const l=a.offsetLeft-ul.offsetLeft,r=l+a.offsetWidth;if(l<ul.scrollLeft||r>ul.scrollLeft+ul.clientWidth)ul.scrollTo({left:l-12,behavior:'smooth'})}}})},{rootMargin:'-45% 0px -50% 0px'});
 ['trip','venues','wedding','designers','contact'].forEach(id=>io.observe(document.getElementById(id)));
 </script>
 </body>
