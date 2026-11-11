@@ -63,7 +63,7 @@ section.blk{padding:clamp(56px,8vh,100px) var(--pad);border-top:3px solid #000}
 .stops a:hover{color:var(--orange)}
 
 /* carousel */
-.car{position:relative}
+.car{position:relative;min-width:0}
 .car .track{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .car .track::-webkit-scrollbar{display:none}
 .car .track img{flex:none;height:clamp(240px,42vh,460px);width:auto;max-width:86vw;object-fit:cover;scroll-snap-align:start;cursor:zoom-in;background:#ddd}
@@ -138,8 +138,8 @@ section.blk{padding:clamp(56px,8vh,100px) var(--pad);border-top:3px solid #000}
 
 @media (max-width:1000px){.days{grid-template-columns:repeat(2,minmax(0,1fr))}.day:first-child{grid-column:1/-1;min-height:0}}
 @media (max-width:760px){
- .hero,.vgrid,.concept,.chapter,.host{grid-template-columns:1fr}
- .days{grid-template-columns:1fr}.day{min-height:0}
+ .hero,.vgrid,.concept,.chapter,.host{grid-template-columns:minmax(0,1fr)}
+ .days{grid-template-columns:minmax(0,1fr)}.day{min-height:0}
  .dsum{grid-template-columns:1fr}
  .facts-l li{grid-template-columns:1fr;gap:2px}
  .nav{gap:10px}.nav a{padding:8px 10px;font-size:13px}
